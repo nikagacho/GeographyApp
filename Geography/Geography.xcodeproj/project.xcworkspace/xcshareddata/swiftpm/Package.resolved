@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "networkingmanager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nikagacho/networkingmanager",
+      "state" : {
+        "branch" : "main",
+        "revision" : "7a2b6d37cc20bf9cae71d28997671a3ddd3c2095"
+      }
+    }
+  ],
+  "version" : 2
+}
