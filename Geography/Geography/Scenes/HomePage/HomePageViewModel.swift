@@ -11,7 +11,7 @@ import NetworkLayerPackage
 class HomePageViewModel {
     let networkManager = NetworkManager<[Country]>()
     var countries: [Country] = []
-    weak var delegate: LearningViewModelDelegate?
+    weak var delegate: HomePageViewModelDelegate?
     
      func fetchData() {
         let url = "https://restcountries.com/v3.1/all?fields=name,capital,flag"
@@ -23,12 +23,18 @@ class HomePageViewModel {
         }
     }
     
-    func didTapButton() {
+    func didTapLearnButton() {
         delegate?.navigateToLearningPage(with: countries)
+    }
+    
+    func didTapQuizButton() {
+        delegate?.navigateToQuizPage(with: countries)
     }
     
 }
 
-protocol LearningViewModelDelegate: AnyObject {
+protocol HomePageViewModelDelegate: AnyObject {
     func navigateToLearningPage(with countries: [Country])
+    
+    func navigateToQuizPage(with countries: [Country])
 }

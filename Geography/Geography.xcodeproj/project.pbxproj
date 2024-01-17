@@ -19,6 +19,10 @@
 		D5411BCE2B571FDD0009719B /* LearningPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BCD2B571FDD0009719B /* LearningPageViewModel.swift */; };
 		D5411BD12B5728540009719B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BD02B5728540009719B /* Extensions.swift */; };
 		D5411BD42B572B3A0009719B /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BD32B572B3A0009719B /* CustomCell.swift */; };
+		D5411BD72B586DE90009719B /* CountryDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BD62B586DE90009719B /* CountryDetailsView.swift */; };
+		D5411BDB2B5876790009719B /* StartQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BDA2B5876790009719B /* StartQuizViewController.swift */; };
+		D5411BDE2B587D6B0009719B /* FlowNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BDD2B587D6B0009719B /* FlowNavigator.swift */; };
+		D5411BE02B5882790009719B /* StartQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BDF2B5882790009719B /* StartQuizViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,10 @@
 		D5411BCD2B571FDD0009719B /* LearningPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningPageViewModel.swift; sourceTree = "<group>"; };
 		D5411BD02B5728540009719B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D5411BD32B572B3A0009719B /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		D5411BD62B586DE90009719B /* CountryDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsView.swift; sourceTree = "<group>"; };
+		D5411BDA2B5876790009719B /* StartQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartQuizViewController.swift; sourceTree = "<group>"; };
+		D5411BDD2B587D6B0009719B /* FlowNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowNavigator.swift; sourceTree = "<group>"; };
+		D5411BDF2B5882790009719B /* StartQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartQuizViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +76,7 @@
 		D5411BAA2B56F9070009719B /* Geography */ = {
 			isa = PBXGroup;
 			children = (
+				D5411BDC2B587CCF0009719B /* Navigator */,
 				D5411BCF2B5728450009719B /* Support */,
 				D5411BC42B5715780009719B /* Model */,
 				D5411BC02B56FD090009719B /* Application */,
@@ -82,8 +91,11 @@
 		D5411BBF2B56FC160009719B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D5411BCA2B571F9E0009719B /* LearningPage */,
 				D5411BC12B56FD520009719B /* HomePage */,
+				D5411BD82B5873850009719B /* StartQuiz */,
+				D5411BD92B58739D0009719B /* Quiz */,
+				D5411BD52B586DAE0009719B /* CountryDetails */,
+				D5411BCA2B571F9E0009719B /* LearningPage */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -117,9 +129,9 @@
 		D5411BCA2B571F9E0009719B /* LearningPage */ = {
 			isa = PBXGroup;
 			children = (
-				D5411BD22B572B120009719B /* CustomCell */,
 				D5411BCB2B571FBB0009719B /* LearningPageViewController.swift */,
 				D5411BCD2B571FDD0009719B /* LearningPageViewModel.swift */,
+				D5411BD22B572B120009719B /* CustomCell */,
 			);
 			path = LearningPage;
 			sourceTree = "<group>";
@@ -138,6 +150,38 @@
 				D5411BD32B572B3A0009719B /* CustomCell.swift */,
 			);
 			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		D5411BD52B586DAE0009719B /* CountryDetails */ = {
+			isa = PBXGroup;
+			children = (
+				D5411BD62B586DE90009719B /* CountryDetailsView.swift */,
+			);
+			path = CountryDetails;
+			sourceTree = "<group>";
+		};
+		D5411BD82B5873850009719B /* StartQuiz */ = {
+			isa = PBXGroup;
+			children = (
+				D5411BDA2B5876790009719B /* StartQuizViewController.swift */,
+				D5411BDF2B5882790009719B /* StartQuizViewModel.swift */,
+			);
+			path = StartQuiz;
+			sourceTree = "<group>";
+		};
+		D5411BD92B58739D0009719B /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		D5411BDC2B587CCF0009719B /* Navigator */ = {
+			isa = PBXGroup;
+			children = (
+				D5411BDD2B587D6B0009719B /* FlowNavigator.swift */,
+			);
+			path = Navigator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,11 +260,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5411BD72B586DE90009719B /* CountryDetailsView.swift in Sources */,
 				D5411BC32B56FD620009719B /* HomePageViewModel.swift in Sources */,
 				D5411BB02B56F9070009719B /* HomePageViewController.swift in Sources */,
+				D5411BE02B5882790009719B /* StartQuizViewModel.swift in Sources */,
 				D5411BCC2B571FBB0009719B /* LearningPageViewController.swift in Sources */,
 				D5411BAC2B56F9070009719B /* AppDelegate.swift in Sources */,
+				D5411BDE2B587D6B0009719B /* FlowNavigator.swift in Sources */,
 				D5411BD42B572B3A0009719B /* CustomCell.swift in Sources */,
+				D5411BDB2B5876790009719B /* StartQuizViewController.swift in Sources */,
 				D5411BCE2B571FDD0009719B /* LearningPageViewModel.swift in Sources */,
 				D5411BD12B5728540009719B /* Extensions.swift in Sources */,
 				D5411BAE2B56F9070009719B /* SceneDelegate.swift in Sources */,

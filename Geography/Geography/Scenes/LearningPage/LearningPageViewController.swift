@@ -73,4 +73,10 @@ extension LearningPageViewController: UICollectionViewDataSource, UICollectionVi
         return CGSize(width: 180, height: 100)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let pushedVC = CountryDetailsView()
+        pushedVC.configure(with: viewModel.countries[indexPath.row])
+        navigationController?.pushViewController(pushedVC, animated: true)
+    }
+    
 }

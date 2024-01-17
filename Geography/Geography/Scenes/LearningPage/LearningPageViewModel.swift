@@ -9,5 +9,4 @@ import Foundation
 
 class LearningPageViewModel {
     var countries: [Country] = []
-
 }

@@ -31,17 +31,26 @@ class HomePageViewController: UIViewController {
     private let quizButton: UIButton = {
         let button = UIButton()
         button.setTitle("Quiz", for: .normal)
-        button.backgroundColor = .orange
-        button.layer.cornerRadius = 16
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 20
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private let learnButton: UIButton = {
         let button = UIButton()
         button.setTitle("Learn", for: .normal)
-        button.backgroundColor = .blue
-        button.layer.cornerRadius = 16
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 20
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
+    }()
+    
+    private let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = .earth
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
 
     override func viewDidLoad() {
@@ -56,39 +65,54 @@ class HomePageViewController: UIViewController {
         setupStack()
         setupConstraints()
         setupLearnButton()
+        setupQuizButton()
     }
     
     private func setupStack() {
         mainStackView.addArrangedSubview(mainText)
         mainStackView.addArrangedSubview(quizButton)
         mainStackView.addArrangedSubview(learnButton)
+        mainStackView.addArrangedSubview(imageView)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            quizButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            quizButton.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: -20),
-            learnButton.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 20),
-            learnButton.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: -20),
-            quizButton.heightAnchor.constraint(equalToConstant: 50),
-            learnButton.heightAnchor.constraint(equalToConstant: 50)
+            quizButton.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 89),
+            quizButton.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: -89),
+            learnButton.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 89),
+            learnButton.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: -89),
+            quizButton.heightAnchor.constraint(equalToConstant: 58),
+            learnButton.heightAnchor.constraint(equalToConstant: 58)
         ])
     }
     
     private func setupLearnButton() {
         viewModel.delegate = self
         learnButton.addAction(UIAction(handler: { [weak self] _ in
-            self!.viewModel.didTapButton()
+            self!.viewModel.didTapLearnButton()
+        }), for: .touchUpInside)
+    }
+    
+    private func setupQuizButton() {
+        viewModel.delegate = self
+        quizButton.addAction(UIAction(handler: { [weak self] _ in
+            self!.viewModel.didTapQuizButton()
         }), for: .touchUpInside)
     }
 
 }
 
-extension HomePageViewController: LearningViewModelDelegate {
+extension HomePageViewController: HomePageViewModelDelegate {
+    func navigateToQuizPage(with countries: [Country]) {
+        let quizPage = StartQuizViewController()
+        quizPage.viewModel.countries = viewModel.countries
+        navigationController?.pushViewController(quizPage, animated: true)
+    }
+    
     func navigateToLearningPage(with countries: [Country]) {
         let learningPage = LearningPageViewController()
         learningPage.viewModel.countries = viewModel.countries
