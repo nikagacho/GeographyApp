@@ -19,6 +19,4 @@ struct Name: Codable {
 }
 
 
-class MockUpData {
-}
 

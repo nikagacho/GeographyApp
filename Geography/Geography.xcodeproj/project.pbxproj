@@ -23,6 +23,8 @@
 		D5411BDB2B5876790009719B /* StartQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BDA2B5876790009719B /* StartQuizViewController.swift */; };
 		D5411BDE2B587D6B0009719B /* FlowNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BDD2B587D6B0009719B /* FlowNavigator.swift */; };
 		D5411BE02B5882790009719B /* StartQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BDF2B5882790009719B /* StartQuizViewModel.swift */; };
+		D5411BE22B59BD720009719B /* CapitalsQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BE12B59BD720009719B /* CapitalsQuiz.swift */; };
+		D5411BE42B59BDE20009719B /* CapitalsQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BE32B59BDE20009719B /* CapitalsQuizViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		D5411BDA2B5876790009719B /* StartQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartQuizViewController.swift; sourceTree = "<group>"; };
 		D5411BDD2B587D6B0009719B /* FlowNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowNavigator.swift; sourceTree = "<group>"; };
 		D5411BDF2B5882790009719B /* StartQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartQuizViewModel.swift; sourceTree = "<group>"; };
+		D5411BE12B59BD720009719B /* CapitalsQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitalsQuiz.swift; sourceTree = "<group>"; };
+		D5411BE32B59BDE20009719B /* CapitalsQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitalsQuizViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,10 +80,10 @@
 		D5411BAA2B56F9070009719B /* Geography */ = {
 			isa = PBXGroup;
 			children = (
+				D5411BC02B56FD090009719B /* Application */,
 				D5411BDC2B587CCF0009719B /* Navigator */,
 				D5411BCF2B5728450009719B /* Support */,
 				D5411BC42B5715780009719B /* Model */,
-				D5411BC02B56FD090009719B /* Application */,
 				D5411BBF2B56FC160009719B /* Scenes */,
 				D5411BB42B56F9080009719B /* Assets.xcassets */,
 				D5411BB62B56F9080009719B /* LaunchScreen.storyboard */,
@@ -93,9 +97,10 @@
 			children = (
 				D5411BC12B56FD520009719B /* HomePage */,
 				D5411BD82B5873850009719B /* StartQuiz */,
-				D5411BD92B58739D0009719B /* Quiz */,
-				D5411BD52B586DAE0009719B /* CountryDetails */,
 				D5411BCA2B571F9E0009719B /* LearningPage */,
+				D5411BD92B58739D0009719B /* CapitalsQuiz */,
+				D5411BE52B59C47F0009719B /* FlagsQuiz */,
+				D5411BD52B586DAE0009719B /* CountryDetails */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -169,11 +174,13 @@
 			path = StartQuiz;
 			sourceTree = "<group>";
 		};
-		D5411BD92B58739D0009719B /* Quiz */ = {
+		D5411BD92B58739D0009719B /* CapitalsQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				D5411BE12B59BD720009719B /* CapitalsQuiz.swift */,
+				D5411BE32B59BDE20009719B /* CapitalsQuizViewModel.swift */,
 			);
-			path = Quiz;
+			path = CapitalsQuiz;
 			sourceTree = "<group>";
 		};
 		D5411BDC2B587CCF0009719B /* Navigator */ = {
@@ -182,6 +189,13 @@
 				D5411BDD2B587D6B0009719B /* FlowNavigator.swift */,
 			);
 			path = Navigator;
+			sourceTree = "<group>";
+		};
+		D5411BE52B59C47F0009719B /* FlagsQuiz */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FlagsQuiz;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +276,7 @@
 			files = (
 				D5411BD72B586DE90009719B /* CountryDetailsView.swift in Sources */,
 				D5411BC32B56FD620009719B /* HomePageViewModel.swift in Sources */,
+				D5411BE42B59BDE20009719B /* CapitalsQuizViewModel.swift in Sources */,
 				D5411BB02B56F9070009719B /* HomePageViewController.swift in Sources */,
 				D5411BE02B5882790009719B /* StartQuizViewModel.swift in Sources */,
 				D5411BCC2B571FBB0009719B /* LearningPageViewController.swift in Sources */,
@@ -273,6 +288,7 @@
 				D5411BD12B5728540009719B /* Extensions.swift in Sources */,
 				D5411BAE2B56F9070009719B /* SceneDelegate.swift in Sources */,
 				D5411BC62B57158C0009719B /* CountryModel.swift in Sources */,
+				D5411BE22B59BD720009719B /* CapitalsQuiz.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
