@@ -25,6 +25,10 @@
 		D5411BE02B5882790009719B /* StartQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BDF2B5882790009719B /* StartQuizViewModel.swift */; };
 		D5411BE22B59BD720009719B /* CapitalsQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BE12B59BD720009719B /* CapitalsQuiz.swift */; };
 		D5411BE42B59BDE20009719B /* CapitalsQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BE32B59BDE20009719B /* CapitalsQuizViewModel.swift */; };
+		D5411BE72B5D69650009719B /* NetworkLayerPackage in Frameworks */ = {isa = PBXBuildFile; productRef = D5411BE62B5D69650009719B /* NetworkLayerPackage */; };
+		D5411BEB2B5F02820009719B /* QuizCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BEA2B5F02820009719B /* QuizCompletionView.swift */; };
+		D5411BED2B5F02B80009719B /* AnswersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BEC2B5F02B80009719B /* AnswersView.swift */; };
+		D5411BEF2B5F02D20009719B /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BEE2B5F02D20009719B /* QuestionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +51,9 @@
 		D5411BDF2B5882790009719B /* StartQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartQuizViewModel.swift; sourceTree = "<group>"; };
 		D5411BE12B59BD720009719B /* CapitalsQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitalsQuiz.swift; sourceTree = "<group>"; };
 		D5411BE32B59BDE20009719B /* CapitalsQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitalsQuizViewModel.swift; sourceTree = "<group>"; };
+		D5411BEA2B5F02820009719B /* QuizCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCompletionView.swift; sourceTree = "<group>"; };
+		D5411BEC2B5F02B80009719B /* AnswersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersView.swift; sourceTree = "<group>"; };
+		D5411BEE2B5F02D20009719B /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5411BE72B5D69650009719B /* NetworkLayerPackage in Frameworks */,
 				D5411BC92B5715ED0009719B /* NetworkLayerPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +187,7 @@
 			children = (
 				D5411BE12B59BD720009719B /* CapitalsQuiz.swift */,
 				D5411BE32B59BDE20009719B /* CapitalsQuizViewModel.swift */,
+				D5411BE92B5F026B0009719B /* Components */,
 			);
 			path = CapitalsQuiz;
 			sourceTree = "<group>";
@@ -196,6 +205,16 @@
 			children = (
 			);
 			path = FlagsQuiz;
+			sourceTree = "<group>";
+		};
+		D5411BE92B5F026B0009719B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D5411BEA2B5F02820009719B /* QuizCompletionView.swift */,
+				D5411BEC2B5F02B80009719B /* AnswersView.swift */,
+				D5411BEE2B5F02D20009719B /* QuestionView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +235,7 @@
 			name = Geography;
 			packageProductDependencies = (
 				D5411BC82B5715ED0009719B /* NetworkLayerPackage */,
+				D5411BE62B5D69650009719B /* NetworkLayerPackage */,
 			);
 			productName = Geography;
 			productReference = D5411BA82B56F9070009719B /* Geography.app */;
@@ -275,12 +295,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5411BD72B586DE90009719B /* CountryDetailsView.swift in Sources */,
+				D5411BEB2B5F02820009719B /* QuizCompletionView.swift in Sources */,
 				D5411BC32B56FD620009719B /* HomePageViewModel.swift in Sources */,
 				D5411BE42B59BDE20009719B /* CapitalsQuizViewModel.swift in Sources */,
 				D5411BB02B56F9070009719B /* HomePageViewController.swift in Sources */,
 				D5411BE02B5882790009719B /* StartQuizViewModel.swift in Sources */,
 				D5411BCC2B571FBB0009719B /* LearningPageViewController.swift in Sources */,
 				D5411BAC2B56F9070009719B /* AppDelegate.swift in Sources */,
+				D5411BED2B5F02B80009719B /* AnswersView.swift in Sources */,
 				D5411BDE2B587D6B0009719B /* FlowNavigator.swift in Sources */,
 				D5411BD42B572B3A0009719B /* CustomCell.swift in Sources */,
 				D5411BDB2B5876790009719B /* StartQuizViewController.swift in Sources */,
@@ -288,6 +310,7 @@
 				D5411BD12B5728540009719B /* Extensions.swift in Sources */,
 				D5411BAE2B56F9070009719B /* SceneDelegate.swift in Sources */,
 				D5411BC62B57158C0009719B /* CountryModel.swift in Sources */,
+				D5411BEF2B5F02D20009719B /* QuestionView.swift in Sources */,
 				D5411BE22B59BD720009719B /* CapitalsQuiz.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,6 +538,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		D5411BC82B5715ED0009719B /* NetworkLayerPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5411BC72B5715ED0009719B /* XCRemoteSwiftPackageReference "networkingmanager" */;
+			productName = NetworkLayerPackage;
+		};
+		D5411BE62B5D69650009719B /* NetworkLayerPackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D5411BC72B5715ED0009719B /* XCRemoteSwiftPackageReference "networkingmanager" */;
 			productName = NetworkLayerPackage;

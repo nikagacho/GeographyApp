@@ -107,13 +107,13 @@ class HomePageViewController: UIViewController {
 }
 
 extension HomePageViewController: HomePageViewModelDelegate {
-    func navigateToQuizPage(with countries: [Country]) {
+    func navigateToQuizPage(with countries: [NewCountry]) {
         let quizPage = StartQuizViewController()
         quizPage.viewModel.countries = viewModel.countries
         navigationController?.pushViewController(quizPage, animated: true)
     }
     
-    func navigateToLearningPage(with countries: [Country]) {
+    func navigateToLearningPage(with countries: [NewCountry]) {
         let learningPage = LearningPageViewController()
         learningPage.viewModel.countries = viewModel.countries
         navigationController?.pushViewController(learningPage, animated: true)

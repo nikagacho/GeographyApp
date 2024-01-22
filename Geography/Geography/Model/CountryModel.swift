@@ -18,5 +18,22 @@ struct Name: Codable {
     let official: String
 }
 
+struct CountriesData: Codable {
+    let data: [NewCountry]
+}
+
+struct NewCountry: Codable {
+    let name: String
+    let capital: String
+    let description: String?
+    let href: CountryHref
+
+    struct CountryHref: Codable {
+        let flag: String
+    }
+}
+
+
+
 
 

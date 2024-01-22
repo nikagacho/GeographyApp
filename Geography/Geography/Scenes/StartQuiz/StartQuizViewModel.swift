@@ -8,5 +8,5 @@
 import Foundation
 
 class StartQuizViewModel {
-    var countries: [Country] = []
+    var countries: [NewCountry] = []
 }

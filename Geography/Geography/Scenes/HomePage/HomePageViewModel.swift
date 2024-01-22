@@ -9,20 +9,26 @@ import Foundation
 import NetworkLayerPackage
 
 class HomePageViewModel {
-    let networkManager = NetworkManager<[Country]>()
-    var countries: [Country] = []
+    let networkManager = NetworkManager<CountriesData>()
+    var countries: [NewCountry] = []
     weak var delegate: HomePageViewModelDelegate?
     
-     func fetchData() {
-        let url = "https://restcountries.com/v3.1/all?fields=name,capital,flag"
+    func fetchData() {
+        let url = "https://restfulcountries.com/api/v1/countries"
+        let headers = ["Authorization": "Bearer 500|umHXWLFgGsnm3WirwgIm3GDEaOjVYgdJj5DZuGx0"]
+
         Task {
-            let countriesFetched = try await networkManager.fetchData(from: url)
-            await MainActor.run {
-                countries = countriesFetched
+            do {
+                let countriesFetched = try await networkManager.fetchData(from: url, headers: headers)
+                await MainActor.run {
+                    countries = countriesFetched.data
+                }
+            } catch {
+                print("Error: \(error)")
             }
         }
     }
-    
+
     func didTapLearnButton() {
         delegate?.navigateToLearningPage(with: countries)
     }
@@ -34,7 +40,7 @@ class HomePageViewModel {
 }
 
 protocol HomePageViewModelDelegate: AnyObject {
-    func navigateToLearningPage(with countries: [Country])
+    func navigateToLearningPage(with countries: [NewCountry])
     
-    func navigateToQuizPage(with countries: [Country])
+    func navigateToQuizPage(with countries: [NewCountry])
 }
