@@ -22,6 +22,7 @@ struct QuizCompletionView: View {
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .cornerRadius(8)
+        
         }
     }
 }
