@@ -1,16 +1,16 @@
 //
-//  CapitalsQuizViewModel.swift
+//  FlagsQuizViewModel.swift
 //  Geography
 //
-//  Created by Nikoloz Gachechiladze on 19.01.24.
+//  Created by Nikoloz Gachechiladze on 23.01.24.
 //
 
 import Foundation
 
-class CapitalsQuizViewModel: ObservableObject {
+class FlagsQuizViewModel: ObservableObject {
     
     var countries: [NewCountry] = []
-    var question = "What is the Capital City of "
+    var question = "Which one is the flag of "
     @Published var selectedCountry: NewCountry!
     @Published var possibleAnswers: [String] = []
     @Published var score = 0
@@ -19,22 +19,22 @@ class CapitalsQuizViewModel: ObservableObject {
     @Published var selectedAnswer: String? = nil
     
     func returnPossibleAnswers(country: NewCountry) -> [String] {
-        var answers: [String] = [country.capital]
-        while answers.count < 4 {
+        var flagAnswers: [String] = [country.href.flag]
+        while flagAnswers.count < 4 {
             let randomCountry = countries.randomElement()
-            let randomCapital = randomCountry?.capital
+            let randomFlag = randomCountry?.href.flag ?? ""
             
-            if randomCountry?.name != country.name && !answers.contains(randomCapital ?? "") {
-                answers.append(randomCapital ?? "")
+            if randomCountry?.name != country.name && !flagAnswers.contains(randomFlag) {
+                flagAnswers.append(randomFlag)
             }
         }
-        return answers.shuffled()
+        return flagAnswers.shuffled()
     }
     
-    func checkAnswer(capital: String) {
-        selectedAnswer = capital
+    func checkAnswer(flag: String) {
+        selectedAnswer = flag
         guard let country = selectedCountry else { return }
-        if capital == country.capital {
+        if flag == country.href.flag {
             score += 1
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -60,5 +60,4 @@ class CapitalsQuizViewModel: ObservableObject {
         selectedCountry = randomCountry
         possibleAnswers = returnPossibleAnswers(country: selectedCountry)
     }
-    
 }

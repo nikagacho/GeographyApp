@@ -9,7 +9,7 @@ import UIKit
 
 class HomePageViewController: UIViewController {
     
-    private let viewModel = HomePageViewModel()
+    private let viewModel = HomePageViewModel(countries: [])
     
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
@@ -56,7 +56,6 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        viewModel.fetchData()
     }
     
     private func setupView() {
