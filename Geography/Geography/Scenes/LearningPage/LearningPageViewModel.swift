@@ -8,5 +8,5 @@
 import Foundation
 
 class LearningPageViewModel {
-    var countries: [Country] = []
+    var countries: [NewCountry] = []
 }

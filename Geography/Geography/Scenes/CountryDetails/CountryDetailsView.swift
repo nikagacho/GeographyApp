@@ -90,10 +90,10 @@ class CountryDetailsView: UIViewController {
         ])
     }
     
-    public func configure(with country: Country) {
-        countryLabel.text = country.name.common
-        capitalLabel.text = country.capital.first
-        countryFlag.image = country.flag.emojiImage()
+    public func configure(with country: NewCountry) {
+        countryLabel.text = country.name
+        capitalLabel.text = country.capital
+//        countryFlag.image = country.flag.emojiImage()
     }
     
 }

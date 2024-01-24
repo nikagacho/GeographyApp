@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class StartQuizViewController: UIViewController {
     
@@ -50,6 +51,7 @@ class StartQuizViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupCapitalsButton()
 
     }
     
@@ -76,6 +78,15 @@ class StartQuizViewController: UIViewController {
             capitalsButton.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: -89),
             capitalsButton.heightAnchor.constraint(equalToConstant: 58)
         ])
+    }
+    
+    private func setupCapitalsButton() {
+        capitalsButton.addAction(UIAction(handler: { [weak self] _ in
+            let newViewModel = CapitalsQuizViewModel()
+            newViewModel.countries = (self?.viewModel.countries)!
+            let hostingController = UIHostingController(rootView: CapitalsQuiz(viewModel: newViewModel) )
+            self?.navigationController?.pushViewController(hostingController, animated: true)
+        }), for: .touchUpInside)
     }
 
 
