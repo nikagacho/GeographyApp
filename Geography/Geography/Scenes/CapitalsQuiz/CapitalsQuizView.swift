@@ -10,11 +10,12 @@ import SwiftUI
 struct CapitalsQuiz: View {
     
     @StateObject var viewModel: CapitalsQuizViewModel
+    @EnvironmentObject var flowNavigator: FlowNavigator
     
     var body: some View {
         VStack {
             if viewModel.quizCompleted {
-                QuizCompletionView(score: viewModel.score, restartAction: viewModel.restartQuiz)
+                QuizCompletionView(score: viewModel.score, restartAction: viewModel.restartQuiz, goBack: flowNavigator.goBack)
             } else if let country = viewModel.selectedCountry {
                 QuestionView(question: viewModel.question,
                              countryName: country.name,
@@ -24,6 +25,9 @@ struct CapitalsQuiz: View {
                 AnswersView(possibleAnswers: viewModel.possibleAnswers,
                             answerSelected: viewModel.checkAnswer,
                             selectedAnswer: $viewModel.selectedAnswer, correctAnswer: country.capital)
+                Button("ABORT QUIZ") {
+                    flowNavigator.goBack()
+                }
             } else {
                 Text("Loading QUIZ")
                     .onAppear { viewModel.loadNewQuestion() }

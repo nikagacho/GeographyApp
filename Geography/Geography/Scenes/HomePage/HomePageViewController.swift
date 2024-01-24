@@ -10,6 +10,7 @@ import UIKit
 class HomePageViewController: UIViewController {
     
     private let viewModel = HomePageViewModel(countries: [])
+    var flowNavigator: FlowNavigator?
     
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
@@ -109,6 +110,7 @@ extension HomePageViewController: HomePageViewModelDelegate {
     func navigateToQuizPage(with countries: [NewCountry]) {
         let quizPage = StartQuizViewController()
         quizPage.viewModel.countries = viewModel.countries
+        quizPage.flowNavigator = flowNavigator
         navigationController?.pushViewController(quizPage, animated: true)
     }
     

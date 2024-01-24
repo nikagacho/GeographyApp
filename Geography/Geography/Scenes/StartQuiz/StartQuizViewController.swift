@@ -11,12 +11,13 @@ import SwiftUI
 class StartQuizViewController: UIViewController {
     
     let viewModel = StartQuizViewModel()
+    var flowNavigator: FlowNavigator?
     
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        stackView.alignment = .center
         stackView.spacing = 20
         return stackView
     }()
@@ -62,7 +63,6 @@ class StartQuizViewController: UIViewController {
         mainStackView.addArrangedSubview(mainText)
         mainStackView.addArrangedSubview(flagsButton)
         mainStackView.addArrangedSubview(capitalsButton)
-        mainStackView.setCustomSpacing(29, after: flagsButton)
         setupConstraints()
     }
     
@@ -83,19 +83,13 @@ class StartQuizViewController: UIViewController {
     
     private func setupCapitalsButton() {
         capitalsButton.addAction(UIAction(handler: { [weak self] _ in
-            let newViewModel = CapitalsQuizViewModel()
-            newViewModel.countries = (self?.viewModel.countries)!
-            let hostingController = UIHostingController(rootView: CapitalsQuiz(viewModel: newViewModel) )
-            self?.navigationController?.pushViewController(hostingController, animated: true)
+            self!.flowNavigator?.showCapitalsQuiz(countries: self!.viewModel.countries)
         }), for: .touchUpInside)
     }
     
     private func setupFlagsButton() {
         flagsButton.addAction(UIAction(handler: { [weak self] _ in
-            let newViewModel = FlagsQuizViewModel()
-            newViewModel.countries = self?.viewModel.countries ?? []
-            let hostingController = UIHostingController(rootView: FlagsQuizView(viewModel: newViewModel))
-            self?.navigationController?.pushViewController(hostingController, animated: true)
+            self!.flowNavigator?.showFlagsQuiz(countries: self!.viewModel.countries)
         }), for: .touchUpInside)
     }
 

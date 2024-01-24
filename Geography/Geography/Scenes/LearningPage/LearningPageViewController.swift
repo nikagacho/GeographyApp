@@ -10,6 +10,7 @@ import UIKit
 class LearningPageViewController: UIViewController {
     
     var viewModel = LearningPageViewModel()
+    var flowNavigator: FlowNavigator?
     
     private var mainStackView: UIStackView = {
         let stackView = UIStackView()

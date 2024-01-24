@@ -10,13 +10,17 @@ import SwiftUI
 struct FlagsQuizView: View {
     
     @StateObject var viewModel: FlagsQuizViewModel
+    @EnvironmentObject var flowNavigator: FlowNavigator
     
     var body: some View {
         if viewModel.quizCompleted {
-            QuizCompletionView(score: viewModel.score, restartAction: viewModel.restartQuiz)
+            QuizCompletionView(score: viewModel.score, restartAction: viewModel.restartQuiz, goBack: flowNavigator.goBack)
         } else if let country = viewModel.selectedCountry {
             QuestionView(question: viewModel.question, countryName: country.name, score: viewModel.score, increment: viewModel.increment)
             FlagsQuizAnswersView(possibleAnswers: viewModel.returnPossibleAnswers(country: country), answerSelected: viewModel.checkAnswer, selectedAnswer: $viewModel.selectedAnswer, correctAnswer: country.href.flag)
+            Button("ABORT QUIZ") {
+                flowNavigator.goBack()
+            }
         }  else {
             Text("Loading QUIZ")
                 .onAppear { viewModel.loadNewQuestion() }

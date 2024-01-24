@@ -8,7 +8,7 @@
 import SwiftUI
 import UIKit
 
-final class FlowCoordinator: ObservableObject {
+final class FlowNavigator: ObservableObject {
     private let window: UIWindow
     
     init(window: UIWindow) {
@@ -16,21 +16,40 @@ final class FlowCoordinator: ObservableObject {
     }
     
     func showRootView() {
-//        let swiftUIView = ContentView()
-//            .environmentObject(self)
-//        let hostingView = UIHostingController(rootView: swiftUIView)
-//        window.rootViewController = UINavigationController(rootViewController: hostingView)
+        let rootView = HomePageViewController()
+        rootView.flowNavigator = self
+        window.rootViewController = UINavigationController(rootViewController: rootView)
     }
     
-    func showDetailView() {
-//        let detailView = DetailView()
-//            .environmentObject(self)
-//        let viewController = UIHostingController(rootView: detailView)
-//        window.rootViewController?.present(viewController, animated: true, completion: nil)
+    func showCapitalsQuiz(countries: [NewCountry]) {
+        let viewModel = CapitalsQuizViewModel()
+        viewModel.countries = countries
+        let capitalsQuiz = CapitalsQuiz(viewModel: viewModel)
+            .environmentObject(self)
+        let hostingView = UIHostingController(rootView: capitalsQuiz)
+        if let navigationController = window.rootViewController as? UINavigationController {
+            navigationController.pushViewController(hostingView, animated: true)
+        }
     }
     
-    func closeDetailView() {
-        // Needs to be more sophisticated later when there are more views
-        window.rootViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
+    func showFlagsQuiz(countries: [NewCountry]) {
+        let viewModel = FlagsQuizViewModel()
+        viewModel.countries = countries
+        let flagsQuiz = FlagsQuizView(viewModel: viewModel)
+            .environmentObject(self)
+        let hostingView = UIHostingController(rootView: flagsQuiz)
+        if let navigationController = window.rootViewController as? UINavigationController {
+            navigationController.pushViewController(hostingView, animated: true)
+        }
+    }
+    
+//    func closeDetailView() {
+//        window.rootViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
+//    }
+    
+    func goBack() {
+        if let navigationController = window.rootViewController as? UINavigationController {
+            navigationController.popViewController(animated: true)
+        }
     }
 }
