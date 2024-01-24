@@ -13,6 +13,12 @@ class HomePageViewModel {
     var countries: [NewCountry] = []
     weak var delegate: HomePageViewModelDelegate?
     
+    init(countries: [NewCountry], delegate: HomePageViewModelDelegate? = nil) {
+        self.countries = countries
+        self.delegate = delegate
+        self.fetchData()
+    }
+    
     func fetchData() {
         let url = "https://restfulcountries.com/api/v1/countries"
         let headers = ["Authorization": "Bearer 500|umHXWLFgGsnm3WirwgIm3GDEaOjVYgdJj5DZuGx0"]

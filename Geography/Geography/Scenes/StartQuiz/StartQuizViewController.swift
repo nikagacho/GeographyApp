@@ -52,6 +52,7 @@ class StartQuizViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupCapitalsButton()
+        setupFlagsButton()
 
     }
     
@@ -85,6 +86,15 @@ class StartQuizViewController: UIViewController {
             let newViewModel = CapitalsQuizViewModel()
             newViewModel.countries = (self?.viewModel.countries)!
             let hostingController = UIHostingController(rootView: CapitalsQuiz(viewModel: newViewModel) )
+            self?.navigationController?.pushViewController(hostingController, animated: true)
+        }), for: .touchUpInside)
+    }
+    
+    private func setupFlagsButton() {
+        flagsButton.addAction(UIAction(handler: { [weak self] _ in
+            let newViewModel = FlagsQuizViewModel()
+            newViewModel.countries = self?.viewModel.countries ?? []
+            let hostingController = UIHostingController(rootView: FlagsQuizView(viewModel: newViewModel))
             self?.navigationController?.pushViewController(hostingController, animated: true)
         }), for: .touchUpInside)
     }
