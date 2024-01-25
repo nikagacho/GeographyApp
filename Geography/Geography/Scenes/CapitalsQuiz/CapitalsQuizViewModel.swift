@@ -17,6 +17,7 @@ class CapitalsQuizViewModel: ObservableObject {
     @Published var increment = 1
     @Published var quizCompleted = false
     @Published var selectedAnswer: String? = nil
+    var previousQuestions: [NewCountry] = []
     
     func returnPossibleAnswers(country: NewCountry) -> [String] {
         var answers: [String] = [country.capital]
@@ -37,7 +38,7 @@ class CapitalsQuizViewModel: ObservableObject {
         if capital == country.capital {
             score += 1
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.increment += 1
             if self.increment > 10 {
                 self.quizCompleted = true

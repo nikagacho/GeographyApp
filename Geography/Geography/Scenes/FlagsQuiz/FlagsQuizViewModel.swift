@@ -6,19 +6,21 @@
 //
 
 import Foundation
+import SwiftUI
 
 class FlagsQuizViewModel: ObservableObject {
     
     var countries: [NewCountry] = []
     var question = "Which one is the flag of "
     @Published var selectedCountry: NewCountry!
-    @Published var possibleAnswers: [String] = []
+    var possibleAnswers: [String] = []
     @Published var score = 0
     @Published var increment = 1
     @Published var quizCompleted = false
     @Published var selectedAnswer: String? = nil
     
     func returnPossibleAnswers(country: NewCountry) -> [String] {
+        print("returnPossibleAnswers called")
         var flagAnswers: [String] = [country.href.flag]
         while flagAnswers.count < 4 {
             let randomCountry = countries.randomElement()
@@ -37,6 +39,7 @@ class FlagsQuizViewModel: ObservableObject {
         if flag == country.href.flag {
             score += 1
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.increment += 1
             if self.increment > 10 {
                 self.quizCompleted = true
@@ -44,7 +47,8 @@ class FlagsQuizViewModel: ObservableObject {
                 self.loadNewQuestion()
             }
             self.selectedAnswer = nil
-        
+            
+        }
     }
     
     func restartQuiz() {
@@ -56,7 +60,8 @@ class FlagsQuizViewModel: ObservableObject {
     
     func loadNewQuestion() {
         guard let randomCountry = countries.randomElement() else { return }
+        print("random country selected - \(randomCountry.name)")
         selectedCountry = randomCountry
-        possibleAnswers = returnPossibleAnswers(country: selectedCountry)
+        possibleAnswers = returnPossibleAnswers(country: randomCountry)
     }
 }
