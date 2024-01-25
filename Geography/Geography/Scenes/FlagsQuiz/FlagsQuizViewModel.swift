@@ -37,7 +37,6 @@ class FlagsQuizViewModel: ObservableObject {
         if flag == country.href.flag {
             score += 1
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.increment += 1
             if self.increment > 10 {
                 self.quizCompleted = true
@@ -45,7 +44,7 @@ class FlagsQuizViewModel: ObservableObject {
                 self.loadNewQuestion()
             }
             self.selectedAnswer = nil
-        }
+        
     }
     
     func restartQuiz() {
