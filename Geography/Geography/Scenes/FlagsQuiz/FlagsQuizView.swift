@@ -17,13 +17,11 @@ struct FlagsQuizView: View {
             QuizCompletionView(score: viewModel.score, restartAction: viewModel.restartQuiz, goBack: flowNavigator.goBack)
         } else if let country = viewModel.selectedCountry {
             QuestionView(question: viewModel.question, countryName: country.name, score: viewModel.score, increment: viewModel.increment)
-            FlagsQuizAnswersView(possibleAnswers: viewModel.returnPossibleAnswers(country: country), answerSelected: viewModel.checkAnswer, selectedAnswer: $viewModel.selectedAnswer, correctAnswer: country.href.flag)
-            Button("ABORT QUIZ") {
-                flowNavigator.goBack()
-            }
+            FlagsQuizAnswersView(possibleAnswers: viewModel.possibleAnswers, answerSelected: viewModel.checkAnswer, selectedAnswer: $viewModel.selectedAnswer, correctAnswer: country.href.flag)
+            QuizControlView(viewModel: viewModel, goBackAction: flowNavigator.goBack)
         }  else {
             Text("Loading QUIZ")
-                .onAppear { viewModel.loadNewQuestion() }
+                .onAppear { viewModel.loadFirstQuestion() }
         }
     }
 }
