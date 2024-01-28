@@ -7,16 +7,17 @@
 
 import Foundation
 
-class CapitalsQuizViewModel: ObservableObject {
+class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
     
     var countries: [NewCountry] = []
     var question = "What is the Capital City of "
     @Published var selectedCountry: NewCountry!
-    @Published var possibleAnswers: [String] = []
+    var possibleAnswers: [String] = []
     @Published var score = 0
     @Published var increment = 1
     @Published var quizCompleted = false
     @Published var selectedAnswer: String? = nil
+    var previousQuestions: [NewCountry] = []
     
     func returnPossibleAnswers(country: NewCountry) -> [String] {
         var answers: [String] = [country.capital]
@@ -31,34 +32,44 @@ class CapitalsQuizViewModel: ObservableObject {
         return answers.shuffled()
     }
     
-    func checkAnswer(capital: String) {
-        selectedAnswer = capital
+    func checkAnswer(answer: String) {
+        selectedAnswer = answer
         guard let country = selectedCountry else { return }
-        if capital == country.capital {
+        if answer == country.capital {
             score += 1
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.increment += 1
-            if self.increment > 10 {
-                self.quizCompleted = true
-            } else {
-                self.loadNewQuestion()
-            }
-            self.selectedAnswer = nil
+    }
+    
+    func loadNextQuestion() {
+        var nextCountry: NewCountry?
+        repeat {
+            nextCountry = countries.randomElement()
+        } while nextCountry != nil && previousQuestions.contains(where: { $0.name == nextCountry!.name })
+
+        if let nextCountry = nextCountry {
+            selectedCountry = nextCountry
+            possibleAnswers = returnPossibleAnswers(country: selectedCountry)
+            increment += 1
+            selectedAnswer = nil
+            previousQuestions.append(nextCountry)
         }
+    }
+    
+    func loadFirstQuestion() {
+        previousQuestions = []
+        guard let randomCountry = countries.randomElement() else { return }
+        selectedCountry = randomCountry
+        possibleAnswers = returnPossibleAnswers(country: selectedCountry)
+        previousQuestions.append(selectedCountry)
     }
     
     func restartQuiz() {
         increment = 1
         score = 0
+        selectedAnswer = nil
         quizCompleted = false
-        loadNewQuestion()
+        loadFirstQuestion()
     }
     
-    func loadNewQuestion() {
-        guard let randomCountry = countries.randomElement() else { return }
-        selectedCountry = randomCountry
-        possibleAnswers = returnPossibleAnswers(country: selectedCountry)
-    }
     
 }

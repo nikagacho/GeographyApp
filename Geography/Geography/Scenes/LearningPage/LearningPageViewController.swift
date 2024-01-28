@@ -27,6 +27,11 @@ class LearningPageViewController: UIViewController {
         return collectionView
     }()
     
+    private var imageView: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

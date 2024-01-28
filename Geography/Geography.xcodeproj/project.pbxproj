@@ -32,6 +32,8 @@
 		D5411BF12B602AA40009719B /* FlagsQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BF02B602AA40009719B /* FlagsQuizView.swift */; };
 		D5411BF32B602AD90009719B /* FlagsQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BF22B602AD90009719B /* FlagsQuizViewModel.swift */; };
 		D5411BF52B6185BC0009719B /* FlagsQuizAnswersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BF42B6185BC0009719B /* FlagsQuizAnswersView.swift */; };
+		D5B1F1892B66912500645EC8 /* QuizControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F1882B66912500645EC8 /* QuizControlView.swift */; };
+		D5B1F18F2B66A81B00645EC8 /* QuizViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F18E2B66A81B00645EC8 /* QuizViewModelProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		D5411BF02B602AA40009719B /* FlagsQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsQuizView.swift; sourceTree = "<group>"; };
 		D5411BF22B602AD90009719B /* FlagsQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsQuizViewModel.swift; sourceTree = "<group>"; };
 		D5411BF42B6185BC0009719B /* FlagsQuizAnswersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsQuizAnswersView.swift; sourceTree = "<group>"; };
+		D5B1F1882B66912500645EC8 /* QuizControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizControlView.swift; sourceTree = "<group>"; };
+		D5B1F18E2B66A81B00645EC8 /* QuizViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModelProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				D5411BD02B5728540009719B /* Extensions.swift */,
+				D5B1F18E2B66A81B00645EC8 /* QuizViewModelProtocol.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				D5411BEC2B5F02B80009719B /* AnswersView.swift */,
 				D5411BEE2B5F02D20009719B /* QuestionView.swift */,
 				D5411BF42B6185BC0009719B /* FlagsQuizAnswersView.swift */,
+				D5B1F1882B66912500645EC8 /* QuizControlView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -322,6 +328,8 @@
 				D5411BD12B5728540009719B /* Extensions.swift in Sources */,
 				D5411BAE2B56F9070009719B /* SceneDelegate.swift in Sources */,
 				D5411BC62B57158C0009719B /* CountryModel.swift in Sources */,
+				D5B1F1892B66912500645EC8 /* QuizControlView.swift in Sources */,
+				D5B1F18F2B66A81B00645EC8 /* QuizViewModelProtocol.swift in Sources */,
 				D5411BEF2B5F02D20009719B /* QuestionView.swift in Sources */,
 				D5411BE22B59BD720009719B /* CapitalsQuizView.swift in Sources */,
 			);

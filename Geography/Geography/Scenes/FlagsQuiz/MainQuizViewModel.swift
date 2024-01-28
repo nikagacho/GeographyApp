@@ -1,56 +1,29 @@
 //
-//  FlagsQuizViewModel.swift
+//  MainQuizViewModel.swift
 //  Geography
 //
-//  Created by Nikoloz Gachechiladze on 23.01.24.
+//  Created by Nikoloz Gachechiladze on 28.01.24.
 //
 
 import Foundation
 
-class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
-    
+class MainQuizViewModel: ObservableObject {
     var countries: [NewCountry] = []
-    var question = "Which one is the flag of "
     @Published var selectedCountry: NewCountry!
-    @Published var possibleAnswers: [String] = []
     @Published var score = 0
     @Published var increment = 1
     @Published var quizCompleted = false
     @Published var selectedAnswer: String? = nil
     var previousQuestions: [NewCountry] = []
     
-    func returnPossibleAnswers(country: NewCountry) -> [String] {
-        var flagAnswers: [String] = [country.href.flag]
-        print(country.name)
-        while flagAnswers.count < 4 {
-            let randomCountry = countries.randomElement()
-            let randomFlag = randomCountry?.href.flag ?? ""
-            
-            if randomCountry?.name != country.name && !flagAnswers.contains(randomFlag) {
-                flagAnswers.append(randomFlag)
-                
-            }
-        }
-        return flagAnswers.shuffled()
-    }
-    
-    func checkAnswer(answer: String) {
-        selectedAnswer = answer
-        guard let country = selectedCountry else { return }
-        if answer == country.href.flag {
-            score += 1
-        }
-    }
-    
     func loadNextQuestion() {
         var nextCountry: NewCountry?
         repeat {
             nextCountry = countries.randomElement()
         } while nextCountry != nil && previousQuestions.contains(where: { $0.name == nextCountry!.name })
-
+        
         if let nextCountry = nextCountry {
             selectedCountry = nextCountry
-            possibleAnswers = returnPossibleAnswers(country: selectedCountry)
             increment += 1
             selectedAnswer = nil
             previousQuestions.append(nextCountry)
@@ -61,10 +34,8 @@ class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
         previousQuestions = []
         guard let randomCountry = countries.randomElement() else { return }
         selectedCountry = randomCountry
-        possibleAnswers = returnPossibleAnswers(country: selectedCountry)
         previousQuestions.append(selectedCountry)
     }
-
     
     func restartQuiz() {
         increment = 1
@@ -73,4 +44,12 @@ class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
         quizCompleted = false
         loadFirstQuestion()
     }
+    
+    func returnPossibleAnswers(country: NewCountry) -> [String] {
+           fatalError("This method must be overridden")
+       }
+
+       func checkAnswer(answer: String) {
+           fatalError("This method must be overridden")
+       }
 }

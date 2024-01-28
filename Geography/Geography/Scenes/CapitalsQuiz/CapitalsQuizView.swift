@@ -25,14 +25,14 @@ struct CapitalsQuiz: View {
                 AnswersView(possibleAnswers: viewModel.possibleAnswers,
                             answerSelected: viewModel.checkAnswer,
                             selectedAnswer: $viewModel.selectedAnswer, correctAnswer: country.capital)
-                Button("ABORT QUIZ") {
-                    flowNavigator.goBack()
-                }
+                Spacer()
+                QuizControlView(viewModel: viewModel, goBackAction: flowNavigator.goBack)
             } else {
                 Text("Loading QUIZ")
-                    .onAppear { viewModel.loadNewQuestion() }
+                    .onAppear { viewModel.loadFirstQuestion() }
             }
         }
         .navigationBarBackButtonHidden()
     }
 }
+

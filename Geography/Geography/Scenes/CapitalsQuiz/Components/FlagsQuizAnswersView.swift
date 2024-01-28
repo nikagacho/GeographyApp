@@ -21,20 +21,24 @@ struct FlagsQuizAnswersView: View {
                 AsyncImage(url: URL(string: flag)) { image in
                     image.resizable()
                         .frame(height: 120)
-                        .border(.black)
+                        .border(borderColor(for: flag), width: 10)
                         .cornerRadius(8)
+                        .padding()
                 } placeholder: {
                     ProgressView()
-                        .frame(height: 100)
+                        .frame(height: 120)
+                        .padding()
                 }
                 .onTapGesture {
-                    answerSelected(flag)
+                    if selectedAnswer == nil {
+                        answerSelected(flag)
+                    }
                 }
             }
         }
     }
     
-    private func buttonColor(for flag: String) -> Color {
+    private func borderColor(for flag: String) -> Color {
         guard let selected = selectedAnswer else {
             return .blue
         }
