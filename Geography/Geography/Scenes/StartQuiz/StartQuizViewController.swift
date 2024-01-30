@@ -24,9 +24,19 @@ class StartQuizViewController: UIViewController {
     
     private let mainText: UILabel = {
         let label = UILabel()
-        label.text = "Start a quiz"
+        label.text = "Choose your Quiz!"
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 48)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let secondaryText: UILabel = {
+        let label = UILabel()
+        label.text = "Welcome to the Geography Quiz! Select 'Flags' or 'Capitals' and let's test your knowledge."
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 24)
         return label
     }()
     
@@ -61,8 +71,10 @@ class StartQuizViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(mainStackView)
         mainStackView.addArrangedSubview(mainText)
+        mainStackView.addArrangedSubview(secondaryText)
         mainStackView.addArrangedSubview(flagsButton)
         mainStackView.addArrangedSubview(capitalsButton)
+        mainStackView.setCustomSpacing(100, after: secondaryText)
         setupConstraints()
     }
     

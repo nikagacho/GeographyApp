@@ -14,7 +14,7 @@ class CustomCell: UICollectionViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.layer.cornerRadius = 8
-        stackView.layer.borderWidth = 1
+        stackView.layer.borderWidth = 2
         return stackView
     }()
     
@@ -28,6 +28,7 @@ class CustomCell: UICollectionViewCell {
     private let countryFlag: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 6
         return imageView
     }()
     
@@ -54,10 +55,10 @@ class CustomCell: UICollectionViewCell {
         self.countryFlag.image = nil
     }
     
-    public func configure(with country: NewCountry) {
+    public func configure(with country: NewCountry, image: UIImage?) {
         countryLabel.text = country.name
         capitalLabel.text = country.capital
-//        countryFlag.image = country.flag.flagURL
+        countryFlag.image = image
     }
     
     private func setupUI() {

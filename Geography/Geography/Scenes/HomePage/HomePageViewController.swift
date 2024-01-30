@@ -117,6 +117,7 @@ extension HomePageViewController: HomePageViewModelDelegate {
     func navigateToLearningPage(with countries: [NewCountry]) {
         let learningPage = LearningPageViewController()
         learningPage.viewModel.countries = viewModel.countries
+        learningPage.viewModel.filteredCountries = viewModel.countries
         navigationController?.pushViewController(learningPage, animated: true)
     }
 }

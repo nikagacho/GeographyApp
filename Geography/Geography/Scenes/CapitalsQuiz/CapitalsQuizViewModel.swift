@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
     
@@ -18,6 +19,8 @@ class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
     @Published var quizCompleted = false
     @Published var selectedAnswer: String? = nil
     var previousQuestions: [NewCountry] = []
+    private var audioPlayer: AVAudioPlayer?
+    
     
     func returnPossibleAnswers(country: NewCountry) -> [String] {
         var answers: [String] = [country.capital]
@@ -37,6 +40,9 @@ class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
         guard let country = selectedCountry else { return }
         if answer == country.capital {
             score += 1
+            playSound(soundFileName: "correct")
+        } else {
+            playSound(soundFileName: "wrong")
         }
     }
     
@@ -70,6 +76,18 @@ class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
         quizCompleted = false
         loadFirstQuestion()
     }
+    
+    private func playSound(soundFileName: String) {
+            guard let url = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else { return }
+            
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer?.play()
+                print("executed")
+            } catch {
+                print("Unable to locate audio file: \(soundFileName)")
+            }
+        }
     
     
 }

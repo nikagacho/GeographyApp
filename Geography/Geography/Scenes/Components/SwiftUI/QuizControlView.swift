@@ -10,6 +10,7 @@ import SwiftUI
 struct QuizControlView<ViewModel: QuizViewModelProtocol & ObservableObject>: View {
     @ObservedObject var viewModel: ViewModel
     var goBackAction: () -> Void
+    @Binding var selectedAnswer: String?
 
     var body: some View {
         HStack {
@@ -27,6 +28,7 @@ struct QuizControlView<ViewModel: QuizViewModelProtocol & ObservableObject>: Vie
                 Button("Next") {
                     viewModel.loadNextQuestion()
                 }
+                .disabled(selectedAnswer == nil)
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.orange)

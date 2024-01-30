@@ -26,7 +26,7 @@ struct CapitalsQuiz: View {
                             answerSelected: viewModel.checkAnswer,
                             selectedAnswer: $viewModel.selectedAnswer, correctAnswer: country.capital)
                 Spacer()
-                QuizControlView(viewModel: viewModel, goBackAction: flowNavigator.goBack)
+                QuizControlView(viewModel: viewModel, goBackAction: flowNavigator.goBack, selectedAnswer: $viewModel.selectedAnswer)
             } else {
                 Text("Loading QUIZ")
                     .onAppear { viewModel.loadFirstQuestion() }
