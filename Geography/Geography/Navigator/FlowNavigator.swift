@@ -16,7 +16,7 @@ final class FlowNavigator: ObservableObject {
     }
     
     func showRootView() {
-        let rootView = HomePageViewController()
+        let rootView = PlaceholderViewController()
         rootView.flowNavigator = self
         window.rootViewController = UINavigationController(rootViewController: rootView)
     }
@@ -42,10 +42,6 @@ final class FlowNavigator: ObservableObject {
             navigationController.pushViewController(hostingView, animated: true)
         }
     }
-    
-//    func closeDetailView() {
-//        window.rootViewController?.presentedViewController?.dismiss(animated: true, completion: nil)
-//    }
     
     func goBack() {
         if let navigationController = window.rootViewController as? UINavigationController {

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct QuizCompletionView: View {
     let score: Int
+    var time: Int
     var restartAction: () -> Void
     var goBack: () -> Void
 
@@ -18,6 +19,7 @@ struct QuizCompletionView: View {
                 .font(.largeTitle)
             Text("Your score: \(score) / 10")
                 .font(.title)
+            Text("Time Elapsed: \(time)")
             HStack {
                 Button("Restart Quiz", action: restartAction)
                     .padding()

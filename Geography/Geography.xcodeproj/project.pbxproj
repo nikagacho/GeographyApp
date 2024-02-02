@@ -34,6 +34,11 @@
 		D5411BF52B6185BC0009719B /* FlagsQuizAnswersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BF42B6185BC0009719B /* FlagsQuizAnswersView.swift */; };
 		D5B1F1892B66912500645EC8 /* QuizControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F1882B66912500645EC8 /* QuizControlView.swift */; };
 		D5B1F18F2B66A81B00645EC8 /* QuizViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F18E2B66A81B00645EC8 /* QuizViewModelProtocol.swift */; };
+		D5B1F1BE2B69984B00645EC8 /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D5B1F1BC2B69984B00645EC8 /* correct.mp3 */; };
+		D5B1F1BF2B69984B00645EC8 /* wrong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D5B1F1BD2B69984B00645EC8 /* wrong.mp3 */; };
+		D5B1F1C12B6C143A00645EC8 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F1C02B6C143A00645EC8 /* TimerView.swift */; };
+		D5B1F1C42B6C25D200645EC8 /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F1C32B6C25D200645EC8 /* PlaceholderViewController.swift */; };
+		D5B1F1C62B6C27D700645EC8 /* PlaceholderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F1C52B6C27D700645EC8 /* PlaceholderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +69,11 @@
 		D5411BF42B6185BC0009719B /* FlagsQuizAnswersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsQuizAnswersView.swift; sourceTree = "<group>"; };
 		D5B1F1882B66912500645EC8 /* QuizControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizControlView.swift; sourceTree = "<group>"; };
 		D5B1F18E2B66A81B00645EC8 /* QuizViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModelProtocol.swift; sourceTree = "<group>"; };
+		D5B1F1BC2B69984B00645EC8 /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
+		D5B1F1BD2B69984B00645EC8 /* wrong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrong.mp3; sourceTree = "<group>"; };
+		D5B1F1C02B6C143A00645EC8 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		D5B1F1C32B6C25D200645EC8 /* PlaceholderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
+		D5B1F1C52B6C27D700645EC8 /* PlaceholderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +108,7 @@
 		D5411BAA2B56F9070009719B /* Geography */ = {
 			isa = PBXGroup;
 			children = (
+				D5B1F1BB2B69983700645EC8 /* Audios */,
 				D5411BC02B56FD090009719B /* Application */,
 				D5411BDC2B587CCF0009719B /* Navigator */,
 				D5411BCF2B5728450009719B /* Support */,
@@ -113,6 +124,8 @@
 		D5411BBF2B56FC160009719B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D5B1F1C22B6C25A700645EC8 /* Placeholder */,
+				D5B1F1932B670A2400645EC8 /* Components */,
 				D5411BC12B56FD520009719B /* HomePage */,
 				D5411BD82B5873850009719B /* StartQuiz */,
 				D5411BCA2B571F9E0009719B /* LearningPage */,
@@ -198,7 +211,6 @@
 			children = (
 				D5411BE12B59BD720009719B /* CapitalsQuizView.swift */,
 				D5411BE32B59BDE20009719B /* CapitalsQuizViewModel.swift */,
-				D5411BE92B5F026B0009719B /* Components */,
 			);
 			path = CapitalsQuiz;
 			sourceTree = "<group>";
@@ -220,16 +232,43 @@
 			path = FlagsQuiz;
 			sourceTree = "<group>";
 		};
-		D5411BE92B5F026B0009719B /* Components */ = {
+		D5411BE92B5F026B0009719B /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				D5B1F1C02B6C143A00645EC8 /* TimerView.swift */,
 				D5411BEA2B5F02820009719B /* QuizCompletionView.swift */,
 				D5411BEC2B5F02B80009719B /* AnswersView.swift */,
 				D5411BEE2B5F02D20009719B /* QuestionView.swift */,
 				D5411BF42B6185BC0009719B /* FlagsQuizAnswersView.swift */,
 				D5B1F1882B66912500645EC8 /* QuizControlView.swift */,
 			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		D5B1F1932B670A2400645EC8 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D5411BE92B5F026B0009719B /* SwiftUI */,
+			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		D5B1F1BB2B69983700645EC8 /* Audios */ = {
+			isa = PBXGroup;
+			children = (
+				D5B1F1BC2B69984B00645EC8 /* correct.mp3 */,
+				D5B1F1BD2B69984B00645EC8 /* wrong.mp3 */,
+			);
+			path = Audios;
+			sourceTree = "<group>";
+		};
+		D5B1F1C22B6C25A700645EC8 /* Placeholder */ = {
+			isa = PBXGroup;
+			children = (
+				D5B1F1C32B6C25D200645EC8 /* PlaceholderViewController.swift */,
+				D5B1F1C52B6C27D700645EC8 /* PlaceholderViewModel.swift */,
+			);
+			path = Placeholder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,8 +336,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5B1F1BF2B69984B00645EC8 /* wrong.mp3 in Resources */,
 				D5411BB82B56F9080009719B /* LaunchScreen.storyboard in Resources */,
 				D5411BB52B56F9080009719B /* Assets.xcassets in Resources */,
+				D5B1F1BE2B69984B00645EC8 /* correct.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,13 +363,16 @@
 				D5411BED2B5F02B80009719B /* AnswersView.swift in Sources */,
 				D5411BF52B6185BC0009719B /* FlagsQuizAnswersView.swift in Sources */,
 				D5411BDE2B587D6B0009719B /* FlowNavigator.swift in Sources */,
+				D5B1F1C42B6C25D200645EC8 /* PlaceholderViewController.swift in Sources */,
 				D5411BD42B572B3A0009719B /* CustomCell.swift in Sources */,
 				D5411BDB2B5876790009719B /* StartQuizViewController.swift in Sources */,
+				D5B1F1C12B6C143A00645EC8 /* TimerView.swift in Sources */,
 				D5411BCE2B571FDD0009719B /* LearningPageViewModel.swift in Sources */,
 				D5411BD12B5728540009719B /* Extensions.swift in Sources */,
 				D5411BAE2B56F9070009719B /* SceneDelegate.swift in Sources */,
 				D5411BC62B57158C0009719B /* CountryModel.swift in Sources */,
 				D5B1F1892B66912500645EC8 /* QuizControlView.swift in Sources */,
+				D5B1F1C62B6C27D700645EC8 /* PlaceholderViewModel.swift in Sources */,
 				D5B1F18F2B66A81B00645EC8 /* QuizViewModelProtocol.swift in Sources */,
 				D5411BEF2B5F02D20009719B /* QuestionView.swift in Sources */,
 				D5411BE22B59BD720009719B /* CapitalsQuizView.swift in Sources */,

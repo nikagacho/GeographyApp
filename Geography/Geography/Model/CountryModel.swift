@@ -7,17 +7,6 @@
 
 import Foundation
 
-struct Country: Codable {
-    let name: Name
-    let capital: [String]
-    let flag: String
-}
-
-struct Name: Codable {
-    let common: String
-    let official: String
-}
-
 struct CountriesData: Codable {
     let data: [NewCountry]
 }
@@ -27,6 +16,10 @@ struct NewCountry: Codable {
     let capital: String
     let description: String?
     let href: CountryHref
+    let continent: String?
+    let population: String
+    let currency: String?
+    let size: String?
 
     struct CountryHref: Codable {
         let flag: String

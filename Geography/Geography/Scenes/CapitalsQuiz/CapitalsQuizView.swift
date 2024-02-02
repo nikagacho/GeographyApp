@@ -11,12 +11,14 @@ struct CapitalsQuiz: View {
     
     @StateObject var viewModel: CapitalsQuizViewModel
     @EnvironmentObject var flowNavigator: FlowNavigator
+    let timerView = TimerView()
     
     var body: some View {
         VStack {
             if viewModel.quizCompleted {
-                QuizCompletionView(score: viewModel.score, restartAction: viewModel.restartQuiz, goBack: flowNavigator.goBack)
+                QuizCompletionView(score: viewModel.score, time: timerView.stopTimerAndRetrieveTime(), restartAction: viewModel.restartQuiz, goBack: flowNavigator.goBack)
             } else if let country = viewModel.selectedCountry {
+                timerView
                 QuestionView(question: viewModel.question,
                              countryName: country.name,
                              score: viewModel.score,
@@ -26,7 +28,7 @@ struct CapitalsQuiz: View {
                             answerSelected: viewModel.checkAnswer,
                             selectedAnswer: $viewModel.selectedAnswer, correctAnswer: country.capital)
                 Spacer()
-                QuizControlView(viewModel: viewModel, goBackAction: flowNavigator.goBack)
+                QuizControlView(viewModel: viewModel, goBackAction: flowNavigator.goBack, selectedAnswer: $viewModel.selectedAnswer)
             } else {
                 Text("Loading QUIZ")
                     .onAppear { viewModel.loadFirstQuestion() }
