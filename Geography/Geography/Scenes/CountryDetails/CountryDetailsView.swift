@@ -32,7 +32,10 @@ class CountryDetailsView: UIViewController {
         imageView.layer.cornerRadius = 8
         imageView.layer.borderWidth = 1
         imageView.layer.borderColor = UIColor.lightGray.cgColor
-        imageView.clipsToBounds = true
+        imageView.layer.shadowOpacity = 0.3
+        imageView.layer.shadowRadius = 4
+        imageView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        imageView.clipsToBounds = false
         return imageView
     }()
     
@@ -51,6 +54,15 @@ class CountryDetailsView: UIViewController {
         super.viewDidLoad()
         setupUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mainStackView.alpha = 0
+        UIView.animate(withDuration: 1) {
+            self.mainStackView.alpha = 1
+        }
+    }
+
     
     private func setupUI() {
         view.addSubview(mainStackView)

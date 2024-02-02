@@ -31,13 +31,11 @@ class StartQuizViewController: UIViewController {
         return label
     }()
     
-    private let secondaryText: UILabel = {
-        let label = UILabel()
-        label.text = "Welcome to the Geography Quiz! Select 'Flags' or 'Capitals' and let's test your knowledge."
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 24)
-        return label
+    private let globeImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = .planet
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
     
     private let flagsButton: UIButton = {
@@ -64,17 +62,19 @@ class StartQuizViewController: UIViewController {
         setupUI()
         setupCapitalsButton()
         setupFlagsButton()
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        rotateGlobe()
     }
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
         view.addSubview(mainStackView)
         mainStackView.addArrangedSubview(mainText)
-        mainStackView.addArrangedSubview(secondaryText)
         mainStackView.addArrangedSubview(flagsButton)
         mainStackView.addArrangedSubview(capitalsButton)
-        mainStackView.setCustomSpacing(100, after: secondaryText)
+        mainStackView.addArrangedSubview(globeImage)
         setupConstraints()
     }
     
@@ -103,6 +103,15 @@ class StartQuizViewController: UIViewController {
         flagsButton.addAction(UIAction(handler: { [weak self] _ in
             self!.flowNavigator?.showFlagsQuiz(countries: self!.viewModel.countries)
         }), for: .touchUpInside)
+    }
+    
+    func rotateGlobe() {
+        let rotation = CABasicAnimation(keyPath: "transform.rotation")
+        rotation.fromValue = 0
+        rotation.toValue = 2 * Double.pi
+        rotation.duration = 20
+        rotation.repeatCount = Float.infinity
+        globeImage.layer.add(rotation, forKey: "rotationAnimation")
     }
 
 

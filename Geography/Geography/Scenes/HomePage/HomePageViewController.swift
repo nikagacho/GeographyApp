@@ -9,15 +9,16 @@ import UIKit
 
 class HomePageViewController: UIViewController {
     
-    private let viewModel = HomePageViewModel(countries: [])
+    let viewModel = HomePageViewModel(countries: [])
     var flowNavigator: FlowNavigator?
     
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-        stackView.spacing = 20
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.spacing = 16
         return stackView
     }()
     
@@ -47,13 +48,22 @@ class HomePageViewController: UIViewController {
         return button
     }()
     
+    private let statsButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Statistics", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 20
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = .earth
+        imageView.image = .earth2
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -66,13 +76,16 @@ class HomePageViewController: UIViewController {
         setupConstraints()
         setupLearnButton()
         setupQuizButton()
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
     private func setupStack() {
         mainStackView.addArrangedSubview(mainText)
         mainStackView.addArrangedSubview(quizButton)
         mainStackView.addArrangedSubview(learnButton)
+        mainStackView.addArrangedSubview(statsButton)
         mainStackView.addArrangedSubview(imageView)
+        mainStackView.setCustomSpacing(100, after: statsButton)
     }
     
     private func setupConstraints() {
@@ -81,10 +94,15 @@ class HomePageViewController: UIViewController {
             mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             quizButton.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 89),
             quizButton.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: -89),
             learnButton.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 89),
             learnButton.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: -89),
+            statsButton.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: -89),
+            statsButton.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 89),
+            statsButton.heightAnchor.constraint(equalToConstant: 58),
             quizButton.heightAnchor.constraint(equalToConstant: 58),
             learnButton.heightAnchor.constraint(equalToConstant: 58)
         ])
@@ -103,7 +121,7 @@ class HomePageViewController: UIViewController {
             self!.viewModel.didTapQuizButton()
         }), for: .touchUpInside)
     }
-
+    
 }
 
 extension HomePageViewController: HomePageViewModelDelegate {

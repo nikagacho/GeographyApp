@@ -12,8 +12,8 @@ class LearningPageViewModel {
     var countries: [NewCountry] = []
     var filteredCountries: [NewCountry] = []
     var networkManager = NetworkManager<Data>()
-    var buttonText = "Sort By Continent"
-    private var isSortedByContinent: Bool = false
+    var buttonText = "Sort"
+    private var isSorted: Bool = false
     
     func fetchImage(with urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
         Task {
@@ -25,23 +25,19 @@ class LearningPageViewModel {
             }
         }
     }
-    
-    func sortByContinent() {
-        if isSortedByContinent == false {
-            filteredCountries.sort { countryOne, countryTwo in
-                countryOne.continent ?? "A" < countryTwo.continent ?? "A"
-            }
-            buttonText = "Sort By Continent"
-        } else if isSortedByContinent == true {
-            sortByAlphabet()
-            buttonText = "Sort A-Z"
-        }
-        isSortedByContinent.toggle()
-    }
+
     
     func sortByAlphabet() {
-        filteredCountries.sort { countryOne, countryTwo in
-            countryOne.name < countryTwo.name
+        if isSorted == false {
+            isSorted.toggle()
+            filteredCountries.sort { countryOne, countryTwo in
+                countryOne.name > countryTwo.name
+            }
+        } else {
+            isSorted.toggle()
+            filteredCountries.sort { countryOne, countryTwo in
+                countryOne.name < countryTwo.name
+            }
         }
     }
 }

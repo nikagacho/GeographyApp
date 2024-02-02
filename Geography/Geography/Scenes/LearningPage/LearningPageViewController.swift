@@ -56,7 +56,7 @@ class LearningPageViewController: UIViewController {
     }
     
     @objc private func sortAction() {
-        viewModel.sortByContinent()
+        viewModel.sortByAlphabet()
         collectionView.reloadData()
     }
 
