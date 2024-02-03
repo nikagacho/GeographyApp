@@ -21,7 +21,7 @@ class CountryDetailsView: UIViewController {
     private let countryHeaderLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.font = .systemFont(ofSize: 32, weight: .bold)
         label.numberOfLines = 0
         return label
     }()

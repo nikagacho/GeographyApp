@@ -26,6 +26,12 @@ struct NewCountry: Codable {
     }
 }
 
+struct QuizResult: Codable {
+    let score: Int
+    let time: Int
+    let date: Date
+}
+
 
 
 

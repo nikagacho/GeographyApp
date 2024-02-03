@@ -11,14 +11,16 @@ struct CapitalsQuiz: View {
     
     @StateObject var viewModel: CapitalsQuizViewModel
     @EnvironmentObject var flowNavigator: FlowNavigator
-    let timerView = TimerView()
     
     var body: some View {
         VStack {
             if viewModel.quizCompleted {
-                QuizCompletionView(score: viewModel.score, time: timerView.stopTimerAndRetrieveTime(), restartAction: viewModel.restartQuiz, goBack: flowNavigator.goBack)
+                QuizCompletionView(score: viewModel.score, time: viewModel.secondsElapsed, restartAction: viewModel.restartQuiz, goBack: flowNavigator.goBack)
+                    .onAppear {
+                        viewModel.stopTimer()
+                    }
             } else if let country = viewModel.selectedCountry {
-                timerView
+                TimerView(viewModel: viewModel)
                 QuestionView(question: viewModel.question,
                              countryName: country.name,
                              score: viewModel.score,
@@ -31,7 +33,10 @@ struct CapitalsQuiz: View {
                 QuizControlView(viewModel: viewModel, goBackAction: flowNavigator.goBack, selectedAnswer: $viewModel.selectedAnswer)
             } else {
                 Text("Loading QUIZ")
-                    .onAppear { viewModel.loadFirstQuestion() }
+                    .onAppear { 
+                        viewModel.loadFirstQuestion()
+                        viewModel.startTimer()
+                    }
             }
         }
         .navigationBarBackButtonHidden()

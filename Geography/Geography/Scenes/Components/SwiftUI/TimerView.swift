@@ -7,32 +7,12 @@
 
 import SwiftUI
 
-struct TimerView: View {
-    @State private var secondsElapsed = 0
+struct TimerView<ViewModel: QuizViewModelProtocol & ObservableObject>: View {
+    @ObservedObject var viewModel: ViewModel
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
-        Text("Time: \(formattedTime(seconds: secondsElapsed))")
-            .onReceive(timer) { _ in
-                self.secondsElapsed += 1
-            }
+        Text("Time: \(formattedTime(seconds: viewModel.secondsElapsed))")
     }
     
-    private func formattedTime(seconds: Int) -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.minute, .second]
-        formatter.unitsStyle = .positional
-        formatter.zeroFormattingBehavior = .pad
-        
-        return formatter.string(from: TimeInterval(seconds)) ?? "0:00"
-    }
-    
-    func resetTimer() {
-        secondsElapsed = 0
-    }
-    
-    func stopTimerAndRetrieveTime() -> Int {
-        timer.upstream.connect().cancel()
-        return secondsElapsed
-    }
 }

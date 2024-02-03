@@ -39,6 +39,8 @@
 		D5B1F1C12B6C143A00645EC8 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F1C02B6C143A00645EC8 /* TimerView.swift */; };
 		D5B1F1C42B6C25D200645EC8 /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F1C32B6C25D200645EC8 /* PlaceholderViewController.swift */; };
 		D5B1F1C62B6C27D700645EC8 /* PlaceholderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F1C52B6C27D700645EC8 /* PlaceholderViewModel.swift */; };
+		D5B1F1C92B6DB78C00645EC8 /* StatsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F1C82B6DB78C00645EC8 /* StatsPageViewController.swift */; };
+		D5B1F1CB2B6DB90E00645EC8 /* StatsPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F1CA2B6DB90E00645EC8 /* StatsPageViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		D5B1F1C02B6C143A00645EC8 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		D5B1F1C32B6C25D200645EC8 /* PlaceholderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
 		D5B1F1C52B6C27D700645EC8 /* PlaceholderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewModel.swift; sourceTree = "<group>"; };
+		D5B1F1C82B6DB78C00645EC8 /* StatsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsPageViewController.swift; sourceTree = "<group>"; };
+		D5B1F1CA2B6DB90E00645EC8 /* StatsPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsPageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,8 +128,9 @@
 		D5411BBF2B56FC160009719B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D5B1F1C22B6C25A700645EC8 /* Placeholder */,
 				D5B1F1932B670A2400645EC8 /* Components */,
+				D5B1F1C72B6DB75600645EC8 /* StatsPage */,
+				D5B1F1C22B6C25A700645EC8 /* Placeholder */,
 				D5411BC12B56FD520009719B /* HomePage */,
 				D5411BD82B5873850009719B /* StartQuiz */,
 				D5411BCA2B571F9E0009719B /* LearningPage */,
@@ -271,6 +276,15 @@
 			path = Placeholder;
 			sourceTree = "<group>";
 		};
+		D5B1F1C72B6DB75600645EC8 /* StatsPage */ = {
+			isa = PBXGroup;
+			children = (
+				D5B1F1C82B6DB78C00645EC8 /* StatsPageViewController.swift */,
+				D5B1F1CA2B6DB90E00645EC8 /* StatsPageViewModel.swift */,
+			);
+			path = StatsPage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -350,6 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5B1F1C92B6DB78C00645EC8 /* StatsPageViewController.swift in Sources */,
 				D5411BD72B586DE90009719B /* CountryDetailsView.swift in Sources */,
 				D5411BEB2B5F02820009719B /* QuizCompletionView.swift in Sources */,
 				D5411BC32B56FD620009719B /* HomePageViewModel.swift in Sources */,
@@ -364,6 +379,7 @@
 				D5411BF52B6185BC0009719B /* FlagsQuizAnswersView.swift in Sources */,
 				D5411BDE2B587D6B0009719B /* FlowNavigator.swift in Sources */,
 				D5B1F1C42B6C25D200645EC8 /* PlaceholderViewController.swift in Sources */,
+				D5B1F1CB2B6DB90E00645EC8 /* StatsPageViewModel.swift in Sources */,
 				D5411BD42B572B3A0009719B /* CustomCell.swift in Sources */,
 				D5411BDB2B5876790009719B /* StartQuizViewController.swift in Sources */,
 				D5B1F1C12B6C143A00645EC8 /* TimerView.swift in Sources */,

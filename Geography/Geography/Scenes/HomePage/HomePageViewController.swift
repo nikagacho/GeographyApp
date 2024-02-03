@@ -76,6 +76,7 @@ class HomePageViewController: UIViewController {
         setupConstraints()
         setupLearnButton()
         setupQuizButton()
+        setupStatsButton()
         self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
@@ -119,6 +120,13 @@ class HomePageViewController: UIViewController {
         viewModel.delegate = self
         quizButton.addAction(UIAction(handler: { [weak self] _ in
             self!.viewModel.didTapQuizButton()
+        }), for: .touchUpInside)
+    }
+    
+    private func setupStatsButton() {
+        statsButton.addAction(UIAction(handler: { [weak self] _ in
+            let statsVC = StatsPageViewController()
+            self?.navigationController?.pushViewController(statsVC, animated: true)
         }), for: .touchUpInside)
     }
     

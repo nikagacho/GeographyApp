@@ -19,7 +19,7 @@ struct QuizCompletionView: View {
                 .font(.largeTitle)
             Text("Your score: \(score) / 10")
                 .font(.title)
-            Text("Time Elapsed: \(time)")
+            Text("Time Elapsed: \(formattedTime(seconds: time))")
             HStack {
                 Button("Restart Quiz", action: restartAction)
                     .padding()
@@ -33,6 +33,10 @@ struct QuizCompletionView: View {
                     .cornerRadius(8)
             }
         
+        }
+        .onAppear {
+            let result = QuizResult(score: score, time: time, date: Date())
+            UserDefaults.standard.saveQuizResult(result)
         }
     }
 }

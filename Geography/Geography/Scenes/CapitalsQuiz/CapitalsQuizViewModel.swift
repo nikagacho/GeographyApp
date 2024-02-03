@@ -18,8 +18,11 @@ class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
     @Published var increment = 1
     @Published var quizCompleted = false
     @Published var selectedAnswer: String? = nil
+    @Published var secondsElapsed = 0
     var previousQuestions: [NewCountry] = []
     private var audioPlayer: AVAudioPlayer?
+    var timer: Timer?
+    
     
     
     func returnPossibleAnswers(country: NewCountry) -> [String] {
@@ -51,7 +54,7 @@ class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
         repeat {
             nextCountry = countries.randomElement()
         } while nextCountry != nil && previousQuestions.contains(where: { $0.name == nextCountry!.name })
-
+        
         if let nextCountry = nextCountry {
             selectedCountry = nextCountry
             possibleAnswers = returnPossibleAnswers(country: selectedCountry)
@@ -77,17 +80,29 @@ class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
         loadFirstQuestion()
     }
     
-    private func playSound(soundFileName: String) {
-            guard let url = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else { return }
-            
-            do {
-                audioPlayer = try AVAudioPlayer(contentsOf: url)
-                audioPlayer?.play()
-                print("executed")
-            } catch {
-                print("Unable to locate audio file: \(soundFileName)")
-            }
+    func startTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            self?.secondsElapsed += 1
         }
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    private func playSound(soundFileName: String) {
+        guard let url = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else { return }
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+            print("executed")
+        } catch {
+            print("Unable to locate audio file: \(soundFileName)")
+        }
+    }
     
     
 }

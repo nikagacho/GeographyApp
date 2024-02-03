@@ -15,6 +15,7 @@ protocol QuizViewModelProtocol: ObservableObject {
     var increment: Int { get set }
     var quizCompleted: Bool { get set }
     var selectedAnswer: String? { get set }
+    var secondsElapsed: Int { get set }
     
     func returnPossibleAnswers(country: NewCountry) -> [String]
     func checkAnswer(answer: String)

@@ -18,6 +18,7 @@ class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
     @Published var increment = 1
     @Published var quizCompleted = false
     @Published var selectedAnswer: String? = nil
+    @Published var secondsElapsed: Int = 0
     var previousQuestions: [NewCountry] = []
     private var audioPlayer: AVAudioPlayer?
     
@@ -77,6 +78,12 @@ class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
         quizCompleted = false
         loadFirstQuestion()
     }
+    
+    func startTimer() {
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+                self.secondsElapsed += 1
+            }
+        }
     
     private func playSound(soundFileName: String) {
             guard let url = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else { return }
