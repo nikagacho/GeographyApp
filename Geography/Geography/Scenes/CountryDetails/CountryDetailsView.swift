@@ -21,8 +21,13 @@ class CountryDetailsView: UIViewController {
     private let countryHeaderLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 32, weight: .bold)
+        label.backgroundColor = .systemBlue
+        label.font = UIFont(name: "LondrinaSolid-Regular", size: 30)
         label.numberOfLines = 0
+        label.textColor = .white
+        label.layer.cornerRadius = 8
+        label.layer.masksToBounds = true
+        label.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         return label
     }()
     
@@ -38,6 +43,14 @@ class CountryDetailsView: UIViewController {
         imageView.clipsToBounds = false
         return imageView
     }()
+    
+    private let separator: UIView = {
+        let separator = UIView()
+        separator.backgroundColor = .systemGray5
+        separator.translatesAutoresizingMaskIntoConstraints = false
+        return separator
+    }()
+    
     
     private let capitalHeaderLabel = makeHeaderLabel(text: "Capital")
     private let capitalLabel = makeDetailLabel()
@@ -62,7 +75,7 @@ class CountryDetailsView: UIViewController {
             self.mainStackView.alpha = 1
         }
     }
-
+    
     
     private func setupUI() {
         view.addSubview(mainStackView)
@@ -75,8 +88,8 @@ class CountryDetailsView: UIViewController {
         let countryStackView = UIStackView(arrangedSubviews: [countryHeaderLabel, countryFlag])
         countryStackView.axis = .vertical
         countryStackView.spacing = 8
-        
         mainStackView.addArrangedSubview(countryStackView)
+        addSeparatorView()
         mainStackView.addArrangedSubview(makeDetailStack(headerLabel: capitalHeaderLabel, detailLabel: capitalLabel))
         mainStackView.addArrangedSubview(makeDetailStack(headerLabel: continentHeaderLabel, detailLabel: continentLabel))
         mainStackView.addArrangedSubview(makeDetailStack(headerLabel: populationHeaderLabel, detailLabel: populationLabel))
@@ -96,7 +109,7 @@ class CountryDetailsView: UIViewController {
     
     private static func makeHeaderLabel(text: String) -> UILabel {
         let label = UILabel()
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.text = text
         return label
@@ -104,7 +117,7 @@ class CountryDetailsView: UIViewController {
     
     private static func makeDetailLabel() -> UILabel {
         let label = UILabel()
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.font = .systemFont(ofSize: 20)
         return label
     }
@@ -114,6 +127,16 @@ class CountryDetailsView: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 4
         return stackView
+    }
+    
+    private func addSeparatorView() {
+        let separator = UIView()
+        separator.backgroundColor = .systemGray5
+        separator.translatesAutoresizingMaskIntoConstraints = false
+        mainStackView.addArrangedSubview(separator)
+        NSLayoutConstraint.activate([
+            separator.heightAnchor.constraint(equalToConstant: 2)
+        ])
     }
     
     public func configure(with country: NewCountry, image: UIImage?) {

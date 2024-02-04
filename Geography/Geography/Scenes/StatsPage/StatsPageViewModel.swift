@@ -10,6 +10,7 @@ import Foundation
 class StatsPageViewModel {
     var quizResults: [QuizResult] = []
     var topThreeResults: [QuizResult] = []
+    var alertMessage = "You're about to reset your statistics, are you sure? This can't be changed back"
 
     init() {
         loadQuizResults()
@@ -50,8 +51,15 @@ class StatsPageViewModel {
                 return quizResultOne.time < quizResultTwo.time
             }
         }
-        
         topThreeResults = Array(sortedResults.prefix(3))
+    }
+    
+    func returnTotalScore() -> Int {
+        quizResults.reduce(0) { $0 + $1.score }
+    }
+    
+    func returnTotalQuestions() -> Int {
+        quizResults.count * 10
     }
     
     func resetAction() {

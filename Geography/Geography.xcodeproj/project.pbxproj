@@ -10,7 +10,6 @@
 		D5411BAC2B56F9070009719B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BAB2B56F9070009719B /* AppDelegate.swift */; };
 		D5411BAE2B56F9070009719B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BAD2B56F9070009719B /* SceneDelegate.swift */; };
 		D5411BB02B56F9070009719B /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BAF2B56F9070009719B /* HomePageViewController.swift */; };
-		D5411BB52B56F9080009719B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5411BB42B56F9080009719B /* Assets.xcassets */; };
 		D5411BB82B56F9080009719B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5411BB62B56F9080009719B /* LaunchScreen.storyboard */; };
 		D5411BC32B56FD620009719B /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BC22B56FD620009719B /* HomePageViewModel.swift */; };
 		D5411BC62B57158C0009719B /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BC52B57158C0009719B /* CountryModel.swift */; };
@@ -33,6 +32,8 @@
 		D5411BF32B602AD90009719B /* FlagsQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BF22B602AD90009719B /* FlagsQuizViewModel.swift */; };
 		D5411BF52B6185BC0009719B /* FlagsQuizAnswersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5411BF42B6185BC0009719B /* FlagsQuizAnswersView.swift */; };
 		D56F590C2B6EEAD2001D43D1 /* SoundButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56F590B2B6EEAD2001D43D1 /* SoundButtonView.swift */; };
+		D56F590F2B6FC5A1001D43D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D56F590E2B6FC5A1001D43D1 /* Images.xcassets */; };
+		D56F59132B6FD8E5001D43D1 /* LondrinaSolid-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D56F59112B6FD84C001D43D1 /* LondrinaSolid-Regular.ttf */; };
 		D5B1F1892B66912500645EC8 /* QuizControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F1882B66912500645EC8 /* QuizControlView.swift */; };
 		D5B1F18F2B66A81B00645EC8 /* QuizViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F18E2B66A81B00645EC8 /* QuizViewModelProtocol.swift */; };
 		D5B1F1BE2B69984B00645EC8 /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D5B1F1BC2B69984B00645EC8 /* correct.mp3 */; };
@@ -49,7 +50,6 @@
 		D5411BAB2B56F9070009719B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5411BAD2B56F9070009719B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D5411BAF2B56F9070009719B /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
-		D5411BB42B56F9080009719B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5411BB72B56F9080009719B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5411BB92B56F9080009719B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5411BC22B56FD620009719B /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
@@ -71,6 +71,8 @@
 		D5411BF22B602AD90009719B /* FlagsQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsQuizViewModel.swift; sourceTree = "<group>"; };
 		D5411BF42B6185BC0009719B /* FlagsQuizAnswersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsQuizAnswersView.swift; sourceTree = "<group>"; };
 		D56F590B2B6EEAD2001D43D1 /* SoundButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundButtonView.swift; sourceTree = "<group>"; };
+		D56F590E2B6FC5A1001D43D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D56F59112B6FD84C001D43D1 /* LondrinaSolid-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LondrinaSolid-Regular.ttf"; sourceTree = "<group>"; };
 		D5B1F1882B66912500645EC8 /* QuizControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizControlView.swift; sourceTree = "<group>"; };
 		D5B1F18E2B66A81B00645EC8 /* QuizViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModelProtocol.swift; sourceTree = "<group>"; };
 		D5B1F1BC2B69984B00645EC8 /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
@@ -114,13 +116,15 @@
 		D5411BAA2B56F9070009719B /* Geography */ = {
 			isa = PBXGroup;
 			children = (
+				D5B1F1932B670A2400645EC8 /* Components */,
+				D56F59102B6FD833001D43D1 /* Fonts */,
 				D5B1F1BB2B69983700645EC8 /* Audios */,
 				D5411BC02B56FD090009719B /* Application */,
 				D5411BDC2B587CCF0009719B /* Navigator */,
 				D5411BCF2B5728450009719B /* Support */,
 				D5411BC42B5715780009719B /* Model */,
 				D5411BBF2B56FC160009719B /* Scenes */,
-				D5411BB42B56F9080009719B /* Assets.xcassets */,
+				D56F590E2B6FC5A1001D43D1 /* Images.xcassets */,
 				D5411BB62B56F9080009719B /* LaunchScreen.storyboard */,
 				D5411BB92B56F9080009719B /* Info.plist */,
 			);
@@ -130,7 +134,6 @@
 		D5411BBF2B56FC160009719B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D5B1F1932B670A2400645EC8 /* Components */,
 				D5B1F1C72B6DB75600645EC8 /* StatsPage */,
 				D5B1F1C22B6C25A700645EC8 /* Placeholder */,
 				D5411BC12B56FD520009719B /* HomePage */,
@@ -174,7 +177,7 @@
 			children = (
 				D5411BCB2B571FBB0009719B /* LearningPageViewController.swift */,
 				D5411BCD2B571FDD0009719B /* LearningPageViewModel.swift */,
-				D5411BD22B572B120009719B /* CustomCell */,
+				D5411BD22B572B120009719B /* CustomCollectionViewCell */,
 			);
 			path = LearningPage;
 			sourceTree = "<group>";
@@ -188,12 +191,12 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		D5411BD22B572B120009719B /* CustomCell */ = {
+		D5411BD22B572B120009719B /* CustomCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				D5411BD32B572B3A0009719B /* CustomCell.swift */,
 			);
-			path = CustomCell;
+			path = CustomCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		D5411BD52B586DAE0009719B /* CountryDetails */ = {
@@ -253,6 +256,21 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
+		D56F590D2B6FB16A001D43D1 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomTableViewCell;
+			sourceTree = "<group>";
+		};
+		D56F59102B6FD833001D43D1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D56F59112B6FD84C001D43D1 /* LondrinaSolid-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		D5B1F1932B670A2400645EC8 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +302,7 @@
 			children = (
 				D5B1F1C82B6DB78C00645EC8 /* StatsPageViewController.swift */,
 				D5B1F1CA2B6DB90E00645EC8 /* StatsPageViewModel.swift */,
+				D56F590D2B6FB16A001D43D1 /* CustomTableViewCell */,
 			);
 			path = StatsPage;
 			sourceTree = "<group>";
@@ -353,9 +372,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D56F59132B6FD8E5001D43D1 /* LondrinaSolid-Regular.ttf in Resources */,
+				D56F590F2B6FC5A1001D43D1 /* Images.xcassets in Resources */,
 				D5B1F1BF2B69984B00645EC8 /* wrong.mp3 in Resources */,
 				D5411BB82B56F9080009719B /* LaunchScreen.storyboard in Resources */,
-				D5411BB52B56F9080009719B /* Assets.xcassets in Resources */,
 				D5B1F1BE2B69984B00645EC8 /* correct.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,6 +557,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -564,6 +585,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

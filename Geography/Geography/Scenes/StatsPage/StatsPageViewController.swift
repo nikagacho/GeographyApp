@@ -90,6 +90,7 @@ class StatsPageViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
+    
     private func setupTopThree() {
         let topResults = viewModel.topThreeResults
         if topResults.count > 0 {
@@ -113,8 +114,8 @@ class StatsPageViewController: UIViewController {
     }
     
     private func setupTotals() {
-        let totalScore = viewModel.quizResults.reduce(0) { $0 + $1.score }
-        let totalQuestions = viewModel.quizResults.count * 10
+        let totalScore = viewModel.returnTotalScore()
+        let totalQuestions = viewModel.returnTotalQuestions()
         totalCorrectAnswersText.text = "\(totalScore) - Total Correct"
         totalQuestionsText.text = "\(totalQuestions) - Total Questions"
     }
@@ -123,7 +124,7 @@ class StatsPageViewController: UIViewController {
         let label = UILabel()
         label.text = text
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: fontSize, weight: .regular)
+        label.font = UIFont(name: "LondrinaSolid-Regular", size: fontSize)
         label.backgroundColor = backgroundColor
         label.textColor = textColor
         label.layer.cornerRadius = 8
@@ -143,7 +144,7 @@ class StatsPageViewController: UIViewController {
     }
     
     private func showAlert() {
-        let alert = UIAlertController(title: "Resetting the data", message: "You're about to reset your statistics, are you sure? This can't be changed back", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Resetting the data", message: viewModel.alertMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { _ in
             self.viewModel.resetAction()

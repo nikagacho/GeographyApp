@@ -26,21 +26,16 @@ class StartQuizViewController: UIViewController {
         let label = UILabel()
         label.text = "Choose your Quiz!"
         label.textAlignment = .center
-        label.font = .boldSystemFont(ofSize: 48)
+        label.font = UIFont(name: "LondrinaSolid-Regular", size: 48)
+        label.textColor = .darkGray
         label.numberOfLines = 0
         return label
-    }()
-    
-    private let globeImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = .planet
-        imageView.contentMode = .scaleAspectFit
-        return imageView
     }()
     
     private let flagsButton: UIButton = {
         let button = UIButton()
         button.setTitle("Flags", for: .normal)
+        button.titleLabel?.font = UIFont(name: "LondrinaSolid-Regular", size: 24)
         button.backgroundColor = .systemBlue
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 20
@@ -50,31 +45,28 @@ class StartQuizViewController: UIViewController {
     private let capitalsButton: UIButton = {
         let button = UIButton()
         button.setTitle("Capitals", for: .normal)
+        button.titleLabel?.font = UIFont(name: "LondrinaSolid-Regular", size: 24)
         button.backgroundColor = .systemBlue
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 20
         return button
     }()
 
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupCapitalsButton()
         setupFlagsButton()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        rotateGlobe()
-    }
-    
+  
     private func setupUI() {
         view.backgroundColor = .systemBackground
         view.addSubview(mainStackView)
         mainStackView.addArrangedSubview(mainText)
         mainStackView.addArrangedSubview(flagsButton)
         mainStackView.addArrangedSubview(capitalsButton)
-        mainStackView.addArrangedSubview(globeImage)
+        mainStackView.setCustomSpacing(150, after: capitalsButton)
         setupConstraints()
     }
     
@@ -92,7 +84,7 @@ class StartQuizViewController: UIViewController {
             capitalsButton.heightAnchor.constraint(equalToConstant: 58)
         ])
     }
-    
+
     private func setupCapitalsButton() {
         capitalsButton.addAction(UIAction(handler: { [weak self] _ in
             self!.flowNavigator?.showCapitalsQuiz(countries: self!.viewModel.countries)
@@ -105,14 +97,4 @@ class StartQuizViewController: UIViewController {
         }), for: .touchUpInside)
     }
     
-    func rotateGlobe() {
-        let rotation = CABasicAnimation(keyPath: "transform.rotation")
-        rotation.fromValue = 0
-        rotation.toValue = 2 * Double.pi
-        rotation.duration = 20
-        rotation.repeatCount = Float.infinity
-        globeImage.layer.add(rotation, forKey: "rotationAnimation")
-    }
-
-
 }

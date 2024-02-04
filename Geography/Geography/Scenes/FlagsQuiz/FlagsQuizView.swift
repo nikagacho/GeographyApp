@@ -21,11 +21,10 @@ struct FlagsQuizView: View {
                     }
             } else if let country = viewModel.selectedCountry {
                 HStack {
-                    TimerView(viewModel: viewModel)
-                    Spacer()
+                    TimerView(viewModel: viewModel, increment: viewModel.increment)
                     SoundButtonView(isSoundOn: $viewModel.isSoundOn)
                 }
-                QuestionView(question: viewModel.question, countryName: country.name, score: viewModel.score, increment: viewModel.increment)
+                QuestionView(question: viewModel.question, countryName: country.name, score: viewModel.score)
                 FlagsQuizAnswersView(possibleAnswers: viewModel.possibleAnswers, answerSelected: viewModel.checkAnswer, selectedAnswer: $viewModel.selectedAnswer, correctAnswer: country.href.flag)
                 QuizControlView(viewModel: viewModel, goBackAction: flowNavigator.goBack, selectedAnswer: $viewModel.selectedAnswer)
             }  else {

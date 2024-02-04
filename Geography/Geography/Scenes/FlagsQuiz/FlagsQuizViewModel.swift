@@ -79,6 +79,8 @@ class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
         selectedAnswer = nil
         quizCompleted = false
         loadFirstQuestion()
+        secondsElapsed = 0
+        startTimer()
     }
     
     func startTimer() {

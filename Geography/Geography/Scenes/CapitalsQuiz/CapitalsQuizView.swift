@@ -21,13 +21,12 @@ struct CapitalsQuiz: View {
                     }
             } else if let country = viewModel.selectedCountry {
                 HStack {
-                    TimerView(viewModel: viewModel)
+                    TimerView(viewModel: viewModel, increment: viewModel.increment)
                     SoundButtonView(isSoundOn: $viewModel.isSoundOn)
                 }
                 QuestionView(question: viewModel.question,
                              countryName: country.name,
-                             score: viewModel.score,
-                             increment: viewModel.increment)
+                             score: viewModel.score)
                 
                 AnswersView(possibleAnswers: viewModel.possibleAnswers,
                             answerSelected: viewModel.checkAnswer,

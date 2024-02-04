@@ -26,13 +26,16 @@ class HomePageViewController: UIViewController {
         let label = UILabel()
         label.text = "Welcome to Geography"
         label.textAlignment = .center
-        label.font = .boldSystemFont(ofSize: 28)
+        label.font = UIFont(name: "LondrinaSolid-Regular", size: 44)
+        label.textColor = .darkGray
+        label.numberOfLines = 2
         return label
     }()
     
     private let quizButton: UIButton = {
         let button = UIButton()
         button.setTitle("Quiz", for: .normal)
+        button.titleLabel?.font = UIFont(name: "LondrinaSolid-Regular", size: 24)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 20
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -42,6 +45,7 @@ class HomePageViewController: UIViewController {
     private let learnButton: UIButton = {
         let button = UIButton()
         button.setTitle("Learn", for: .normal)
+        button.titleLabel?.font = UIFont(name: "LondrinaSolid-Regular", size: 24)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 20
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +55,7 @@ class HomePageViewController: UIViewController {
     private let statsButton: UIButton = {
         let button = UIButton()
         button.setTitle("Statistics", for: .normal)
+        button.titleLabel?.font = UIFont(name: "LondrinaSolid-Regular", size: 24)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 20
         button.translatesAutoresizingMaskIntoConstraints = false

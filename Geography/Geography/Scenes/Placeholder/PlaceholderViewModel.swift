@@ -5,7 +5,7 @@
 //  Created by Nikoloz Gachechiladze on 01.02.24.
 //
 
-import Foundation
+import UIKit
 import NetworkLayerPackage
 
 class PlaceholderViewModel {
