@@ -38,7 +38,6 @@ extension UserDefaults {
         let encoder = JSONEncoder()
         var results = loadQuizResults()
         results.append(newResult)
-        print(newResult)
         if let encoded = try? encoder.encode(results) {
             UserDefaults.standard.set(encoded, forKey: "quizResults")
         }
@@ -48,10 +47,13 @@ extension UserDefaults {
         if let savedResults = UserDefaults.standard.object(forKey: "quizResults") as? Data {
             let decoder = JSONDecoder()
             if let loadedResults = try? decoder.decode([QuizResult].self, from: savedResults) {
-                print(loadedResults)
                 return loadedResults
             }
         }
         return []
+    }
+    
+    func resetQuizResults() {
+        UserDefaults.standard.set(nil, forKey: "quizResults")
     }
 }

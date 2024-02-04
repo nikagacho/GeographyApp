@@ -16,8 +16,15 @@ struct FlagsQuizView: View {
         VStack {
             if viewModel.quizCompleted {
                 QuizCompletionView(score: viewModel.score, time: viewModel.secondsElapsed, restartAction: viewModel.restartQuiz, goBack: flowNavigator.goBack)
+                    .onAppear {
+                        viewModel.stopTimer()
+                    }
             } else if let country = viewModel.selectedCountry {
-                TimerView(viewModel: viewModel)
+                HStack {
+                    TimerView(viewModel: viewModel)
+                    Spacer()
+                    SoundButtonView(isSoundOn: $viewModel.isSoundOn)
+                }
                 QuestionView(question: viewModel.question, countryName: country.name, score: viewModel.score, increment: viewModel.increment)
                 FlagsQuizAnswersView(possibleAnswers: viewModel.possibleAnswers, answerSelected: viewModel.checkAnswer, selectedAnswer: $viewModel.selectedAnswer, correctAnswer: country.href.flag)
                 QuizControlView(viewModel: viewModel, goBackAction: flowNavigator.goBack, selectedAnswer: $viewModel.selectedAnswer)

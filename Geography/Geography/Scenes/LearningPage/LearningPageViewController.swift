@@ -22,11 +22,15 @@ class LearningPageViewController: UIViewController {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
         collectionView.register(CustomCell.self, forCellWithReuseIdentifier: CustomCell.cellIdentifier)
         return collectionView
     }()
+
     
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -107,7 +111,14 @@ extension LearningPageViewController: UICollectionViewDataSource, UICollectionVi
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        let numberOfColumns: CGFloat = 3
+        let spacingBetweenCells: CGFloat = layout.minimumInteritemSpacing
+        let totalSpacing = (2 * layout.sectionInset.left) + ((numberOfColumns - 1) * spacingBetweenCells)
+        let width = (collectionView.bounds.width - totalSpacing) / numberOfColumns
+        let height = width
+        
+        return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

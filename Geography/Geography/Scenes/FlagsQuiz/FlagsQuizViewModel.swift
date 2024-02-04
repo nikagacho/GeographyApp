@@ -19,7 +19,9 @@ class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
     @Published var quizCompleted = false
     @Published var selectedAnswer: String? = nil
     @Published var secondsElapsed: Int = 0
+    @Published var isSoundOn = true
     var previousQuestions: [NewCountry] = []
+    var timer: Timer?
     private var audioPlayer: AVAudioPlayer?
     
     func returnPossibleAnswers(country: NewCountry) -> [String] {
@@ -80,12 +82,19 @@ class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
     }
     
     func startTimer() {
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-                self.secondsElapsed += 1
-            }
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            self?.secondsElapsed += 1
         }
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
     
     private func playSound(soundFileName: String) {
+        if isSoundOn == true {
             guard let url = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else { return }
             
             do {
@@ -95,4 +104,5 @@ class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
                 print("Unable to locate audio file: \(soundFileName)")
             }
         }
+    }
 }

@@ -17,7 +17,7 @@ class StatsPageViewModel {
         print(topThreeResults)
     }
     
-    private func loadQuizResults() {
+    func loadQuizResults() {
         self.quizResults = UserDefaults.standard.loadQuizResults()
     }
     
@@ -39,7 +39,7 @@ class StatsPageViewModel {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
-        return "Score: \(result.score) - Time: \(result.time) - Date: \(dateFormatter.string(from: result.date))"
+        return "Score: \(result.score) - Time: \(result.time) - \(dateFormatter.string(from: result.date))"
     }
     
     func returnTopThree(for quizResults: [QuizResult]) {
@@ -52,6 +52,10 @@ class StatsPageViewModel {
         }
         
         topThreeResults = Array(sortedResults.prefix(3))
+    }
+    
+    func resetAction() {
+        UserDefaults.standard.resetQuizResults()
     }
 }
 

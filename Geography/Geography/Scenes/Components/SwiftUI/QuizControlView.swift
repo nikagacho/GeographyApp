@@ -40,6 +40,7 @@ struct QuizControlView<ViewModel: QuizViewModelProtocol & ObservableObject>: Vie
                     viewModel.loadNextQuestion()
                 }
                 .disabled(selectedAnswer == nil)
+                .opacity(selectedAnswer == nil ? 0.2 : 1)
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.orange)
@@ -51,6 +52,8 @@ struct QuizControlView<ViewModel: QuizViewModelProtocol & ObservableObject>: Vie
                     viewModel.quizCompleted = true
                 }
                 .frame(maxWidth: .infinity)
+                .disabled(selectedAnswer == nil)
+                .opacity(selectedAnswer == nil ? 0.2 : 1)
                 .padding()
                 .background(Color.orange)
                 .foregroundColor(.white)

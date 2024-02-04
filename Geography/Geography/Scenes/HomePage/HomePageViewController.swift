@@ -126,6 +126,7 @@ class HomePageViewController: UIViewController {
     private func setupStatsButton() {
         statsButton.addAction(UIAction(handler: { [weak self] _ in
             let statsVC = StatsPageViewController()
+            statsVC.flowNavigator = self?.flowNavigator
             self?.navigationController?.pushViewController(statsVC, animated: true)
         }), for: .touchUpInside)
     }

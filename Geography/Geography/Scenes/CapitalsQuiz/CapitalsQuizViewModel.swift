@@ -19,6 +19,7 @@ class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
     @Published var quizCompleted = false
     @Published var selectedAnswer: String? = nil
     @Published var secondsElapsed = 0
+    @Published var isSoundOn = true
     var previousQuestions: [NewCountry] = []
     private var audioPlayer: AVAudioPlayer?
     var timer: Timer?
@@ -95,12 +96,14 @@ class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
     private func playSound(soundFileName: String) {
         guard let url = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else { return }
         
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.play()
-            print("executed")
-        } catch {
-            print("Unable to locate audio file: \(soundFileName)")
+        if isSoundOn == true {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer?.play()
+                print("executed")
+            } catch {
+                print("Unable to locate audio file: \(soundFileName)")
+            }
         }
     }
     
