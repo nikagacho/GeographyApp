@@ -14,6 +14,7 @@ class CountryDetailsView: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 16
         stackView.distribution = .fill
+        stackView.backgroundColor = .systemGray6
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -22,7 +23,7 @@ class CountryDetailsView: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.backgroundColor = .systemBlue
-        label.font = UIFont(name: "LondrinaSolid-Regular", size: 30)
+        label.font = UIFont.myFont(ofSize: 30)
         label.numberOfLines = 0
         label.textColor = .white
         label.layer.cornerRadius = 8
@@ -46,7 +47,7 @@ class CountryDetailsView: UIViewController {
     
     private let separator: UIView = {
         let separator = UIView()
-        separator.backgroundColor = .systemGray5
+        separator.backgroundColor = .systemGray3
         separator.translatesAutoresizingMaskIntoConstraints = false
         return separator
     }()
@@ -76,10 +77,9 @@ class CountryDetailsView: UIViewController {
         }
     }
     
-    
     private func setupUI() {
         view.addSubview(mainStackView)
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .systemGray6
         setupStacks()
         setupConstraints()
     }
@@ -110,21 +110,25 @@ class CountryDetailsView: UIViewController {
     private static func makeHeaderLabel(text: String) -> UILabel {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.font = UIFont.myFont(ofSize: 24)
         label.text = text
+        label.textColor = .darkGray
         return label
     }
     
     private static func makeDetailLabel() -> UILabel {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 20)
+        label.font = UIFont.myFont(ofSize: 20)
+        label.textColor = .black
         return label
     }
     
     private func makeDetailStack(headerLabel: UILabel, detailLabel: UILabel) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: [headerLabel, detailLabel])
         stackView.axis = .vertical
+        stackView.backgroundColor = UIColor.systemGray5
+        stackView.layer.cornerRadius = 20
         stackView.spacing = 4
         return stackView
     }

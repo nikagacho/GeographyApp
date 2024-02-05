@@ -18,7 +18,7 @@ struct QuizControlView<ViewModel: QuizViewModelProtocol & ObservableObject>: Vie
             Button("Exit") {
                 isAlertShown = true
             }
-            .font(.custom("LondrinaSolid-Regular", size: 30))
+            .font(.myFont(size: 24))
             .frame(maxWidth: .infinity)
             .padding()
             .background(Color.red)
@@ -40,7 +40,7 @@ struct QuizControlView<ViewModel: QuizViewModelProtocol & ObservableObject>: Vie
                 Button("Next") {
                     viewModel.loadNextQuestion()
                 }
-                .font(.custom("LondrinaSolid-Regular", size: 24))
+                .font(.myFont(size: 24))
                 .disabled(selectedAnswer == nil)
                 .opacity(selectedAnswer == nil ? 0.2 : 1)
                 .frame(maxWidth: .infinity)
@@ -54,7 +54,7 @@ struct QuizControlView<ViewModel: QuizViewModelProtocol & ObservableObject>: Vie
                     viewModel.quizCompleted = true
                 }
                 .frame(maxWidth: .infinity)
-                .font(.custom("LondrinaSolid-Regular", size: 24))
+                .font(.myFont(size: 24))
                 .disabled(selectedAnswer == nil)
                 .opacity(selectedAnswer == nil ? 0.2 : 1)
                 .padding()

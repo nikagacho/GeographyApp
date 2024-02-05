@@ -37,6 +37,7 @@ class StatsPageViewController: UIViewController {
     private let button: UIButton = {
         let button = UIButton()
         button.setTitle("Reset Data", for: .normal)
+        button.titleLabel?.font = UIFont.myFont(ofSize: 22)
         button.backgroundColor = .systemRed
         button.layer.cornerRadius = 20
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -45,11 +46,11 @@ class StatsPageViewController: UIViewController {
     
     private let topLabel: UILabel = createSectionLabel(text: "Your Best Results", fontSize: 30, backgroundColor: .systemBlue, textColor: .white)
     private let headerText: UILabel = createSectionLabel(text: "Your Quiz History", fontSize: 30, backgroundColor: .systemBlue, textColor: .white)
-    private let firstResult = createSectionLabel(fontSize: 18)
-    private let secondResult = createSectionLabel(fontSize: 18)
-    private let thirdResult = createSectionLabel(fontSize: 18)
-    private let totalQuestionsText = createSectionLabel(fontSize: 18)
-    private let totalCorrectAnswersText = createSectionLabel(fontSize: 18)
+    private let firstResult = createSectionLabel(fontSize: 22)
+    private let secondResult = createSectionLabel(fontSize: 22)
+    private let thirdResult = createSectionLabel(fontSize: 22)
+    private let totalQuestionsText = createSectionLabel(fontSize: 22)
+    private let totalCorrectAnswersText = createSectionLabel(fontSize: 22)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +63,7 @@ class StatsPageViewController: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         view.addSubview(mainStackView)
         mainStackView.addArrangedSubview(topLabel)
         mainStackView.addArrangedSubview(firstResult)
@@ -82,32 +83,32 @@ class StatsPageViewController: UIViewController {
             mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
     
     private func setupTableView() {
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(ResultTableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     private func setupTopThree() {
         let topResults = viewModel.topThreeResults
         if topResults.count > 0 {
             let first = topResults[0]
-            firstResult.text = "🥇 Score: \(first.score), Time: \(first.time) seconds 🥇"
+            firstResult.text = "🥇 Score: \(first.score), Time: \(formatSeconds(seconds: first.time)) seconds 🥇"
         } else {
             firstResult.text = "1st: N/A"
         }
         if topResults.count > 1 {
             let second = topResults[1]
-            secondResult.text = "🥈 Score: \(second.score), Time: \(second.time) seconds 🥈"
+            secondResult.text = "🥈 Score: \(second.score), Time: \(formatSeconds(seconds: second.time)) seconds 🥈"
         } else {
             secondResult.text = "2nd: N/A"
         }
         if topResults.count > 2 {
             let third = topResults[2]
-            thirdResult.text = "🥉 Score: \(third.score), Time: \(third.time) seconds 🥉"
+            thirdResult.text = "🥉 Score: \(third.score), Time: \(formatSeconds(seconds: third.time)) seconds 🥉"
         } else {
             thirdResult.text = "3rd: N/A"
         }
@@ -124,7 +125,7 @@ class StatsPageViewController: UIViewController {
         let label = UILabel()
         label.text = text
         label.textAlignment = .center
-        label.font = UIFont(name: "LondrinaSolid-Regular", size: fontSize)
+        label.font = UIFont.myFont(ofSize: fontSize)
         label.backgroundColor = backgroundColor
         label.textColor = textColor
         label.layer.cornerRadius = 8
@@ -159,6 +160,14 @@ class StatsPageViewController: UIViewController {
             self?.showAlert()
         }), for: .touchUpInside)
     }
+    
+    private func formatSeconds(seconds: Int) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.minute, .second]
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = .pad
+        return formatter.string(from: TimeInterval(seconds)) ?? "0:00"
+    }
 }
 
 
@@ -168,11 +177,12 @@ extension StatsPageViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = viewModel.formattedResult(for: indexPath.row)
-        cell.textLabel?.font = .systemFont(ofSize: 18)
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.textAlignment = .center
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ResultTableViewCell else {
+            return UITableViewCell()
+        }
+        let quizResult = viewModel.quizResults[indexPath.row]
+        cell.configure(with: quizResult)
         return cell
     }
+
 }

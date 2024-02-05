@@ -13,35 +13,39 @@ struct CapitalsQuiz: View {
     @EnvironmentObject var flowNavigator: FlowNavigator
     
     var body: some View {
-        VStack {
-            if viewModel.quizCompleted {
-                QuizCompletionView(score: viewModel.score, time: viewModel.secondsElapsed, restartAction: viewModel.restartQuiz, goBack: flowNavigator.goBack)
-                    .onAppear {
-                        viewModel.stopTimer()
+        ZStack {
+            Color.init(uiColor: .systemGray5)
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                if viewModel.quizCompleted {
+                    QuizCompletionView(score: viewModel.score, time: viewModel.secondsElapsed, restartAction: viewModel.restartQuiz, goBack: flowNavigator.goBack)
+                        .onAppear {
+                            viewModel.stopTimer()
+                        }
+                } else if let country = viewModel.selectedCountry {
+                    HStack {
+                        TimerView(viewModel: viewModel, increment: viewModel.increment)
+                        SoundButtonView(isSoundOn: $viewModel.isSoundOn)
                     }
-            } else if let country = viewModel.selectedCountry {
-                HStack {
-                    TimerView(viewModel: viewModel, increment: viewModel.increment)
-                    SoundButtonView(isSoundOn: $viewModel.isSoundOn)
+                    QuestionView(question: viewModel.question,
+                                 countryName: country.name,
+                                 score: viewModel.score)
+                    
+                    AnswersView(possibleAnswers: viewModel.possibleAnswers,
+                                answerSelected: viewModel.checkAnswer,
+                                selectedAnswer: $viewModel.selectedAnswer, correctAnswer: country.capital)
+                    Spacer()
+                    QuizControlView(viewModel: viewModel, goBackAction: flowNavigator.goBack, selectedAnswer: $viewModel.selectedAnswer)
+                } else {
+                    Text("Error - Couldn't load the quiz")
+                        .onAppear {
+                            viewModel.loadFirstQuestion()
+                            viewModel.startTimer()
+                        }
                 }
-                QuestionView(question: viewModel.question,
-                             countryName: country.name,
-                             score: viewModel.score)
-                
-                AnswersView(possibleAnswers: viewModel.possibleAnswers,
-                            answerSelected: viewModel.checkAnswer,
-                            selectedAnswer: $viewModel.selectedAnswer, correctAnswer: country.capital)
-                Spacer()
-                QuizControlView(viewModel: viewModel, goBackAction: flowNavigator.goBack, selectedAnswer: $viewModel.selectedAnswer)
-            } else {
-                Text("Loading QUIZ")
-                    .onAppear { 
-                        viewModel.loadFirstQuestion()
-                        viewModel.startTimer()
-                    }
             }
+            .navigationBarBackButtonHidden()
         }
-        .navigationBarBackButtonHidden()
     }
 }
 

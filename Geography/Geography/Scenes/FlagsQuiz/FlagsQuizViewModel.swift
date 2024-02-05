@@ -26,7 +26,6 @@ class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
     
     func returnPossibleAnswers(country: NewCountry) -> [String] {
         var flagAnswers: [String] = [country.href.flag]
-        print(country.name)
         while flagAnswers.count < 4 {
             let randomCountry = countries.randomElement()
             let randomFlag = randomCountry?.href.flag ?? ""

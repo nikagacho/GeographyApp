@@ -21,7 +21,7 @@ struct AnswersView: View {
                     .padding()
                     .background(buttonColor(for: capital))
                     .foregroundColor(.white)
-                    .font(.custom("LondrinaSolid-Regular", size: 24))
+                    .font(.myFont(size: 24))
                     .cornerRadius(10)
                     .padding(.horizontal)
             })

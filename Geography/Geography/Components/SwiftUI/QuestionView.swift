@@ -14,14 +14,24 @@ struct QuestionView: View {
     
     var body: some View {
         VStack {
-            Text("\(question) \(countryName)?")
-                .font(.custom("LondrinaSolid-Regular", size: 30))
-                .padding()
+            VStack {
+                (Text(question + " ")
+                    .font(.myFont(size: 28))
+                 +
+                 Text(countryName + "?")
+                    .foregroundColor(.blue)
+                    .font(.myFont(size: 28)))
+                .fixedSize(horizontal: false, vertical: true)
+            }
+            .frame(minHeight: 100)
             VStack {
                 Text("Total Score: \(score)")
                     .bold()
-                    .font(.custom("LondrinaSolid-Regular", size: 24))
+                    .font(.myFont(size: 24))
+                    .padding()
             }
         }
+        .padding()
     }
 }
+

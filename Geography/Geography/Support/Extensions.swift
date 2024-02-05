@@ -8,20 +8,6 @@
 import SwiftUI
 import UIKit
 
-extension String {
-    func emojiImage() -> UIImage? {
-        let size = CGSize(width: 50, height: 50)
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        UIColor.white.set()
-        let rect = CGRect(origin: .zero, size: size)
-        UIRectFill(CGRect(origin: .zero, size: size))
-        (self as AnyObject).draw(in: rect, withAttributes: [.font: UIFont.systemFont(ofSize: 40)])
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image
-    }
-}
-
 extension View {
      func formattedTime(seconds: Int) -> String {
         let formatter = DateComponentsFormatter()
@@ -33,7 +19,6 @@ extension View {
 }
 
 extension UserDefaults {
-    
     func saveQuizResult(_ newResult: QuizResult) {
         let encoder = JSONEncoder()
         var results = loadQuizResults()

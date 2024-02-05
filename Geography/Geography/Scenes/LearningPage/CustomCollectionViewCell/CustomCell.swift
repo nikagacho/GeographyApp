@@ -21,7 +21,7 @@ class CustomCell: UICollectionViewCell {
     private let countryLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .boldSystemFont(ofSize: 20)
+        label.font = UIFont.myFont(ofSize: 20)
         return label
     }()
     
@@ -62,7 +62,7 @@ class CustomCell: UICollectionViewCell {
     }
     
     private func setupUI() {
-        self.backgroundColor = .systemBackground
+        self.backgroundColor = .systemGray6
         self.addSubview(mainStackView)
         setupStackView()
         setupConstraints()

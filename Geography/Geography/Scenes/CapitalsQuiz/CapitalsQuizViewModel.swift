@@ -100,7 +100,6 @@ class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 audioPlayer?.play()
-                print("executed")
             } catch {
                 print("Unable to locate audio file: \(soundFileName)")
             }

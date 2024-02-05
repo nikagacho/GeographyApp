@@ -22,43 +22,23 @@ class HomePageViewController: UIViewController {
         return stackView
     }()
     
-    private let mainText: UILabel = {
-        let label = UILabel()
-        label.text = "Welcome to Geography"
-        label.textAlignment = .center
-        label.font = UIFont(name: "LondrinaSolid-Regular", size: 44)
-        label.textColor = .darkGray
-        label.numberOfLines = 2
+    private let mainText: CustomLabel = {
+        let label = CustomLabel(text: "Welcome to Geography Quiz!", size: 44)
         return label
     }()
     
-    private let quizButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Quiz", for: .normal)
-        button.titleLabel?.font = UIFont(name: "LondrinaSolid-Regular", size: 24)
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 20
-        button.translatesAutoresizingMaskIntoConstraints = false
+    private let quizButton: CustomButton = {
+        let button = CustomButton(title: "Quiz")
+        return button
+    }()
+
+    private let learnButton: CustomButton = {
+        let button = CustomButton(title: "Learn")
         return button
     }()
     
-    private let learnButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Learn", for: .normal)
-        button.titleLabel?.font = UIFont(name: "LondrinaSolid-Regular", size: 24)
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 20
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private let statsButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Statistics", for: .normal)
-        button.titleLabel?.font = UIFont(name: "LondrinaSolid-Regular", size: 24)
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 20
-        button.translatesAutoresizingMaskIntoConstraints = false
+    private let statsButton: CustomButton = {
+        let button = CustomButton(title: "Statistics")
         return button
     }()
     
@@ -76,7 +56,7 @@ class HomePageViewController: UIViewController {
     
     private func setupView() {
         view.addSubview(mainStackView)
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         setupStack()
         setupConstraints()
         setupLearnButton()

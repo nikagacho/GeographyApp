@@ -16,6 +16,7 @@ class LearningPageViewController: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
+        stackView.backgroundColor = .systemGray6
         return stackView
     }()
     
@@ -26,7 +27,7 @@ class LearningPageViewController: UIViewController {
         layout.minimumLineSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .systemBackground
+        collectionView.backgroundColor = .systemGray6
         collectionView.register(CustomCell.self, forCellWithReuseIdentifier: CustomCell.cellIdentifier)
         return collectionView
     }()
@@ -35,6 +36,7 @@ class LearningPageViewController: UIViewController {
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.barTintColor = .systemGray6
         return searchBar
     }()
     
@@ -54,7 +56,7 @@ class LearningPageViewController: UIViewController {
         view.addSubview(mainStackView)
         mainStackView.addArrangedSubview(searchBar)
         mainStackView.addArrangedSubview(collectionView)
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         setupConstraints()
         setupCollectionView()
     }

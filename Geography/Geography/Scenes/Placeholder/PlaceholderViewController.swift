@@ -15,6 +15,7 @@ class PlaceholderViewController: UIViewController {
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.backgroundColor = .systemGray6
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.distribution = .fillEqually
         return stackView
@@ -27,12 +28,9 @@ class PlaceholderViewController: UIViewController {
         return imageView
     }()
     
-    private let loadingText: UILabel = {
-        let label = UILabel()
-        label.text = "Loading..."
+    private let loadingText: CustomLabel = {
+        let label = CustomLabel(text: "Loading...", size: 40)
         label.textColor = .black
-        label.textAlignment = .center
-        label.font = .boldSystemFont(ofSize: 28)
         return label
     }()
 
@@ -44,7 +42,7 @@ class PlaceholderViewController: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         view.addSubview(mainStackView)
         mainStackView.addArrangedSubview(globeImage)
         mainStackView.addArrangedSubview(loadingText)

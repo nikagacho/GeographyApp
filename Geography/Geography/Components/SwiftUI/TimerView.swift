@@ -15,10 +15,10 @@ struct TimerView<ViewModel: QuizViewModelProtocol & ObservableObject>: View {
     var body: some View {
         HStack {
             Text("\(increment)/10")
-                .font(.custom("LondrinaSolid-Regular", size: 22))
+                .font(.myFont(size: 22))
             Text("\(formattedTime(seconds: viewModel.secondsElapsed))")
                 .padding()
-                .font(.custom("LondrinaSolid-Regular", size: 22))
+                .font(.myFont(size: 22))
         }
     }
     
