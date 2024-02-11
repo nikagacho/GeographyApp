@@ -8,6 +8,8 @@
 import UIKit
 import SwiftUI
 
+//MARK: - Custom font for UIKit & SwiftUI
+
 extension UIFont {
     static func myFont(ofSize size: CGFloat) -> UIFont? {
         return UIFont(name: "LondrinaSolid-Regular", size: size)

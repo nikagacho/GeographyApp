@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct SoundButtonView: View {
+    //MARK: - Property
     @Binding var isSoundOn: Bool
-    
+    //MARK: - Body
     var body: some View {
         Button {
             isSoundOn.toggle()

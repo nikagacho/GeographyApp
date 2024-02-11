@@ -1,5 +1,5 @@
 //
-//  FlowNavigator.swift
+//  Router.swift
 //  Geography
 //
 //  Created by Nikoloz Gachechiladze on 18.01.24.
@@ -8,19 +8,19 @@
 import SwiftUI
 import UIKit
 
-final class FlowNavigator: ObservableObject {
+final class Router: ObservableObject {
     private let window: UIWindow
     
     init(window: UIWindow) {
         self.window = window
     }
-    
+    //MARK: - Show the placeholder on launch
     func showRootView() {
         let rootView = PlaceholderViewController()
-        rootView.flowNavigator = self
+        rootView.router = self
         window.rootViewController = UINavigationController(rootViewController: rootView)
     }
-    
+    //MARK: - UIKit -> SwiftUI
     func showCapitalsQuiz(countries: [NewCountry]) {
         let viewModel = CapitalsQuizViewModel()
         viewModel.countries = countries
@@ -42,7 +42,7 @@ final class FlowNavigator: ObservableObject {
             navigationController.pushViewController(hostingView, animated: true)
         }
     }
-    
+    //MARK: - Back Action
     func goBack() {
         if let navigationController = window.rootViewController as? UINavigationController {
             navigationController.popViewController(animated: true)

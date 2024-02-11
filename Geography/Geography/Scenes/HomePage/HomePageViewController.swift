@@ -8,10 +8,10 @@
 import UIKit
 
 class HomePageViewController: UIViewController {
-    
+    //MARK: - Properties
     let viewModel = HomePageViewModel(countries: [])
-    var flowNavigator: FlowNavigator?
-    
+    var router: Router?
+    //MARK: - UI Elements
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,12 +48,12 @@ class HomePageViewController: UIViewController {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
+    //MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
-    
+    //MARK: - SetupUI
     private func setupView() {
         view.addSubview(mainStackView)
         view.backgroundColor = .systemGray6
@@ -93,7 +93,7 @@ class HomePageViewController: UIViewController {
             learnButton.heightAnchor.constraint(equalToConstant: 58)
         ])
     }
-    
+    //MARK: - Setup Buttons
     private func setupLearnButton() {
         viewModel.delegate = self
         learnButton.addAction(UIAction(handler: { [weak self] _ in
@@ -111,18 +111,18 @@ class HomePageViewController: UIViewController {
     private func setupStatsButton() {
         statsButton.addAction(UIAction(handler: { [weak self] _ in
             let statsVC = StatsPageViewController()
-            statsVC.flowNavigator = self?.flowNavigator
+            statsVC.router = self?.router
             self?.navigationController?.pushViewController(statsVC, animated: true)
         }), for: .touchUpInside)
     }
     
 }
-
+//MARK: - Delegate
 extension HomePageViewController: HomePageViewModelDelegate {
     func navigateToQuizPage(with countries: [NewCountry]) {
         let quizPage = StartQuizViewController()
         quizPage.viewModel.countries = viewModel.countries
-        quizPage.flowNavigator = flowNavigator
+        quizPage.router = router
         navigationController?.pushViewController(quizPage, animated: true)
     }
     

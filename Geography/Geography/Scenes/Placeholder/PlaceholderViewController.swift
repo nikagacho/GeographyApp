@@ -8,10 +8,10 @@
 import UIKit
 
 class PlaceholderViewController: UIViewController {
-    
+    //MARK: - Properties
     var viewModel = PlaceholderViewModel(countries: [])
-    var flowNavigator: FlowNavigator?
-
+    var router : Router?
+    //MARK: - UI Elements
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -33,14 +33,14 @@ class PlaceholderViewController: UIViewController {
         label.textColor = .black
         return label
     }()
-
+    //MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupConstraints()
         rotateGlobe()
     }
-    
+    //MARK: - SetupUI
     private func setupUI() {
         view.backgroundColor = .systemGray6
         view.addSubview(mainStackView)
@@ -66,14 +66,14 @@ class PlaceholderViewController: UIViewController {
         rotation.repeatCount = Float.infinity
         globeImage.layer.add(rotation, forKey: "rotationAnimation")
     }
-
+    
 }
-
+//MARK: - Delegate
 extension PlaceholderViewController: PlaceholderDelegate {
     func didFetchData() {
         let homepageVC = HomePageViewController()
         homepageVC.viewModel.countries = viewModel.countries
-        homepageVC.flowNavigator = flowNavigator
+        homepageVC.router = router
         navigationController?.pushViewController(homepageVC, animated: true)
     }
     

@@ -9,10 +9,10 @@ import UIKit
 import SwiftUI
 
 class StartQuizViewController: UIViewController {
-    
+    //MARK: - Properties
     let viewModel = StartQuizViewModel()
-    var flowNavigator: FlowNavigator?
-    
+    var router : Router?
+    //MARK: - UI Elements
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,15 +44,14 @@ class StartQuizViewController: UIViewController {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-
-    
+//MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupCapitalsButton()
         setupFlagsButton()
     }
-  
+  //MARK: - SetupUI
     private func setupUI() {
         view.backgroundColor = .systemGray6
         view.addSubview(mainStackView)
@@ -78,16 +77,16 @@ class StartQuizViewController: UIViewController {
             capitalsButton.heightAnchor.constraint(equalToConstant: 58)
         ])
     }
-
+//MARK: - Setup Buttons
     private func setupCapitalsButton() {
         capitalsButton.addAction(UIAction(handler: { [weak self] _ in
-            self!.flowNavigator?.showCapitalsQuiz(countries: self!.viewModel.countries)
+            self!.router?.showCapitalsQuiz(countries: self!.viewModel.countries)
         }), for: .touchUpInside)
     }
     
     private func setupFlagsButton() {
         flagsButton.addAction(UIAction(handler: { [weak self] _ in
-            self!.flowNavigator?.showFlagsQuiz(countries: self!.viewModel.countries)
+            self!.router?.showFlagsQuiz(countries: self!.viewModel.countries)
         }), for: .touchUpInside)
     }
     

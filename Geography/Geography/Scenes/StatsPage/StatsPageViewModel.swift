@@ -8,16 +8,17 @@
 import Foundation
 
 class StatsPageViewModel {
+    //MARK: - Properties
     var quizResults: [QuizResult] = []
     var topThreeResults: [QuizResult] = []
     var alertMessage = "You're about to reset your statistics, are you sure? This can't be changed back"
-
+    //MARK: - init
     init() {
         loadQuizResults()
         returnTopThree(for: quizResults)
         print(topThreeResults)
     }
-    
+    //MARK: - Methods
     func loadQuizResults() {
         self.quizResults = UserDefaults.standard.loadQuizResults()
     }

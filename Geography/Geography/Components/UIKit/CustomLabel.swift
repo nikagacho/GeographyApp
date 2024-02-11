@@ -8,7 +8,7 @@
 import UIKit
 
 class CustomLabel: UILabel {
-    
+    //MARK: - Custom Init
     init(text: String, size: CGFloat) {
         super.init(frame: .zero)
         self.text = text
@@ -20,7 +20,7 @@ class CustomLabel: UILabel {
         super.init(coder: aDecoder)
         setupLabel()
     }
-    
+    //MARK: - Label Setup
     private func setupLabel() {
         textAlignment = .center
         textColor = .darkGray

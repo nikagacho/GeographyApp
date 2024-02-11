@@ -9,12 +9,13 @@ import Foundation
 import NetworkLayerPackage
 
 class LearningPageViewModel {
+    //MARK: - Properties
     var countries: [NewCountry] = []
     var filteredCountries: [NewCountry] = []
     var networkManager = NetworkManager<Data>()
     var buttonText = "Sort"
     private var isSorted: Bool = false
-    
+    //MARK: - Network fetch
     func fetchImage(with urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
         Task {
             do {
@@ -26,7 +27,7 @@ class LearningPageViewModel {
         }
     }
 
-    
+    //MARK: - Methods
     func sortByAlphabet() {
         if isSorted == false {
             isSorted.toggle()

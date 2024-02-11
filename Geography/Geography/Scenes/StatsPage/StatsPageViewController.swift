@@ -8,10 +8,10 @@
 import UIKit
 
 class StatsPageViewController: UIViewController {
-    
+    //MARK: - Properties
     var viewModel = StatsPageViewModel()
-    var flowNavigator: FlowNavigator?
-    
+    var router: Router?
+    //MARK: - UI Elements
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -51,7 +51,7 @@ class StatsPageViewController: UIViewController {
     private let thirdResult = createSectionLabel(fontSize: 22)
     private let totalQuestionsText = createSectionLabel(fontSize: 22)
     private let totalCorrectAnswersText = createSectionLabel(fontSize: 22)
-    
+    //MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -61,7 +61,7 @@ class StatsPageViewController: UIViewController {
         setupTotals()
         setupResetButton()
     }
-    
+    //MARK: - Setup UI
     private func setupUI() {
         view.backgroundColor = .systemGray6
         view.addSubview(mainStackView)
@@ -120,7 +120,7 @@ class StatsPageViewController: UIViewController {
         totalCorrectAnswersText.text = "\(totalScore) - Total Correct"
         totalQuestionsText.text = "\(totalQuestions) - Total Questions"
     }
-    
+    //MARK: - Create Reusable Labels
     private static func createSectionLabel(text: String = "", fontSize: CGFloat, backgroundColor: UIColor = .clear, textColor: UIColor = .black) -> UILabel {
         let label = UILabel()
         label.text = text
@@ -143,13 +143,13 @@ class StatsPageViewController: UIViewController {
             separator.heightAnchor.constraint(equalToConstant: 10)
         ])
     }
-    
+    //MARK: - Alert and Button setup
     private func showAlert() {
         let alert = UIAlertController(title: "Resetting the data", message: viewModel.alertMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { _ in
             self.viewModel.resetAction()
-            self.flowNavigator?.goBack()
+            self.router?.goBack()
         }))
         
         self.present(alert, animated: true)
@@ -170,9 +170,14 @@ class StatsPageViewController: UIViewController {
     }
 }
 
-
+//MARK: - TableView Extension
 extension StatsPageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if viewModel.numberOfResults == 0 {
+            self.tableView.setEmptyMessage("Go Play the Quizzes, nothing here!!!")
+        } else {
+            self.tableView.restore()
+        }
         return viewModel.numberOfResults
     }
     

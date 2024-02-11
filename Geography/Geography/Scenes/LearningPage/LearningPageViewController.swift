@@ -4,14 +4,15 @@
 //
 //  Created by Nikoloz Gachechiladze on 17.01.24.
 //
+//
 
 import UIKit
 
 class LearningPageViewController: UIViewController {
-    
+    //MARK: - Properties
     var viewModel = LearningPageViewModel()
-    var flowNavigator: FlowNavigator?
-    
+    var router: Router?
+    //MARK: - UI Elements
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,14 +45,14 @@ class LearningPageViewController: UIViewController {
         let button = UIBarButtonItem(title: viewModel.buttonText, style: .plain, target: self, action: #selector(sortAction))
         return button
     }()
-    
+    //MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         searchBar.delegate = self
         navigationItem.rightBarButtonItem = sortButton
     }
-    
+    //MARK: - SetupUI
     private func setupUI() {
         view.addSubview(mainStackView)
         mainStackView.addArrangedSubview(searchBar)
@@ -82,7 +83,7 @@ class LearningPageViewController: UIViewController {
     }
     
 }
-
+//MARK:  - CollectionView
 extension LearningPageViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.filteredCountries.count
@@ -142,7 +143,7 @@ extension LearningPageViewController: UICollectionViewDataSource, UICollectionVi
     }
     
 }
-
+//MARK: - SearchBar
 extension LearningPageViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {

@@ -8,7 +8,7 @@
 import UIKit
 
 class CustomButton: UIButton {
-
+    //MARK: - Custom Init
         init(title: String) {
             super.init(frame: .zero)
             setTitle(title, for: .normal)
@@ -19,7 +19,7 @@ class CustomButton: UIButton {
             super.init(coder: aDecoder)
             setupButton()
         }
-        
+    //MARK: - Button Setup
         private func setupButton() {
             titleLabel?.font = UIFont.myFont(ofSize: 24)
             backgroundColor = .systemBlue

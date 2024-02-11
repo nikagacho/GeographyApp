@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct QuestionView: View {
+    //MARK: - Properties
     let question: String
     let countryName: String
     let score: Int
-    
+    //MARK: - Body
     var body: some View {
         VStack {
             VStack {
