@@ -40,6 +40,17 @@
                ReferencedContainer = "container:Geography.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D56F59422B7A9159001D43D1"
+               BuildableName = "GeographyUnitTests.xctest"
+               BlueprintName = "GeographyUnitTests"
+               ReferencedContainer = "container:Geography.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
