@@ -27,14 +27,6 @@ struct NewCountry: Codable {
 }
 
 
-//MARK: - Quiz Result, which gets saved
-struct QuizResult: Codable {
-    let score: Int
-    let time: Int
-    let date: Date
-}
-
-
 
 
 

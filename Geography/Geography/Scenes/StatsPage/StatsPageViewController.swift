@@ -118,6 +118,7 @@ final class StatsPageViewController: UIViewController {
         let totalScore = viewModel.returnTotalScore()
         let totalQuestions = viewModel.returnTotalQuestions()
         totalCorrectAnswersText.text = "\(totalScore) - Total Correct"
+        totalCorrectAnswersText.textColor = .systemGreen
         totalQuestionsText.text = "\(totalQuestions) - Total Questions"
     }
     //MARK: - Create Reusable Labels
