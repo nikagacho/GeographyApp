@@ -16,7 +16,7 @@ extension UserDefaults {
             UserDefaults.standard.set(encoded, forKey: "quizResults")
         }
     }
-
+    
     func loadQuizResults() -> [QuizResult] {
         if let savedResults = UserDefaults.standard.object(forKey: "quizResults") as? Data {
             let decoder = JSONDecoder()

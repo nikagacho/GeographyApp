@@ -11,8 +11,8 @@ struct QuizCompletionView: View {
     //MARK: - Properties
     let score: Int
     var time: Int
-    var restartAction: () -> Void
-    var goBack: () -> Void
+    let restartAction: () -> Void
+    let goBack: () -> Void
     //MARK: - Body
     var body: some View {
         ZStack {
@@ -28,20 +28,19 @@ struct QuizCompletionView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 200, height: 200)
                     .cornerRadius(16)
-                HStack {
-                    Text("Your score: \(score) / 10")
-                        .font(.myFont(size: 30))
-                    ShareLink(
-                        item: "I just scored \(score) out of 10 in the Geography Quiz, can you beat me?",
-                        label: {
-                            Label("Share", systemImage: "square.and.arrow.up")
-                        }
-                    )
-                }
+                    .shadow(radius: 40)
+                Text("Your score: \(score) / 10")
+                    .font(.myFont(size: 30))
                 Text("Time Elapsed: \(formattedTime(seconds: time))")
                     .font(.myFont(size: 24))
+                ShareLink(
+                    item: "I just scored \(score) out of 10 in the Geography Quiz, can you beat me?",
+                    label: {
+                        Label("Share", systemImage: "square.and.arrow.up")
+                    }
+                )
                 HStack {
-                    Button("Restart Quiz") {
+                    Button("Restart") {
                         restartAction()
                     }
                     .buttonStyle(backgroundColor: Color.blue)

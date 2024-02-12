@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomePageViewController: UIViewController {
+final class HomePageViewController: UIViewController {
     //MARK: - Properties
     let viewModel = HomePageViewModel(countries: [])
     var router: Router?
@@ -31,7 +31,7 @@ class HomePageViewController: UIViewController {
         let button = CustomButton(title: "Quiz")
         return button
     }()
-
+    
     private let learnButton: CustomButton = {
         let button = CustomButton(title: "Learn")
         return button

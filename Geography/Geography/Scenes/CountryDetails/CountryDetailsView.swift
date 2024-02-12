@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CountryDetailsView: UIViewController {
+final class CountryDetailsView: UIViewController {
     //MARK: - UIElements
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()

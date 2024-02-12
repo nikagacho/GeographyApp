@@ -33,7 +33,7 @@ struct AnswersView: View {
             .padding(.horizontal)
         }
     }
-    //MARK: - Methods to handle correct/incorrect
+    //MARK: - Methods to update UI on correct/incorrect
     private func handleTap(for capital: String) {
         guard selectedAnswer == nil else { return }
         answerSelected(capital)

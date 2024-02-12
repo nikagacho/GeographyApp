@@ -20,11 +20,13 @@ struct NewCountry: Codable {
     let population: String
     let currency: String?
     let size: String?
-
+    
     struct CountryHref: Codable {
         let flag: String
     }
 }
+
+
 //MARK: - Quiz Result, which gets saved
 struct QuizResult: Codable {
     let score: Int

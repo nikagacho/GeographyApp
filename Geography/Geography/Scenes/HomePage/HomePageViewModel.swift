@@ -8,9 +8,8 @@
 import Foundation
 import NetworkLayerPackage
 
-class HomePageViewModel {
+final class HomePageViewModel {
     //MARK: - Properties
-    let networkManager = NetworkManager<CountriesData>()
     var countries: [NewCountry] = []
     weak var delegate: HomePageViewModelDelegate?
     //MARK: - Init
@@ -18,7 +17,7 @@ class HomePageViewModel {
         self.countries = countries
         self.delegate = delegate
     }
-//MARK: - Delegate Methods
+    //MARK: - Delegate Methods
     func didTapLearnButton() {
         delegate?.navigateToLearningPage(with: countries)
     }

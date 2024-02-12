@@ -7,7 +7,7 @@
 
 import Foundation
 
-class StartQuizViewModel {
+final class StartQuizViewModel {
     //MARK: - Countries Array
     var countries: [NewCountry] = []
 }

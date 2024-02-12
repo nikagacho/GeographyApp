@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class StartQuizViewController: UIViewController {
+final class StartQuizViewController: UIViewController {
     //MARK: - Properties
     let viewModel = StartQuizViewModel()
     var router : Router?
@@ -44,14 +44,14 @@ class StartQuizViewController: UIViewController {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-//MARK: - LifeCycles
+    //MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupCapitalsButton()
         setupFlagsButton()
     }
-  //MARK: - SetupUI
+    //MARK: - SetupUI
     private func setupUI() {
         view.backgroundColor = .systemGray6
         view.addSubview(mainStackView)
@@ -77,7 +77,7 @@ class StartQuizViewController: UIViewController {
             capitalsButton.heightAnchor.constraint(equalToConstant: 58)
         ])
     }
-//MARK: - Setup Buttons
+    //MARK: - Setup Buttons
     private func setupCapitalsButton() {
         capitalsButton.addAction(UIAction(handler: { [weak self] _ in
             self!.router?.showCapitalsQuiz(countries: self!.viewModel.countries)

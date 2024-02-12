@@ -18,7 +18,7 @@ struct CustomFireworksView: View {
     //MARK: - Properties
     @State private var particles: [FireworkParticle] = []
     @State private var explode = false
-    let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
+    private let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
     //MARK: - Body
     var body: some View {
         GeometryReader { geometry in
@@ -41,9 +41,9 @@ struct CustomFireworksView: View {
             .animation(.easeOut(duration: 2.0), value: explode)
         }
     }
-
-    //MARK: - Methods
-    func explodeFirework(screenSize: CGSize) {
+    
+    //MARK: - Random Animation
+    private func explodeFirework(screenSize: CGSize) {
         particles = (1...100).map { _ in
             FireworkParticle(
                 position: CGPoint(x: CGFloat.random(in: 0...screenSize.width), y: CGFloat.random(in: 0...screenSize.height)),
@@ -60,6 +60,6 @@ struct CustomFireworksView: View {
             explode = true
         }
     }
-
+    
 }
 

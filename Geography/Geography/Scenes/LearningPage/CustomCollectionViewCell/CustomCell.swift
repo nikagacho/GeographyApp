@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomCell: UICollectionViewCell {
+final class CustomCell: UICollectionViewCell {
     //MARK: - Cell Elements
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()

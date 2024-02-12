@@ -34,7 +34,7 @@ struct FlagsQuizAnswersView: View {
             }
         }
     }
-    //MARK: - Methods to handle correct/incorrect
+    //MARK: - Methods to update UI on correct/incorrect
     private func borderColor(for flag: String) -> Color {
         if let selected = selectedAnswer, selected == flag {
             return selected == correctAnswer ? .green : .red
@@ -43,7 +43,7 @@ struct FlagsQuizAnswersView: View {
         }
         return .blue
     }
-
+    
     private func shouldShake(flag: String) -> Bool {
         shakeIncorrect && selectedAnswer == flag && flag != correctAnswer
     }

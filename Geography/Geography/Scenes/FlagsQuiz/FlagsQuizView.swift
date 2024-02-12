@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct FlagsQuizView: View {
-    
+    //MARK: - Properties
     @StateObject var viewModel: FlagsQuizViewModel
     @EnvironmentObject var router : Router
-    
+    //MARK: - Body
     var body: some View {
         ZStack {
             Color.init(uiColor: .systemGray5)

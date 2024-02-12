@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomLabel: UILabel {
+final class CustomLabel: UILabel {
     //MARK: - Custom Init
     init(text: String, size: CGFloat) {
         super.init(frame: .zero)
@@ -34,6 +34,6 @@ class CustomLabel: UILabel {
         transform = CATransform3DRotate(transform, 10 * CGFloat.pi / 180, 1, 0, 0)
         layer.transform = transform
     }
-
+    
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LearningPageViewController: UIViewController {
+final class LearningPageViewController: UIViewController {
     //MARK: - Properties
     var viewModel = LearningPageViewModel()
     var router: Router?
@@ -32,7 +32,7 @@ class LearningPageViewController: UIViewController {
         collectionView.register(CustomCell.self, forCellWithReuseIdentifier: CustomCell.cellIdentifier)
         return collectionView
     }()
-
+    
     
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -66,7 +66,7 @@ class LearningPageViewController: UIViewController {
         viewModel.sortByAlphabet()
         collectionView.reloadData()
     }
-
+    
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
@@ -93,20 +93,16 @@ extension LearningPageViewController: UICollectionViewDataSource, UICollectionVi
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCell.cellIdentifier, for: indexPath) as? CustomCell else {
             fatalError("Cannot create new cell")
         }
-        
         let country = viewModel.filteredCountries[indexPath.row]
         cell.configure(with: country, image: nil)
-        
         viewModel.fetchImage(with: country.href.flag) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let data):
-                    if let image = UIImage(data: data), collectionView.cellForItem(at: indexPath) as? CustomCell === cell {
-                        cell.configure(with: country, image: image)
-                    }
-                case .failure(let error):
-                    print("Error fetching image: \(error)")
+            switch result {
+            case .success(let image):
+                if let updateCell = collectionView.cellForItem(at: indexPath) as? CustomCell {
+                    updateCell.configure(with: country, image: image)
                 }
+            case .failure(let error):
+                print("Error fetching image: \(error.localizedDescription)")
             }
         }
         return cell
@@ -125,21 +121,18 @@ extension LearningPageViewController: UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let pushedVC = CountryDetailsView()
+        let countryDetailsVC = CountryDetailsView() // Assuming this is a view controller
         let country = viewModel.filteredCountries[indexPath.row]
-        viewModel.fetchImage(with: country.href.flag) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let data):
-                    if let image = UIImage(data: data) {
-                        pushedVC.configure(with: country, image: image)
-                    }
-                case .failure(let error):
-                    print("Error fetching image: \(error)")
-                }
+        viewModel.fetchImage(with: country.href.flag) { [weak self] result in
+            switch result {
+            case .success(let image):
+                countryDetailsVC.configure(with: country, image: image)
+            case .failure(let error):
+                print("Error fetching image: \(error.localizedDescription)")
+                countryDetailsVC.configure(with: country, image: nil)
             }
+            self?.navigationController?.pushViewController(countryDetailsVC, animated: true)
         }
-        navigationController?.pushViewController(pushedVC, animated: true)
     }
     
 }

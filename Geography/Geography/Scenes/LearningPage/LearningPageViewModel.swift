@@ -5,28 +5,32 @@
 //  Created by Nikoloz Gachechiladze on 17.01.24.
 //
 
-import Foundation
+import UIKit
 import NetworkLayerPackage
 
-class LearningPageViewModel {
+final class LearningPageViewModel {
     //MARK: - Properties
     var countries: [NewCountry] = []
     var filteredCountries: [NewCountry] = []
     var networkManager = NetworkManager<Data>()
     var buttonText = "Sort"
     private var isSorted: Bool = false
-    //MARK: - Network fetch
-    func fetchImage(with urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
+    //MARK: - Image Fetch
+    func fetchImage(with urlString: String, completion: @escaping (Result<UIImage?, Error>) -> Void) {
         Task {
             do {
                 let data = try await networkManager.fetchImageData(from: urlString)
-                completion(.success(data))
+                let image = UIImage(data: data)
+                DispatchQueue.main.async {
+                    completion(.success(image))
+                }
             } catch {
-                completion(.failure(error))
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
             }
         }
     }
-
     //MARK: - Methods
     func sortByAlphabet() {
         if isSorted == false {

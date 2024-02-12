@@ -21,6 +21,6 @@ struct SoundButtonView: View {
                 Image(systemName: "speaker.fill")
             }
         }
-
+        
     }
 }

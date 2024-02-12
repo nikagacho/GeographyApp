@@ -63,7 +63,7 @@ extension QuizViewModelProtocol where Self: ObservableObject {
         secondsElapsed = 0
         startTimer()
     }
-
+    
     func startTimer() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in

@@ -8,7 +8,7 @@
 import Foundation
 import AVFoundation
 
-class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
+final class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
     //MARK: - Properties
     var countries: [NewCountry] = []
     var question = "Which one is the flag of "

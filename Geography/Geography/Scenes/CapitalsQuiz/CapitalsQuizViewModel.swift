@@ -8,7 +8,7 @@
 import Foundation
 import AVFoundation
 
-class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
+final class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
     //MARK: - Properties
     var countries: [NewCountry] = []
     var question = "What is the Capital City of "
@@ -36,7 +36,7 @@ class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
         }
         return answers.shuffled()
     }
-
+    
     func checkAnswer(answer: String) {
         selectedAnswer = answer
         guard let country = selectedCountry else { return }
@@ -47,7 +47,7 @@ class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
             playSound(soundFileName: "wrong")
         }
     }
-//MARK: - Sound Player
+    //MARK: - Sound Player
     private func playSound(soundFileName: String) {
         if isSoundOn {
             guard let url = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else { return }

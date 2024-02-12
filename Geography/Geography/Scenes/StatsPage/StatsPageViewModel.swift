@@ -7,11 +7,11 @@
 
 import Foundation
 
-class StatsPageViewModel {
+final class StatsPageViewModel {
     //MARK: - Properties
     var quizResults: [QuizResult] = []
     var topThreeResults: [QuizResult] = []
-    var alertMessage = "You're about to reset your statistics, are you sure? This can't be changed back"
+    let alertMessage = "You're about to reset your statistics, are you sure? This can't be changed back"
     //MARK: - init
     init() {
         loadQuizResults()
@@ -38,10 +38,7 @@ class StatsPageViewModel {
     
     func formattedResult(for index: Int) -> String {
         let result = quizResults[index]
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        return "Score: \(result.score) - Time: \(result.time) - \(dateFormatter.string(from: result.date))"
+        return "Score: \(result.score) - Time: \(result.time) - \(result.date.formattedAsMediumDate())"
     }
     
     func returnTopThree(for quizResults: [QuizResult]) {

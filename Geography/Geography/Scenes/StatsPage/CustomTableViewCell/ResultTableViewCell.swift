@@ -7,30 +7,30 @@
 
 import UIKit
 
-class ResultTableViewCell: UITableViewCell {
+final class ResultTableViewCell: UITableViewCell {
     //MARK: - TableView Properties
-    let scoreLabel: UILabel = {
+    private let scoreLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkText
         label.font = UIFont.myFont(ofSize: 20)
         return label
     }()
     
-    let timeLabel: UILabel = {
+    private let timeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.font = UIFont.myFont(ofSize: 20)
         return label
     }()
     
-    let dateLabel: UILabel = {
+    private let dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.font = UIFont.myFont(ofSize: 20)
         return label
     }()
     
-    let mainStackView: UIStackView = {
+    private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 10
@@ -65,7 +65,7 @@ class ResultTableViewCell: UITableViewCell {
             mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
         ])
     }
-    
+    //MARK: - Configure
     public func configure(with quizResult: QuizResult) {
         scoreLabel.text = "Score: \(quizResult.score)"
         timeLabel.text = "Time: \(formatSeconds(seconds: quizResult.time))"
@@ -76,10 +76,7 @@ class ResultTableViewCell: UITableViewCell {
     }
     
     private func formatDate(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        return dateFormatter.string(from: date)
+        return date.formattedAsMediumDate()
     }
     
     private func formatSeconds(seconds: Int) -> String {

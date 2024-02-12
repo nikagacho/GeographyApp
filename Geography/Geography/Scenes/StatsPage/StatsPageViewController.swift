@@ -7,9 +7,9 @@
 
 import UIKit
 
-class StatsPageViewController: UIViewController {
+final class StatsPageViewController: UIViewController {
     //MARK: - Properties
-    var viewModel = StatsPageViewModel()
+    let viewModel = StatsPageViewModel()
     var router: Router?
     //MARK: - UI Elements
     private let mainStackView: UIStackView = {
@@ -189,5 +189,5 @@ extension StatsPageViewController: UITableViewDataSource {
         cell.configure(with: quizResult)
         return cell
     }
-
+    
 }

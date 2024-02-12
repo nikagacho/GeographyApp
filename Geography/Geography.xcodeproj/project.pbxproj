@@ -54,6 +54,16 @@
 		D5B1F1CB2B6DB90E00645EC8 /* StatsPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F1CA2B6DB90E00645EC8 /* StatsPageViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D56F59372B798206001D43D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5411BA02B56F9070009719B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D5411BA72B56F9070009719B;
+			remoteInfo = Geography;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		D5411BA82B56F9070009719B /* Geography.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geography.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5411BAB2B56F9070009719B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +101,7 @@
 		D56F59252B7948D6001D43D1 /* ShakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeView.swift; sourceTree = "<group>"; };
 		D56F59272B79546C001D43D1 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		D56F59292B7961AC001D43D1 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
+		D56F59332B798206001D43D1 /* GeographyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeographyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B1F1882B66912500645EC8 /* QuizControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizControlView.swift; sourceTree = "<group>"; };
 		D5B1F18E2B66A81B00645EC8 /* QuizViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModelProtocol.swift; sourceTree = "<group>"; };
 		D5B1F1BC2B69984B00645EC8 /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
@@ -112,6 +123,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D56F59302B798206001D43D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -127,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				D5411BA82B56F9070009719B /* Geography.app */,
+				D56F59332B798206001D43D1 /* GeographyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,14 +169,14 @@
 		D5411BBF2B56FC160009719B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D5B1F1C72B6DB75600645EC8 /* StatsPage */,
 				D5B1F1C22B6C25A700645EC8 /* Placeholder */,
 				D5411BC12B56FD520009719B /* HomePage */,
-				D5411BD82B5873850009719B /* StartQuiz */,
+				D5B1F1C72B6DB75600645EC8 /* StatsPage */,
 				D5411BCA2B571F9E0009719B /* LearningPage */,
+				D5411BD52B586DAE0009719B /* CountryDetails */,
+				D5411BD82B5873850009719B /* StartQuiz */,
 				D5411BD92B58739D0009719B /* CapitalsQuiz */,
 				D5411BE52B59C47F0009719B /* FlagsQuiz */,
-				D5411BD52B586DAE0009719B /* CountryDetails */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -203,6 +222,7 @@
 		D5411BCF2B5728450009719B /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				D56F59272B79546C001D43D1 /* UITableViewExtension.swift */,
 				D5411BD02B5728540009719B /* DateFormatter.swift */,
 				D5B1F18E2B66A81B00645EC8 /* QuizViewModelProtocol.swift */,
 				D56F59292B7961AC001D43D1 /* UserDefaultsExtension.swift */,
@@ -300,7 +320,6 @@
 			children = (
 				D56F59162B7034CF001D43D1 /* CustomButton.swift */,
 				D56F59192B70382B001D43D1 /* CustomLabel.swift */,
-				D56F59272B79546C001D43D1 /* UITableViewExtension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -366,6 +385,24 @@
 			productReference = D5411BA82B56F9070009719B /* Geography.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D56F59322B798206001D43D1 /* GeographyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D56F59392B798206001D43D1 /* Build configuration list for PBXNativeTarget "GeographyTests" */;
+			buildPhases = (
+				D56F592F2B798206001D43D1 /* Sources */,
+				D56F59302B798206001D43D1 /* Frameworks */,
+				D56F59312B798206001D43D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D56F59382B798206001D43D1 /* PBXTargetDependency */,
+			);
+			name = GeographyTests;
+			productName = GeographyTests;
+			productReference = D56F59332B798206001D43D1 /* GeographyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -378,6 +415,10 @@
 				TargetAttributes = {
 					D5411BA72B56F9070009719B = {
 						CreatedOnToolsVersion = 15.0;
+					};
+					D56F59322B798206001D43D1 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = D5411BA72B56F9070009719B;
 					};
 				};
 			};
@@ -398,6 +439,7 @@
 			projectRoot = "";
 			targets = (
 				D5411BA72B56F9070009719B /* Geography */,
+				D56F59322B798206001D43D1 /* GeographyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -412,6 +454,13 @@
 				D5B1F1BF2B69984B00645EC8 /* wrong.mp3 in Resources */,
 				D5411BB82B56F9080009719B /* LaunchScreen.storyboard in Resources */,
 				D5B1F1BE2B69984B00645EC8 /* correct.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D56F59312B798206001D43D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,7 +512,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D56F592F2B798206001D43D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D56F59382B798206001D43D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D5411BA72B56F9070009719B /* Geography */;
+			targetProxy = D56F59372B798206001D43D1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D5411BB62B56F9080009719B /* LaunchScreen.storyboard */ = {
@@ -652,6 +716,40 @@
 			};
 			name = Release;
 		};
+		D56F593A2B798206001D43D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Nikoloz.GeographyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Geography.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Geography";
+			};
+			name = Debug;
+		};
+		D56F593B2B798206001D43D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Nikoloz.GeographyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Geography.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Geography";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -669,6 +767,15 @@
 			buildConfigurations = (
 				D5411BBD2B56F9080009719B /* Debug */,
 				D5411BBE2B56F9080009719B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D56F59392B798206001D43D1 /* Build configuration list for PBXNativeTarget "GeographyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D56F593A2B798206001D43D1 /* Debug */,
+				D56F593B2B798206001D43D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

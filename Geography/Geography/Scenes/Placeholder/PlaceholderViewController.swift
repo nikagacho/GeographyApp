@@ -7,9 +7,9 @@
 
 import UIKit
 
-class PlaceholderViewController: UIViewController {
+final class PlaceholderViewController: UIViewController {
     //MARK: - Properties
-    var viewModel = PlaceholderViewModel(countries: [])
+    let viewModel = PlaceholderViewModel(countries: [])
     var router : Router?
     //MARK: - UI Elements
     private let mainStackView: UIStackView = {
