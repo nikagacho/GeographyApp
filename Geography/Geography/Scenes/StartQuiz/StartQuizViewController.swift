@@ -80,13 +80,16 @@ final class StartQuizViewController: UIViewController {
     //MARK: - Setup Buttons
     private func setupCapitalsButton() {
         capitalsButton.addAction(UIAction(handler: { [weak self] _ in
-            self!.router?.showCapitalsQuiz(countries: self!.viewModel.countries)
+            if let strongSelf = self {
+                strongSelf.router?.showCapitalsQuiz(countries: strongSelf.viewModel.countries)
+            }
         }), for: .touchUpInside)
     }
-    
     private func setupFlagsButton() {
         flagsButton.addAction(UIAction(handler: { [weak self] _ in
-            self!.router?.showFlagsQuiz(countries: self!.viewModel.countries)
+            if let strongSelf = self {
+                strongSelf.router?.showFlagsQuiz(countries: self!.viewModel.countries)
+            }
         }), for: .touchUpInside)
     }
     

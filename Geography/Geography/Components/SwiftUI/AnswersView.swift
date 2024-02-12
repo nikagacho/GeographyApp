@@ -28,7 +28,8 @@ struct AnswersView: View {
                     .font(.myFont(size: 24))
                     .cornerRadius(10)
                     .padding(.horizontal)
-                .modifier(Shake(animatableData: CGFloat(shouldShake(capital: capital) ? 1 : 0)))             })
+                    .modifier(Shake(animatableData: CGFloat(shouldShake(capital: capital) ? 1 : 0)))
+            })
             .disabled(selectedAnswer != nil)
             .padding(.horizontal)
         }

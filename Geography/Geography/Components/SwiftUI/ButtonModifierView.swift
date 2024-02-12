@@ -26,7 +26,7 @@ struct ButtonModifierView: ViewModifier {
             .padding(.horizontal)
     }
 }
-//MARK: - Custom Init
+//MARK: - View Extension
 extension View {
     func buttonStyle(backgroundColor: Color, foregroundColor: Color = .white, fontSize: CGFloat = 24, opacity: Double = 1) -> some View {
         self.modifier(ButtonModifierView(backgroundColor: backgroundColor, foregroundColor: foregroundColor, fontSize: fontSize, opacity: opacity))

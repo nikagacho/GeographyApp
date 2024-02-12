@@ -97,14 +97,18 @@ final class HomePageViewController: UIViewController {
     private func setupLearnButton() {
         viewModel.delegate = self
         learnButton.addAction(UIAction(handler: { [weak self] _ in
-            self!.viewModel.didTapLearnButton()
+            if let strongSelf = self {
+                strongSelf.viewModel.didTapLearnButton()
+            }
         }), for: .touchUpInside)
     }
     
     private func setupQuizButton() {
         viewModel.delegate = self
         quizButton.addAction(UIAction(handler: { [weak self] _ in
-            self!.viewModel.didTapQuizButton()
+            if let strongSelf = self {
+                strongSelf.viewModel.didTapQuizButton()
+            }
         }), for: .touchUpInside)
     }
     

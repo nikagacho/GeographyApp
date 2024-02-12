@@ -72,7 +72,7 @@ final class CountryDetailsView: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         mainStackView.alpha = 0
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 2) {
             self.mainStackView.alpha = 1
         }
     }
