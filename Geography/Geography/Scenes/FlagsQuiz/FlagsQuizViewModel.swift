@@ -8,8 +8,8 @@
 import Foundation
 import AVFoundation
 
-class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
-    
+final class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
+    //MARK: - Properties
     var countries: [NewCountry] = []
     var question = "Which one is the flag of "
     @Published var selectedCountry: NewCountry!
@@ -23,7 +23,7 @@ class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
     var previousQuestions: [NewCountry] = []
     var timer: Timer?
     private var audioPlayer: AVAudioPlayer?
-    
+    //MARK: - Methods
     func returnPossibleAnswers(country: NewCountry) -> [String] {
         var flagAnswers: [String] = [country.href.flag]
         while flagAnswers.count < 4 {
@@ -32,7 +32,6 @@ class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
             
             if randomCountry?.name != country.name && !flagAnswers.contains(randomFlag) {
                 flagAnswers.append(randomFlag)
-                
             }
         }
         return flagAnswers.shuffled()
@@ -48,56 +47,10 @@ class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
             playSound(soundFileName: "wrong")
         }
     }
-    
-    func loadNextQuestion() {
-        var nextCountry: NewCountry?
-        repeat {
-            nextCountry = countries.randomElement()
-        } while nextCountry != nil && previousQuestions.contains(where: { $0.name == nextCountry!.name })
-
-        if let nextCountry = nextCountry {
-            selectedCountry = nextCountry
-            possibleAnswers = returnPossibleAnswers(country: selectedCountry)
-            increment += 1
-            selectedAnswer = nil
-            previousQuestions.append(nextCountry)
-        }
-    }
-    
-    func loadFirstQuestion() {
-        previousQuestions = []
-        guard let randomCountry = countries.randomElement() else { return }
-        selectedCountry = randomCountry
-        possibleAnswers = returnPossibleAnswers(country: selectedCountry)
-        previousQuestions.append(selectedCountry)
-    }
-
-    func restartQuiz() {
-        increment = 1
-        score = 0
-        selectedAnswer = nil
-        quizCompleted = false
-        loadFirstQuestion()
-        secondsElapsed = 0
-        startTimer()
-    }
-    
-    func startTimer() {
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-            self?.secondsElapsed += 1
-        }
-    }
-    
-    func stopTimer() {
-        timer?.invalidate()
-        timer = nil
-    }
-    
+    //MARK: - Sound Player
     private func playSound(soundFileName: String) {
-        if isSoundOn == true {
+        if isSoundOn {
             guard let url = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else { return }
-            
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 audioPlayer?.play()
@@ -107,3 +60,4 @@ class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
         }
     }
 }
+

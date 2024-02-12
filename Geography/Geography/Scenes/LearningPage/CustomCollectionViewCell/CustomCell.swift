@@ -7,8 +7,8 @@
 
 import UIKit
 
-class CustomCell: UICollectionViewCell {
-    
+final class CustomCell: UICollectionViewCell {
+    //MARK: - Cell Elements
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +40,7 @@ class CustomCell: UICollectionViewCell {
     }()
     
     static let cellIdentifier = "CustomCell"
-    
+    //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -49,18 +49,18 @@ class CustomCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    //MARK: - Reuse
     override func prepareForReuse() {
         super.prepareForReuse()
         self.countryFlag.image = nil
     }
-    
+    //MARK: - Configure with data
     public func configure(with country: NewCountry, image: UIImage?) {
         countryLabel.text = country.name
         capitalLabel.text = country.capital
         countryFlag.image = image
     }
-    
+    //MARK: - Setup cell UI
     private func setupUI() {
         self.backgroundColor = .systemGray6
         self.addSubview(mainStackView)

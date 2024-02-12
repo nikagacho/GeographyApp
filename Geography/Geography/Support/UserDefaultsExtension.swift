@@ -1,23 +1,12 @@
 //
-//  Extensions.swift
+//  UserDefaultsExtension.swift
 //  Geography
 //
-//  Created by Nikoloz Gachechiladze on 17.01.24.
+//  Created by Nikoloz Gachechiladze on 09.02.24.
 //
 
-import SwiftUI
-import UIKit
-
-extension View {
-     func formattedTime(seconds: Int) -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.minute, .second]
-        formatter.unitsStyle = .positional
-        formatter.zeroFormattingBehavior = .pad
-        return formatter.string(from: TimeInterval(seconds)) ?? "0:00"
-    }
-}
-
+import Foundation
+//MARK: - UserDefaults extension for storing/managing QuizResults
 extension UserDefaults {
     func saveQuizResult(_ newResult: QuizResult) {
         let encoder = JSONEncoder()
@@ -27,7 +16,7 @@ extension UserDefaults {
             UserDefaults.standard.set(encoded, forKey: "quizResults")
         }
     }
-
+    
     func loadQuizResults() -> [QuizResult] {
         if let savedResults = UserDefaults.standard.object(forKey: "quizResults") as? Data {
             let decoder = JSONDecoder()

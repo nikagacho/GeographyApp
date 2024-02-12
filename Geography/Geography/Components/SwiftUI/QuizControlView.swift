@@ -8,23 +8,17 @@
 import SwiftUI
 
 struct QuizControlView<ViewModel: QuizViewModelProtocol & ObservableObject>: View {
+    //MARK: - Properties
     @ObservedObject var viewModel: ViewModel
     var goBackAction: () -> Void
     @Binding var selectedAnswer: String?
     @State var isAlertShown = false
-    
+    //MARK: - Body
     var body: some View {
         HStack {
             Button("Exit") {
                 isAlertShown = true
             }
-            .font(.myFont(size: 24))
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(Color.red)
-            .foregroundColor(.white)
-            .cornerRadius(10)
-            .padding(.horizontal)
             .alert(isPresented: $isAlertShown) {
                 Alert(
                     title: Text("Exit Quiz"),
@@ -35,35 +29,24 @@ struct QuizControlView<ViewModel: QuizViewModelProtocol & ObservableObject>: Vie
                     secondaryButton: .cancel()
                 )
             }
-            
+            .buttonStyle(backgroundColor: Color.red, opacity: 1)
+            let buttonOpacity = selectedAnswer == nil ? 0.2 : 1
             if viewModel.increment < 10 {
                 Button("Next") {
                     viewModel.loadNextQuestion()
                 }
-                .font(.myFont(size: 24))
+                .buttonStyle(backgroundColor: Color.orange, opacity: buttonOpacity)
                 .disabled(selectedAnswer == nil)
-                .opacity(selectedAnswer == nil ? 0.2 : 1)
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.orange)
-                .foregroundColor(.white)
-                .cornerRadius(10)
-                .padding(.horizontal)
             } else {
                 Button("End Quiz") {
                     viewModel.quizCompleted = true
                 }
-                .frame(maxWidth: .infinity)
-                .font(.myFont(size: 24))
+                .buttonStyle(backgroundColor: Color.orange, opacity: buttonOpacity)
                 .disabled(selectedAnswer == nil)
-                .opacity(selectedAnswer == nil ? 0.2 : 1)
-                .padding()
-                .background(Color.orange)
-                .foregroundColor(.white)
-                .cornerRadius(10)
-                .padding(.horizontal)
             }
         }
     }
 }
+
+
 

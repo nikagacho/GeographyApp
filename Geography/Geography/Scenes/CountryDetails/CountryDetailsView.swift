@@ -7,8 +7,8 @@
 
 import UIKit
 
-class CountryDetailsView: UIViewController {
-    
+final class CountryDetailsView: UIViewController {
+    //MARK: - UIElements
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -63,7 +63,7 @@ class CountryDetailsView: UIViewController {
     private let sizeLabel = makeDetailLabel()
     private let currencyHeaderLabel = makeHeaderLabel(text: "Currency")
     private let currencyLabel = makeDetailLabel()
-    
+    //MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -76,7 +76,7 @@ class CountryDetailsView: UIViewController {
             self.mainStackView.alpha = 1
         }
     }
-    
+    //MARK: - SetupUI
     private func setupUI() {
         view.addSubview(mainStackView)
         view.backgroundColor = .systemGray6
@@ -106,7 +106,7 @@ class CountryDetailsView: UIViewController {
             mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
         ])
     }
-    
+    //MARK: - Methods to make reusable labels
     private static func makeHeaderLabel(text: String) -> UILabel {
         let label = UILabel()
         label.textAlignment = .center
@@ -142,7 +142,7 @@ class CountryDetailsView: UIViewController {
             separator.heightAnchor.constraint(equalToConstant: 2)
         ])
     }
-    
+    //MARK: - Configure with data
     public func configure(with country: NewCountry, image: UIImage?) {
         countryHeaderLabel.text = country.name
         capitalLabel.text = country.capital

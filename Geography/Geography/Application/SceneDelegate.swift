@@ -8,17 +8,14 @@
 import UIKit
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
-    var window: UIWindow?
-    private lazy var flowController = FlowNavigator(window: window!)
     
+    var window: UIWindow?
+    private lazy var router = Router(window: window!)
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else { return }
         window = UIWindow(windowScene: windowScene)
-        flowController.showRootView()
+        router.showRootView()
         window?.makeKeyAndVisible()
     }
 }
-
-

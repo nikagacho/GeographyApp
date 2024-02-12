@@ -8,20 +8,21 @@
 import UIKit
 import NetworkLayerPackage
 
-class PlaceholderViewModel {
-    let networkManager = NetworkManager<CountriesData>()
+final class PlaceholderViewModel {
+    //MARK: - Properties
+    private let networkManager = NetworkManager<CountriesData>()
     var countries: [NewCountry] = []
     weak var delegate: PlaceholderDelegate?
-    
+    //MARK: - Init
     init(countries: [NewCountry]) {
         self.countries = countries
         self.fetchData()
     }
-    
+    //MARK: - Network Call
     func fetchData() {
         let url = "https://restfulcountries.com/api/v1/countries"
         let headers = ["Authorization": "Bearer 500|umHXWLFgGsnm3WirwgIm3GDEaOjVYgdJj5DZuGx0"]
-
+        
         Task {
             do {
                 let countriesFetched = try await networkManager.fetchData(from: url, headers: headers)
@@ -34,9 +35,9 @@ class PlaceholderViewModel {
             }
         }
     }
-
+    
 }
-
+//MARK: - Delegate Protocol
 protocol PlaceholderDelegate: AnyObject {
     func didFetchData()
 }

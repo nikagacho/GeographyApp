@@ -7,39 +7,39 @@
 
 import UIKit
 
-class ResultTableViewCell: UITableViewCell {
-    
-    let scoreLabel: UILabel = {
+final class ResultTableViewCell: UITableViewCell {
+    //MARK: - TableView Properties
+    private let scoreLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkText
         label.font = UIFont.myFont(ofSize: 20)
         return label
     }()
     
-    let timeLabel: UILabel = {
+    private let timeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.font = UIFont.myFont(ofSize: 20)
         return label
     }()
     
-    let dateLabel: UILabel = {
+    private let dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
         label.font = UIFont.myFont(ofSize: 20)
         return label
     }()
     
-    let mainStackView: UIStackView = {
+    private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
         stackView.alignment = .center
         return stackView
     }()
-    
+    //MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -48,7 +48,7 @@ class ResultTableViewCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    //MARK: - Setup Cell
     private func setupUI() {
         contentView.addSubview(mainStackView)
         mainStackView.addArrangedSubview(scoreLabel)
@@ -65,21 +65,18 @@ class ResultTableViewCell: UITableViewCell {
             mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
         ])
     }
-    
+    //MARK: - Configure
     public func configure(with quizResult: QuizResult) {
         scoreLabel.text = "Score: \(quizResult.score)"
         timeLabel.text = "Time: \(formatSeconds(seconds: quizResult.time))"
-        dateLabel.text = "Date: \(formatDate(quizResult.date))"
+        dateLabel.text = "\(formatDate(quizResult.date))"
         scoreLabel.accessibilityLabel = "Score \(quizResult.score)"
         timeLabel.accessibilityLabel = "Time \(quizResult.time) seconds"
         dateLabel.accessibilityLabel = "Date \(formatDate(quizResult.date))"
     }
     
     private func formatDate(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        return dateFormatter.string(from: date)
+        return date.formattedAsMediumDate()
     }
     
     private func formatSeconds(seconds: Int) -> String {

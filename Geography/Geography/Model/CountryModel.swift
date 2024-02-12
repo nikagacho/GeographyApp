@@ -6,11 +6,11 @@
 //
 
 import Foundation
-
+//MARK: - Full Array - result of call
 struct CountriesData: Codable {
     let data: [NewCountry]
 }
-
+//MARK: - Country Model
 struct NewCountry: Codable {
     let name: String
     let capital: String
@@ -20,12 +20,14 @@ struct NewCountry: Codable {
     let population: String
     let currency: String?
     let size: String?
-
+    
     struct CountryHref: Codable {
         let flag: String
     }
 }
 
+
+//MARK: - Quiz Result, which gets saved
 struct QuizResult: Codable {
     let score: Int
     let time: Int

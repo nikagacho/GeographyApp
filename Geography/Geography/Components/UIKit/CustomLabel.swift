@@ -7,8 +7,8 @@
 
 import UIKit
 
-class CustomLabel: UILabel {
-    
+final class CustomLabel: UILabel {
+    //MARK: - Custom Init
     init(text: String, size: CGFloat) {
         super.init(frame: .zero)
         self.text = text
@@ -20,7 +20,7 @@ class CustomLabel: UILabel {
         super.init(coder: aDecoder)
         setupLabel()
     }
-    
+    //MARK: - Label Setup
     private func setupLabel() {
         textAlignment = .center
         textColor = .darkGray
@@ -34,6 +34,6 @@ class CustomLabel: UILabel {
         transform = CATransform3DRotate(transform, 10 * CGFloat.pi / 180, 1, 0, 0)
         layer.transform = transform
     }
-
+    
 }
 
