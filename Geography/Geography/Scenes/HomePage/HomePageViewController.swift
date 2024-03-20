@@ -22,25 +22,11 @@ final class HomePageViewController: UIViewController {
         return stackView
     }()
     
-    private let mainText: CustomLabel = {
-        let label = CustomLabel(text: "Welcome to Geography Quiz!", size: 44)
-        return label
-    }()
+    private let mainText = CustomLabel(text: "Welcome to Geography Quiz!", size: 44)
+    private let quizButton = CustomButton(title: "Quiz")
+    private let learnButton = CustomButton(title: "Learn")
+    private let statsButton = CustomButton(title: "Statistics")
     
-    private let quizButton: CustomButton = {
-        let button = CustomButton(title: "Quiz")
-        return button
-    }()
-    
-    private let learnButton: CustomButton = {
-        let button = CustomButton(title: "Learn")
-        return button
-    }()
-    
-    private let statsButton: CustomButton = {
-        let button = CustomButton(title: "Statistics")
-        return button
-    }()
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()

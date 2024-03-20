@@ -13,6 +13,7 @@ final class CustomLabel: UILabel {
         super.init(frame: .zero)
         self.text = text
         self.font = UIFont.myFont(ofSize: size)
+        self.textColor = .black
         setupLabel()
     }
     

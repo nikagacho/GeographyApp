@@ -42,6 +42,14 @@ final class Router: ObservableObject {
             navigationController.pushViewController(hostingView, animated: true)
         }
     }
+    
+    //MARK: - Present
+    func presentViewController(with vc: UIViewController) {
+        if let navigationController = window.rootViewController as? UINavigationController {
+            navigationController.present(vc, animated: true)
+        }
+    }
+    
     //MARK: - Back Action
     func goBack() {
         if let navigationController = window.rootViewController as? UINavigationController {

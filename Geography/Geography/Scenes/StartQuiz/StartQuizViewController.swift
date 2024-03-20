@@ -23,20 +23,10 @@ final class StartQuizViewController: UIViewController {
         return stackView
     }()
     
-    private let mainText: CustomLabel = {
-        let label = CustomLabel(text: "Choose your Quiz!", size: 48)
-        return label
-    }()
-    
-    private let flagsButton: CustomButton = {
-        let button = CustomButton(title: "Flags")
-        return button
-    }()
-    
-    private let capitalsButton: CustomButton = {
-        let button = CustomButton(title: "Capitals")
-        return button
-    }()
+    private let mainText = CustomLabel(text: "Choose your Quiz", size: 48)
+    private let flagsButton = CustomButton(title: "Flags")
+    private let capitalsButton = CustomButton(title: "Capitals")
+    private let customButton = CustomButton(title: "Custom Quiz")
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -50,6 +40,7 @@ final class StartQuizViewController: UIViewController {
         setupUI()
         setupCapitalsButton()
         setupFlagsButton()
+        setupCustomButton()
     }
     //MARK: - SetupUI
     private func setupUI() {
@@ -58,7 +49,8 @@ final class StartQuizViewController: UIViewController {
         mainStackView.addArrangedSubview(mainText)
         mainStackView.addArrangedSubview(flagsButton)
         mainStackView.addArrangedSubview(capitalsButton)
-        mainStackView.setCustomSpacing(100, after: capitalsButton)
+        mainStackView.addArrangedSubview(customButton)
+        mainStackView.setCustomSpacing(100, after: customButton)
         mainStackView.addArrangedSubview(imageView)
         setupConstraints()
     }
@@ -74,7 +66,10 @@ final class StartQuizViewController: UIViewController {
             flagsButton.heightAnchor.constraint(equalToConstant: 58),
             capitalsButton.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 89),
             capitalsButton.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: -89),
-            capitalsButton.heightAnchor.constraint(equalToConstant: 58)
+            capitalsButton.heightAnchor.constraint(equalToConstant: 58),
+            customButton.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor, constant: 89),
+            customButton.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: -89),
+            customButton.heightAnchor.constraint(equalToConstant: 58)
         ])
     }
     //MARK: - Setup Buttons
@@ -88,9 +83,17 @@ final class StartQuizViewController: UIViewController {
     private func setupFlagsButton() {
         flagsButton.addAction(UIAction(handler: { [weak self] _ in
             if let strongSelf = self {
-                strongSelf.router?.showFlagsQuiz(countries: self!.viewModel.countries)
+                strongSelf.router?.showFlagsQuiz(countries: strongSelf.viewModel.countries)
             }
         }), for: .touchUpInside)
     }
     
+    private func setupCustomButton() {
+        customButton.addAction(UIAction(handler: { [weak self] _ in
+            let vc = CustomQuizViewController()
+            if let strongSelf = self {
+                strongSelf.router?.presentViewController(with: vc)
+            }
+        }), for: .touchUpInside)
+    }
 }
