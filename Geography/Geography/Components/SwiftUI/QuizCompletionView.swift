@@ -54,8 +54,10 @@ struct QuizCompletionView: View {
                 }
             }
             .onAppear {
-                let result = QuizResult(score: score, time: time, date: Date())
-                UserDefaults.standard.saveQuizResult(result)
+                if shouldUseTime {
+                    let result = QuizResult(score: score, time: time, date: Date())
+                    UserDefaults.standard.saveQuizResult(result)
+                }
             }
         }
     }

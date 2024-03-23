@@ -24,7 +24,7 @@ struct QuestionView: View {
                     .font(.myFont(size: 28)))
                 .fixedSize(horizontal: false, vertical: true)
             }
-            .frame(minHeight: 100)
+            .frame(minHeight: 60)
             VStack {
                 Text("Total Score: \(score)")
                     .bold()

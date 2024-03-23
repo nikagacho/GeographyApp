@@ -72,6 +72,8 @@ final class PlaceholderViewController: UIViewController {
 extension PlaceholderViewController: PlaceholderDelegate {
     func didFetchData() {
         let homepageVC = HomePageViewController()
+        //MARK: Removed Swaziland - API data is corrupt 
+        viewModel.countries.removeAll { $0.name == "Swaziland"}
         homepageVC.viewModel.countries = viewModel.countries
         homepageVC.router = router
         navigationController?.pushViewController(homepageVC, animated: true)

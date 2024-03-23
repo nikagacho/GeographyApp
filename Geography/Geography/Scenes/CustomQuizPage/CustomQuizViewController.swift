@@ -55,6 +55,7 @@ class CustomQuizViewController: UIViewController {
     
     private let mainLabel = CustomLabel(text: "Create your own Quiz!", size: 44)
     private let selectTypeLabel = CustomLabel(text: "Select the Type of Quiz", size: 32)
+    private let warningLabel = CustomLabel(text: "Note: You need to select at least 1 quiz type", size: 16)
     private let flagsLabel = CustomLabel(text: "Flags", size: 24)
     private let capitalsLabel = CustomLabel(text: "Capitals", size: 24)
     private let currenciesLabel = CustomLabel(text: "Currencies", size: 24)
@@ -94,6 +95,7 @@ class CustomQuizViewController: UIViewController {
     private func setupStacks() {
         mainStackView.addArrangedSubview(mainLabel)
         mainStackView.addArrangedSubview(selectTypeLabel)
+        mainStackView.addArrangedSubview(warningLabel)
         mainStackView.addArrangedSubview(typeStackViewOne)
         typeStackViewOne.addArrangedSubview(flagsLabel)
         typeStackViewOne.addArrangedSubview(typeSwitch1)
