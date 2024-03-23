@@ -8,56 +8,34 @@
 import Foundation
 import AVFoundation
 
-final class FlagsQuizViewModel: ObservableObject, QuizViewModelProtocol {
-    //MARK: - Properties
-    var countries: [NewCountry] = []
-    var question = "Which one is the flag of "
+final class FlagsQuizViewModel: QuizProtocol, AudioPlayerProtocol, ObservableObject {
+    
+    var preferences: QuizPreferences = QuizPreferences(includeFlags: true, includeCapitals: false, includeCurrencies: false, enableTimer: true)
+    @Published var countries: [NewCountry] = []
     @Published var selectedCountry: NewCountry!
     @Published var possibleAnswers: [String] = []
-    @Published var score = 0
-    @Published var increment = 1
-    @Published var quizCompleted = false
+    @Published var score: Int = 0
+    @Published var increment: Int = 1
+    @Published var quizCompleted: Bool = false
     @Published var selectedAnswer: String? = nil
     @Published var secondsElapsed: Int = 0
-    @Published var isSoundOn = true
-    var previousQuestions: [NewCountry] = []
+    @Published var isSoundOn: Bool = true
+    @Published var currentQuestionType: QuestionType? = .flag
+    @Published var previousQuestions: [NewCountry] = []
     var timer: Timer?
-    private var audioPlayer: AVAudioPlayer?
-    //MARK: - Methods
-    func returnPossibleAnswers(country: NewCountry) -> [String] {
-        var flagAnswers: [String] = [country.href.flag]
-        while flagAnswers.count < 4 {
-            let randomCountry = countries.randomElement()
-            let randomFlag = randomCountry?.href.flag ?? ""
-            
-            if randomCountry?.name != country.name && !flagAnswers.contains(randomFlag) {
-                flagAnswers.append(randomFlag)
-            }
-        }
-        return flagAnswers.shuffled()
-    }
+    var audioPlayer: AVAudioPlayer?
+    var questionText: String = "Which is the flag of "
     
     func checkAnswer(answer: String) {
-        selectedAnswer = answer
         guard let country = selectedCountry else { return }
-        if answer == country.href.flag {
-            score += 1
-            playSound(soundFileName: "correct")
-        } else {
-            playSound(soundFileName: "wrong")
-        }
-    }
-    //MARK: - Sound Player
-    private func playSound(soundFileName: String) {
-        if isSoundOn {
-            guard let url = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else { return }
-            do {
-                audioPlayer = try AVAudioPlayer(contentsOf: url)
-                audioPlayer?.play()
-            } catch {
-                print("Unable to locate audio file: \(soundFileName)")
+        selectedAnswer = answer
+            if answer == country.href.flag {
+                score += 1
+                playSound(soundFileName: "correct")
+            } else {
+                playSound(soundFileName: "wrong")
             }
-        }
     }
+  
 }
 

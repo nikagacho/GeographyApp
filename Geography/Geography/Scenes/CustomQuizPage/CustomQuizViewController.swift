@@ -10,6 +10,7 @@ import UIKit
 class CustomQuizViewController: UIViewController {
     
     var router: Router?
+    var viewModel = CustomQuizViewModel()
     
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
@@ -63,13 +64,14 @@ class CustomQuizViewController: UIViewController {
     private let enableTimerLabel = CustomLabel(text: "Enable Timer", size: 24)
     private let timerSwitch = UISwitch()
     private let startButton = CustomButton(title: "Let's Go")
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupStacks()
         setupConstraints()
         setCustomSpacing()
+        setupSwitches()
     }
     
     private func setupUI() {
@@ -79,6 +81,14 @@ class CustomQuizViewController: UIViewController {
         startButton.translatesAutoresizingMaskIntoConstraints = false
         selectTypeLabel.textColor = .systemBlue
         enableTimerLabel.textColor = .systemBlue
+        startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
+    }
+    
+    private func setupSwitches() {
+        typeSwitch1.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+        typeSwitch2.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+        typeSwitch3.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+        timerSwitch.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
     }
     
     private func setupStacks() {
@@ -111,5 +121,19 @@ class CustomQuizViewController: UIViewController {
             startButton.heightAnchor.constraint(equalToConstant: 54)
         ])
     }
-
+    
+    @objc private func switchChanged() {
+            viewModel.updatePreferences(flags: typeSwitch1.isOn, capitals: typeSwitch2.isOn, currencies: typeSwitch3.isOn, timer: timerSwitch.isOn)
+        }
+    
+    @objc private func startButtonTapped() {
+        if viewModel.checkIfTypeExists() {
+            let preferences = viewModel.getPreferences()
+            router?.showMixedQuiz(preferences: preferences, countries: self.viewModel.countries )
+            self.dismiss(animated: true)
+        } else {
+            AlertManager.showAlert(on: self, title: viewModel.noTypeTitle , message: viewModel.noTypeText)
+        }
+    }
+    
 }

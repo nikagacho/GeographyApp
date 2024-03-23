@@ -91,6 +91,8 @@ final class StartQuizViewController: UIViewController {
     private func setupCustomButton() {
         customButton.addAction(UIAction(handler: { [weak self] _ in
             let vc = CustomQuizViewController()
+            vc.router = self?.router
+            vc.viewModel.countries = self?.viewModel.countries ?? []
             if let strongSelf = self {
                 strongSelf.router?.presentViewController(with: vc)
             }

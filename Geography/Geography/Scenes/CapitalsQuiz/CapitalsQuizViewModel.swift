@@ -8,55 +8,33 @@
 import Foundation
 import AVFoundation
 
-final class CapitalsQuizViewModel: ObservableObject, QuizViewModelProtocol {
-    //MARK: - Properties
+final class CapitalsQuizViewModel: QuizProtocol, ObservableObject, AudioPlayerProtocol {
+    
+    var preferences: QuizPreferences = QuizPreferences(includeFlags: false, includeCapitals: true, includeCurrencies: false, enableTimer: true)
     var countries: [NewCountry] = []
-    var question = "What is the Capital City of "
     @Published var selectedCountry: NewCountry!
-    var possibleAnswers: [String] = []
-    @Published var score = 0
-    @Published var increment = 1
-    @Published var quizCompleted = false
+    @Published var possibleAnswers: [String] = []
+    @Published var score: Int = 0
+    @Published var increment: Int = 1
+    @Published var quizCompleted: Bool = false
     @Published var selectedAnswer: String? = nil
-    @Published var secondsElapsed = 0
-    @Published var isSoundOn = true
-    var previousQuestions: [NewCountry] = []
-    private var audioPlayer: AVAudioPlayer?
+    @Published var secondsElapsed: Int = 0
+    @Published var isSoundOn: Bool = true
+    @Published var currentQuestionType: QuestionType? = .capital
+    @Published var previousQuestions: [NewCountry] = []
     var timer: Timer?
-    //MARK: - Methods
-    func returnPossibleAnswers(country: NewCountry) -> [String] {
-        var answers: [String] = [country.capital]
-        while answers.count < 4 {
-            let randomCountry = countries.randomElement()
-            let randomCapital = randomCountry?.capital
-            
-            if randomCountry?.name != country.name && !answers.contains(randomCapital ?? "") {
-                answers.append(randomCapital ?? "")
-            }
-        }
-        return answers.shuffled()
-    }
+    var audioPlayer: AVAudioPlayer?
+    var questionText: String = "What is the capital of "
     
     func checkAnswer(answer: String) {
-        selectedAnswer = answer
         guard let country = selectedCountry else { return }
-        if answer == country.capital {
-            score += 1
-            playSound(soundFileName: "correct")
-        } else {
-            playSound(soundFileName: "wrong")
-        }
-    }
-    //MARK: - Sound Player
-    private func playSound(soundFileName: String) {
-        if isSoundOn {
-            guard let url = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else { return }
-            do {
-                audioPlayer = try AVAudioPlayer(contentsOf: url)
-                audioPlayer?.play()
-            } catch {
-                print("Unable to locate audio file: \(soundFileName)")
+        selectedAnswer = answer
+            if answer == country.capital {
+                score += 1
+                playSound(soundFileName: "correct")
+            } else {
+                playSound(soundFileName: "wrong")
             }
-        }
     }
+  
 }

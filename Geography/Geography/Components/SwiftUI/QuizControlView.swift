@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct QuizControlView<ViewModel: QuizViewModelProtocol & ObservableObject>: View {
+struct QuizControlView<ViewModel: QuizProtocol & ObservableObject>: View {
     //MARK: - Properties
     @ObservedObject var viewModel: ViewModel
     var goBackAction: () -> Void
+    var loadNextQuestion: () -> Void
     @Binding var selectedAnswer: String?
     @State var isAlertShown = false
     //MARK: - Body
@@ -33,7 +34,7 @@ struct QuizControlView<ViewModel: QuizViewModelProtocol & ObservableObject>: Vie
             let buttonOpacity = selectedAnswer == nil ? 0.2 : 1
             if viewModel.increment < 10 {
                 Button("Next") {
-                    viewModel.loadNextQuestion()
+                    loadNextQuestion()
                 }
                 .buttonStyle(backgroundColor: Color.orange, opacity: buttonOpacity)
                 .disabled(selectedAnswer == nil)

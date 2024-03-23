@@ -18,7 +18,7 @@ struct FlagsQuizView: View {
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 if viewModel.quizCompleted {
-                    QuizCompletionView(score: viewModel.score, time: viewModel.secondsElapsed, restartAction: viewModel.restartQuiz, goBack: router.goBack)
+                    QuizCompletionView(score: viewModel.score, time: viewModel.secondsElapsed, restartAction: viewModel.restartQuiz, goBack: router.goBack, shouldUseTime: true)
                         .onAppear {
                             viewModel.stopTimer()
                         }
@@ -27,9 +27,9 @@ struct FlagsQuizView: View {
                         TimerView(viewModel: viewModel, increment: viewModel.increment)
                         SoundButtonView(isSoundOn: $viewModel.isSoundOn)
                     }
-                    QuestionView(question: viewModel.question, countryName: country.name, score: viewModel.score)
+                    QuestionView(question: viewModel.questionText, countryName: country.name, score: viewModel.score)
                     FlagsQuizAnswersView(possibleAnswers: viewModel.possibleAnswers, answerSelected: viewModel.checkAnswer, selectedAnswer: $viewModel.selectedAnswer, correctAnswer: country.href.flag)
-                    QuizControlView(viewModel: viewModel, goBackAction: router.goBack, selectedAnswer: $viewModel.selectedAnswer)
+                    QuizControlView(viewModel: viewModel, goBackAction: router.goBack, loadNextQuestion: viewModel.loadNextQuestion, selectedAnswer: $viewModel.selectedAnswer)
                 }  else {
                     Text("Error - Couldn't load the quiz")
                         .onAppear {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TimerView<ViewModel: QuizViewModelProtocol & ObservableObject>: View {
+struct TimerView<ViewModel: QuizProtocol & ObservableObject>: View {
     //MARK: - Properties
     @ObservedObject var viewModel: ViewModel
     var increment: Int

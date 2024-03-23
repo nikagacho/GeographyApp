@@ -106,7 +106,7 @@ final class CountryDetailsView: UIViewController {
             mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
         ])
     }
-    //MARK: - Methods to make reusable labels
+    //MARK: - Reusable Labels
     private static func makeHeaderLabel(text: String) -> UILabel {
         let label = UILabel()
         label.textAlignment = .center

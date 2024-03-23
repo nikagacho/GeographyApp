@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 //MARK: - DateFormatter for Seconds/Dates
+//MARK: SwiftUI
 extension View {
     func formattedTime(seconds: Int) -> String {
         let formatter = DateComponentsFormatter()
@@ -17,7 +18,7 @@ extension View {
         return formatter.string(from: TimeInterval(seconds)) ?? "0:00"
     }
 }
-
+//MARK: UIKit
 extension Date {
     func formattedAsMediumDate() -> String {
         let dateFormatter = DateFormatter()

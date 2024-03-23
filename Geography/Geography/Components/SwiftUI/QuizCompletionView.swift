@@ -13,6 +13,7 @@ struct QuizCompletionView: View {
     var time: Int
     let restartAction: () -> Void
     let goBack: () -> Void
+    var shouldUseTime: Bool
     //MARK: - Body
     var body: some View {
         ZStack {
@@ -31,8 +32,10 @@ struct QuizCompletionView: View {
                     .shadow(radius: 40)
                 Text("Your score: \(score) / 10")
                     .font(.myFont(size: 30))
-                Text("Time Elapsed: \(formattedTime(seconds: time))")
-                    .font(.myFont(size: 24))
+                if shouldUseTime {
+                    Text("Time Elapsed: \(formattedTime(seconds: time))")
+                        .font(.myFont(size: 24))
+                }
                 ShareLink(
                     item: "I just scored \(score) out of 10 in the Geography Quiz, can you beat me?",
                     label: {

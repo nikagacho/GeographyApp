@@ -43,6 +43,16 @@ final class Router: ObservableObject {
         }
     }
     
+    func showMixedQuiz(preferences: QuizPreferences, countries: [NewCountry]) {
+        let viewModel = MixedQuizViewModel(preferences: preferences, countries: countries)
+        let mixedQuizView = MixedQuizView(viewModel: viewModel)
+            .environmentObject(self)
+        let hostingView = UIHostingController(rootView: mixedQuizView)
+        if let navigationController = window.rootViewController as? UINavigationController {
+            navigationController.pushViewController(hostingView, animated: true)
+        }
+    }
+    
     //MARK: - Present
     func presentViewController(with vc: UIViewController) {
         if let navigationController = window.rootViewController as? UINavigationController {
