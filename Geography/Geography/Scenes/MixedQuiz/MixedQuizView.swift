@@ -39,7 +39,7 @@ struct MixedQuizView: View {
                         case .none:
                             Text("No question type selected")
                         }
-                        
+                        Spacer()
                         QuizControlView(viewModel: viewModel, goBackAction: router.goBack, loadNextQuestion: viewModel.loadNextQuestion, selectedAnswer: $viewModel.selectedAnswer)
                     }
                 } else {

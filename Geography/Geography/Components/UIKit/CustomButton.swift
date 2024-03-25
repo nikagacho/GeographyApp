@@ -22,7 +22,7 @@ final class CustomButton: UIButton {
     //MARK: - Button Setup
     private func setupButton() {
         titleLabel?.font = UIFont.myFont(ofSize: 24)
-        backgroundColor = .systemBlue
+        backgroundColor = UIColor(named: "ButtonColor")
         layer.cornerRadius = 20
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 4)

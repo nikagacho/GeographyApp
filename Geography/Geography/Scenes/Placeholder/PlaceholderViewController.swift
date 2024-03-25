@@ -30,7 +30,6 @@ final class PlaceholderViewController: UIViewController {
     
     private let loadingText: CustomLabel = {
         let label = CustomLabel(text: "Loading...", size: 40)
-        label.textColor = .black
         return label
     }()
     //MARK: - LifeCycles

@@ -42,7 +42,7 @@ final class HomePageViewController: UIViewController {
     //MARK: - SetupUI
     private func setupView() {
         view.addSubview(mainStackView)
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = UIColor(named: "BackgroundColor")
         setupStack()
         setupConstraints()
         setupLearnButton()

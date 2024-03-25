@@ -24,7 +24,7 @@ final class CustomLabel: UILabel {
     //MARK: - Label Setup
     private func setupLabel() {
         textAlignment = .center
-        textColor = .darkGray
+        textColor = UIColor(named: "TextColor")
         numberOfLines = 2
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 2)
