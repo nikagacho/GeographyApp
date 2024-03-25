@@ -22,7 +22,7 @@ final class CountryDetailsView: UIViewController {
     private let countryHeaderLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.backgroundColor = .systemBlue
+        label.backgroundColor = .buttonColor
         label.font = UIFont.myFont(ofSize: 30)
         label.numberOfLines = 0
         label.textColor = .white
@@ -36,8 +36,6 @@ final class CountryDetailsView: UIViewController {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 8
-        imageView.layer.borderWidth = 1
-        imageView.layer.borderColor = UIColor.lightGray.cgColor
         imageView.layer.shadowOpacity = 0.3
         imageView.layer.shadowRadius = 4
         imageView.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -112,7 +110,7 @@ final class CountryDetailsView: UIViewController {
         label.textAlignment = .center
         label.font = UIFont.myFont(ofSize: 24)
         label.text = text
-        label.textColor = .darkGray
+        label.textColor = .headerColor
         return label
     }
     
@@ -120,14 +118,14 @@ final class CountryDetailsView: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.myFont(ofSize: 20)
-        label.textColor = .black
+        label.textColor = .headerColor
         return label
     }
     
     private func makeDetailStack(headerLabel: UILabel, detailLabel: UILabel) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: [headerLabel, detailLabel])
         stackView.axis = .vertical
-        stackView.backgroundColor = UIColor.systemGray5
+        stackView.backgroundColor = .buttonColor
         stackView.layer.cornerRadius = 20
         stackView.spacing = 4
         return stackView

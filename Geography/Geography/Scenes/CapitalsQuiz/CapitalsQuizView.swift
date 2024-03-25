@@ -14,7 +14,7 @@ struct CapitalsQuiz: View {
     //MARK: - Body
     var body: some View {
         ZStack {
-            Color.init(uiColor: .systemGray5)
+            Color.init(uiColor: .backgroundColor)
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 if viewModel.quizCompleted {

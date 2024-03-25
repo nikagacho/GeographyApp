@@ -14,7 +14,7 @@ struct MixedQuizView: View {
 
     var body: some View {
         ZStack {
-            Color(uiColor: .systemGray5).edgesIgnoringSafeArea(.all)
+            Color(uiColor: .backgroundColor).edgesIgnoringSafeArea(.all)
             VStack {
                 if viewModel.quizCompleted {
                     QuizCompletionView(score: viewModel.score, time: viewModel.secondsElapsed, restartAction: viewModel.restartQuiz, goBack: router.goBack, shouldUseTime: viewModel.preferences.enableTimer)

@@ -52,6 +52,7 @@
 		D5A67D962BAB70030098A668 /* CustomQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A67D952BAB70030098A668 /* CustomQuizViewModel.swift */; };
 		D5A67D982BAB8CEB0098A668 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A67D972BAB8CEB0098A668 /* AlertManager.swift */; };
 		D5A67D9C2BADB4080098A668 /* AudioPlayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A67D9B2BADB4080098A668 /* AudioPlayerProtocol.swift */; };
+		D5A67D9F2BB1E0330098A668 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A67D9E2BB1E0330098A668 /* UIColorExtension.swift */; };
 		D5B1F1892B66912500645EC8 /* QuizControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F1882B66912500645EC8 /* QuizControlView.swift */; };
 		D5B1F18F2B66A81B00645EC8 /* QuizProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B1F18E2B66A81B00645EC8 /* QuizProtocol.swift */; };
 		D5B1F1BE2B69984B00645EC8 /* correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D5B1F1BC2B69984B00645EC8 /* correct.mp3 */; };
@@ -120,6 +121,7 @@
 		D5A67D952BAB70030098A668 /* CustomQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomQuizViewModel.swift; sourceTree = "<group>"; };
 		D5A67D972BAB8CEB0098A668 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		D5A67D9B2BADB4080098A668 /* AudioPlayerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerProtocol.swift; sourceTree = "<group>"; };
+		D5A67D9E2BB1E0330098A668 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		D5B1F1882B66912500645EC8 /* QuizControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizControlView.swift; sourceTree = "<group>"; };
 		D5B1F18E2B66A81B00645EC8 /* QuizProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizProtocol.swift; sourceTree = "<group>"; };
 		D5B1F1BC2B69984B00645EC8 /* correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct.mp3; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				D5411BD02B5728540009719B /* DateFormatter.swift */,
 				D56F59292B7961AC001D43D1 /* UserDefaultsExtension.swift */,
 				D5A67D972BAB8CEB0098A668 /* AlertManager.swift */,
+				D5A67D9E2BB1E0330098A668 /* UIColorExtension.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				D5411BCE2B571FDD0009719B /* LearningPageViewModel.swift in Sources */,
 				D5411BD12B5728540009719B /* DateFormatter.swift in Sources */,
 				D5411BAE2B56F9070009719B /* SceneDelegate.swift in Sources */,
+				D5A67D9F2BB1E0330098A668 /* UIColorExtension.swift in Sources */,
 				D5411BC62B57158C0009719B /* CountryModel.swift in Sources */,
 				D5B1F1892B66912500645EC8 /* QuizControlView.swift in Sources */,
 				D5A67D922BAB6E410098A668 /* MixedQuizView.swift in Sources */,

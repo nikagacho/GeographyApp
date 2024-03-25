@@ -11,21 +11,21 @@ final class ResultTableViewCell: UITableViewCell {
     //MARK: - TableView Properties
     private let scoreLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .darkText
+        label.textColor = .textColor
         label.font = UIFont.myFont(ofSize: 20)
         return label
     }()
     
     private let timeLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .gray
+        label.textColor = .textColor
         label.font = UIFont.myFont(ofSize: 20)
         return label
     }()
     
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .gray
+        label.textColor = .textColor
         label.font = UIFont.myFont(ofSize: 20)
         return label
     }()
@@ -50,6 +50,7 @@ final class ResultTableViewCell: UITableViewCell {
     }
     //MARK: - Setup Cell
     private func setupUI() {
+        contentView.backgroundColor = .backgroundColor
         contentView.addSubview(mainStackView)
         mainStackView.addArrangedSubview(scoreLabel)
         mainStackView.addArrangedSubview(timeLabel)

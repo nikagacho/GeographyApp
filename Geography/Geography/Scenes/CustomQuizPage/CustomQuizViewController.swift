@@ -53,16 +53,16 @@ class CustomQuizViewController: UIViewController {
         return stackView
     }()
     
-    private let mainLabel = CustomLabel(text: "Create your own Quiz!", size: 44)
-    private let selectTypeLabel = CustomLabel(text: "Select the Type of Quiz", size: 32)
-    private let warningLabel = CustomLabel(text: "Note: You need to select at least 1 quiz type", size: 16)
-    private let flagsLabel = CustomLabel(text: "Flags", size: 24)
-    private let capitalsLabel = CustomLabel(text: "Capitals", size: 24)
-    private let currenciesLabel = CustomLabel(text: "Currencies", size: 24)
+    private let mainLabel = CustomLabel(text: "Create your own Quiz!", size: 44, shouldUseShadows: false)
+    private let selectTypeLabel = CustomLabel(text: "Select the Type of Quiz", size: 32, shouldUseShadows: false)
+    private let warningLabel = CustomLabel(text: "Note: You need to select at least 1 quiz type", size: 16, shouldUseShadows: false)
+    private let flagsLabel = CustomLabel(text: "Flags", size: 24, shouldUseShadows: false)
+    private let capitalsLabel = CustomLabel(text: "Capitals", size: 24, shouldUseShadows: false)
+    private let currenciesLabel = CustomLabel(text: "Currencies", size: 24, shouldUseShadows: false)
     private let typeSwitch1 = UISwitch()
     private let typeSwitch2 = UISwitch()
     private let typeSwitch3 = UISwitch()
-    private let enableTimerLabel = CustomLabel(text: "Enable Timer", size: 24)
+    private let enableTimerLabel = CustomLabel(text: "Enable Timer", size: 24, shouldUseShadows: false)
     private let timerSwitch = UISwitch()
     private let startButton = CustomButton(title: "Let's Go")
     

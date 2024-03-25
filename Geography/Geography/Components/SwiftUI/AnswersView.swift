@@ -51,14 +51,14 @@ struct AnswersView: View {
     
     private func buttonColor(for capital: String) -> Color {
         guard let selected = selectedAnswer else {
-            return .blue
+            return Color.init(uiColor: .buttonColor)
         }
         if selected == capital {
             return selected == correctAnswer ? .green : .red
         } else if capital == correctAnswer {
-            return selectedAnswer != nil ? .green : .blue
+            return selectedAnswer != nil ? .green : Color.init(uiColor: .buttonColor)
         } else {
-            return .blue
+            return Color.init(uiColor: .buttonColor)
         }
     }
 }

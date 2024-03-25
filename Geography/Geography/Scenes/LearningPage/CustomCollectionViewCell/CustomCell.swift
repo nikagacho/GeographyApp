@@ -14,7 +14,8 @@ final class CustomCell: UICollectionViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.layer.cornerRadius = 8
-        stackView.layer.borderWidth = 2
+//        stackView.layer.borderWidth = 2
+//        stackView.layer.borderColor = CGColor.init(red: 255, green: 255, blue: 255, alpha: 1)
         return stackView
     }()
     
@@ -62,7 +63,7 @@ final class CustomCell: UICollectionViewCell {
     }
     //MARK: - Setup cell UI
     private func setupUI() {
-        self.backgroundColor = .systemGray6
+        self.backgroundColor = .backgroundColor
         self.addSubview(mainStackView)
         setupStackView()
         setupConstraints()
@@ -72,6 +73,7 @@ final class CustomCell: UICollectionViewCell {
         mainStackView.addArrangedSubview(countryLabel)
         mainStackView.addArrangedSubview(capitalLabel)
         mainStackView.addArrangedSubview(countryFlag)
+        mainStackView.setCustomSpacing(4, after: countryFlag)
     }
     
     private func setupConstraints() {
@@ -83,3 +85,4 @@ final class CustomCell: UICollectionViewCell {
         ])
     }
 }
+

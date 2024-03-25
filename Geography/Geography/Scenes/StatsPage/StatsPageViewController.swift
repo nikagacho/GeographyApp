@@ -20,7 +20,7 @@ final class StatsPageViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        stackView.backgroundColor = .systemGray6
+        stackView.backgroundColor = .backgroundColor
         stackView.layer.cornerRadius = 8
         return stackView
     }()
@@ -44,8 +44,8 @@ final class StatsPageViewController: UIViewController {
         return button
     }()
     
-    private let topLabel: UILabel = createSectionLabel(text: "Your Best Results", fontSize: 30, backgroundColor: .systemBlue, textColor: .white)
-    private let headerText: UILabel = createSectionLabel(text: "Your Quiz History", fontSize: 30, backgroundColor: .systemBlue, textColor: .white)
+    private let topLabel: UILabel = createSectionLabel(text: "Your Best Results", fontSize: 30, backgroundColor: .buttonColor, textColor: .headerText)
+    private let headerText: UILabel = createSectionLabel(text: "Your Quiz History", fontSize: 30, backgroundColor: .buttonColor, textColor: .headerText)
     private let firstResult = createSectionLabel(fontSize: 22)
     private let secondResult = createSectionLabel(fontSize: 22)
     private let thirdResult = createSectionLabel(fontSize: 22)
@@ -122,7 +122,7 @@ final class StatsPageViewController: UIViewController {
         totalQuestionsText.text = "\(totalQuestions) - Total Questions"
     }
     //MARK: - Create Reusable Labels
-    private static func createSectionLabel(text: String = "", fontSize: CGFloat, backgroundColor: UIColor = .clear, textColor: UIColor = .black) -> UILabel {
+    private static func createSectionLabel(text: String = "", fontSize: CGFloat, backgroundColor: UIColor = .clear, textColor: UIColor = .headerColor) -> UILabel {
         let label = UILabel()
         label.text = text
         label.textAlignment = .center

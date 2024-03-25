@@ -41,7 +41,7 @@ final class PlaceholderViewController: UIViewController {
     }
     //MARK: - SetupUI
     private func setupUI() {
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = .backgroundColor
         view.addSubview(mainStackView)
         mainStackView.addArrangedSubview(globeImage)
         mainStackView.addArrangedSubview(loadingText)

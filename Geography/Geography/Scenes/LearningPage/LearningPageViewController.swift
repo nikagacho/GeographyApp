@@ -17,7 +17,7 @@ final class LearningPageViewController: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.backgroundColor = .systemGray6
+        stackView.backgroundColor = .backgroundColor
         return stackView
     }()
     
