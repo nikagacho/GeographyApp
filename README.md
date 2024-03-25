@@ -28,7 +28,6 @@ To begin, open the app and wait for it to load. Then, select the activity you're
 
 - ### Custom Quiz
 
-<img src="https://github.com/nikagacho/GeographyApp/assets/145837221/41ad5ab9-fbd5-40ed-a939-8d761e3f653c" width="200" alt="Capitals Quiz">
 
 - Create your own quiz experience by setting the rules yourself.
 - Enable Timer if you want your score to be tracked in the leaderboard
