@@ -8,6 +8,7 @@
 import Foundation
 
 protocol QuizProtocol: AnyObject {
+    //MARK: - Properties
     var preferences: QuizPreferences { get set }
     var countries: [NewCountry] { get set }
     var selectedCountry: NewCountry! { get set }
@@ -21,7 +22,7 @@ protocol QuizProtocol: AnyObject {
     var currentQuestionType: QuestionType? { get set }
     var previousQuestions: [NewCountry] { get set }
     var timer: Timer? { get set }
-    
+    //MARK: - Methods
     func generateCapitalAnswers(for country: NewCountry) -> [String]
     func generateFlagAnswers(for country: NewCountry) -> [String]
     func generateCurrencyAnswers(for country: NewCountry) -> [String]
@@ -34,7 +35,7 @@ protocol QuizProtocol: AnyObject {
     func restartQuiz()
     func loadFirstQuestion()
 }
-
+//MARK: - QuizProtocol extension to implement methods
 extension QuizProtocol where Self: ObservableObject {
     func generateCapitalAnswers(for country: NewCountry) -> [String] {
         var answers: [String] = [country.capital]

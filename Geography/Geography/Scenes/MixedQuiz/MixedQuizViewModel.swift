@@ -9,7 +9,7 @@ import Foundation
 import AVFoundation
 
 class MixedQuizViewModel: ObservableObject, QuizProtocol, AudioPlayerProtocol {
-        
+        //MARK: - Properties
     var preferences: QuizPreferences
     @Published var countries: [NewCountry] = []
     @Published var selectedCountry: NewCountry!
@@ -41,13 +41,13 @@ class MixedQuizViewModel: ObservableObject, QuizProtocol, AudioPlayerProtocol {
                 return "Loading question..."
             }
         }
-    
+    //MARK: - Init
     init(preferences: QuizPreferences, countries: [NewCountry]) {
         self.preferences = preferences
         self.countries = countries
         selectRandomQuestionType()
     }
-    
+    //MARK: - Methods
     func checkAnswer(answer: String) {
         guard let country = selectedCountry else { return }
         selectedAnswer = answer

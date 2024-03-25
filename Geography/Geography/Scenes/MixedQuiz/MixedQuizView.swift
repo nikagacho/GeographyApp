@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct MixedQuizView: View {
+    //MARK: - Properties
     @StateObject var viewModel: MixedQuizViewModel
     @EnvironmentObject var router: Router
-    
-
+    //MARK: - View
     var body: some View {
         ZStack {
             Color(uiColor: .backgroundColor).edgesIgnoringSafeArea(.all)

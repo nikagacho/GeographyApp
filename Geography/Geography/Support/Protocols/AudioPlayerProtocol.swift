@@ -7,13 +7,13 @@
 
 import Foundation
 import AVFoundation
-
+//MARK: - Base Protocol
 protocol AudioPlayerProtocol: AnyObject {
     var isSoundOn: Bool { get set }
     var audioPlayer: AVAudioPlayer? { get set }
     func playSound(soundFileName: String)
 }
-
+//MARK: - Extension
 extension AudioPlayerProtocol where Self: ObservableObject {
     func playSound(soundFileName: String) {
         if isSoundOn {

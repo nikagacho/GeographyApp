@@ -8,7 +8,7 @@
 import Foundation
 
 class CustomQuizViewModel {
-    
+    //MARK: - Properties
     var countries: [NewCountry] = []
     var includeFlags: Bool = false
     var includeCapitals: Bool = false
@@ -17,7 +17,7 @@ class CustomQuizViewModel {
     
     var noTypeTitle = "Can't create the Quiz!"
     var noTypeText = "Please select at least one type of quiz."
-    
+    //MARK: - Methods
     func updatePreferences(flags: Bool, capitals: Bool, currencies: Bool, timer: Bool) {
         includeFlags = flags
         includeCapitals = capitals

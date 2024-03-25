@@ -8,10 +8,10 @@
 import UIKit
 
 class CustomQuizViewController: UIViewController {
-    
+    //MARK: - Properties
     var router: Router?
     var viewModel = CustomQuizViewModel()
-    
+    //MARK: - UI Elements
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +65,7 @@ class CustomQuizViewController: UIViewController {
     private let enableTimerLabel = CustomLabel(text: "Enable Timer", size: 24, shouldUseShadows: false)
     private let timerSwitch = UISwitch()
     private let startButton = CustomButton(title: "Let's Go")
-    
+    //MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -74,7 +74,7 @@ class CustomQuizViewController: UIViewController {
         setCustomSpacing()
         setupSwitches()
     }
-    
+    //MARK: - SetupUI
     private func setupUI() {
         view.backgroundColor = .systemGray6
         view.addSubview(mainStackView)
@@ -123,7 +123,7 @@ class CustomQuizViewController: UIViewController {
             startButton.heightAnchor.constraint(equalToConstant: 54)
         ])
     }
-    
+    //MARK: - Selectors
     @objc private func switchChanged() {
             viewModel.updatePreferences(flags: typeSwitch1.isOn, capitals: typeSwitch2.isOn, currencies: typeSwitch3.isOn, timer: timerSwitch.isOn)
         }
