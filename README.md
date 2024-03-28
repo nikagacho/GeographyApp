@@ -26,6 +26,12 @@ To begin, open the app and wait for it to load. Then, select the activity you're
 - Test your knowledge of world capitals in a similar format to the Flags Quiz.
 - Identify the correct capital city for each country.
 
+- ### Custom Quiz
+
+
+- Create your own quiz experience by setting the rules yourself.
+- Enable Timer if you want your score to be tracked in the leaderboard
+
 ### Learning Module
 
 <img src="https://github.com/nikagacho/GeographyApp/assets/145837221/336badc4-a0bd-47f3-b1ec-8070ee2eb350" width="200" alt="Learning Module">
