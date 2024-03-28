@@ -121,7 +121,7 @@ extension LearningPageViewController: UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let countryDetailsVC = CountryDetailsView() // Assuming this is a view controller
+        let countryDetailsVC = CountryDetailsView()
         let country = viewModel.filteredCountries[indexPath.row]
         viewModel.fetchImage(with: country.href.flag) { [weak self] result in
             switch result {
