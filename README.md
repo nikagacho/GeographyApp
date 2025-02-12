@@ -8,6 +8,7 @@ To begin, open the app and wait for it to load. Then, select the activity you're
 
 ## Features
 
+
 ### Flags Quiz
 
 <img src="https://github.com/nikagacho/GeographyApp/assets/145837221/80ea39bf-6da3-4cfe-9ea7-4af2345ec172" width="200" alt="Flags Quiz">
@@ -48,3 +49,8 @@ To begin, open the app and wait for it to load. Then, select the activity you're
 - Display your top 3 scores and overall stats, such as total questions answered and correct answers, specific to your device.
 
 Embark on a journey of discovery with the Geography App and become a geography expert in a fun and interactive way!
+
+
+Information and sources can be read at [Non Gamstop Casinos](https://lgcnews.com/casinos-not-on-gamstop/).
+Featured mentions are also [Casinos not on Gamstop](https://trancenet.org/)
+and most importantly [best betting sites not on Gamstop](https://non-gamstop.uk/)
